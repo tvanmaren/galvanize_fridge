@@ -17,10 +17,14 @@
   },
   "homepage": "https://github.com/caspeter/galvanize_fridge#readme",
   "dependencies": {
+    "blueimp-file-upload": "^9.14.1",
     "body-parser": "^1.15.2",
     "boom": "^4.2.0",
+    "cloudinary": "^1.4.6",
+    "cloudinary-jquery-file-upload": "^2.1.7",
     "express": "^4.14.0",
     "humps": "^2.0.0",
+    "jquery": "^3.1.1",
     "knex": "^0.12.6",
     "nodemon": "^1.11.0",
     "pg": "^6.1.0"

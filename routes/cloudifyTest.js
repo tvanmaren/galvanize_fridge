@@ -1,7 +1,6 @@
 'use strict';
-$(document).ready(function() {
-  console.log('Hello World');
-});
+const cloudinary = require('cloudinary');
+const express = require('express');
 
 
 // get reference to a photo in an html form
