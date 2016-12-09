@@ -2,12 +2,12 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Fridge Monster - Register</title>
-    <!-- User registration -->
+    <title>Fridge Monster Registration</title>
+    <!-- Main login/landing page. If the user has a token they will be redirected to fridge.html -->
 
     <!-- materialize CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js" defer></script>
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -20,19 +20,21 @@
   <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="index.html" class="brand-logo">Fridge Monster</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li class="active">
-                    <a href="register.html">Register</a>
-                </li>
-                <li>
-                    <a href="index.html">Log in</a>
-                </li>
-            </ul>
+          <a href="index.html" class="brand-logo">Fridge Monster</a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a class="active" href="index.html">Login</a></li>
+            <li class="active"><a href="register.html">Register</a></li>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <li><a class="active" href="index.html">Login</a></li>
+            <li class="active"><a href="register.html">Register</a></li>
+          </ul>
         </div>
-    </nav>
+      </nav>
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
+      <script src="./js/materialize-movement.js" charset="utf-8" defer></script>
   </body>
 </html>
