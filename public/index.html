@@ -1,40 +1,89 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Fridge Monster</title>
-        <!-- Main login/landing page. If the user has a token they will be redirected to fridge.html -->
 
-        <!-- materialize CDN -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<head>
+    <meta charset="utf-8">
+    <title>Fridge Monster</title>
+    <!-- Main login/landing page. If the user has a token they will be redirected to fridge.html -->
 
-        <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
-        <!-- Custom Stylesheets -->
-        <link rel="stylesheet" href="styles/materialize-overwrite.css">
-    </head>
-    <body>
-        <nav>
-            <div class="nav-wrapper">
-                <a href="index.html" class="brand-logo">Fridge Monster</a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="register.html">Register</a></li>
-                    <li class="active"><a href="index.html">Log in</a></li>
-                </ul>
+    <!-- materialize CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- jquery for materalize objects  -->
+    <script src="../js/materialize-movement.js" charset="utf-8" defer></script>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+    <!-- Custom Stylesheets -->
+    <link rel="stylesheet" href="styles/materialize-overwrite.css">
+</head>
+
+<body>
+
+  <nav>
+      <div class="nav-wrapper">
+        <a href="index.html" class="brand-logo">Fridge Monster</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a class="active" href="index.html">Login</a></li>
+          <li><a href="register.html">Register</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+          <li><a class="active" href="index.html">Login</a></li>
+          <li><a href="register.html">Register</a></li>
+        </ul>
+      </div>
+    </nav>
+
+
+    <!-- <nav class="">
+        <div class="nav-wrapper light-blue-lighten-3">
+            <a href="index.html" class="brand-logo">Fridge Monster</a>
+            <a href="index.html" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down ">
+                <li><a href="register.html">Register</a></li>
+                <li class="active"><a href="index.html">Log in</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+              <li><a href="register.html">Register</a></li>
+              <li class="active"><a href="index.html">Log in</a></li>
+            </ul>
+        </div>
+    </nav> -->
+
+    <div class=" center row">
+        <form class="center col s12">
+            <div class="row">
+                <div class="input-field col l6 s12">
+                    <input id="email" type="email" class="validate">
+                    <label for="email">Email</label>
+                </div>
             </div>
-        </nav>
+            <div class="row">
+                <div class="input-field col l6 s12">
+                    <input id="password" type="password" class="validate">
+                    <label for="password">Password</label>
+                </div>
+            </div>
+        </form>
+    </div>
 
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="js/materialize.min.js"></script>
-        <script src="../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js" type="text/javascript"></script>
-        <script src="../node_modules/blueimp-file-upload/js/jquery.iframe-transport.js" type="text/javascript"></script>
-        <script src="../node_modules/blueimp-file-upload/js/jquery.fileupload.js" type="text/javascript"></script>
-        <script src="../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js" type="text/javascript"></script>
-        <script src="../node_modules/cloudinary-jquery-file-upload/cloudinary-jquery-file-upload.js" type="text/javascript"></script>
-        <script src="js/cloudifyTest.js"></script>
-    </body>
+
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script src="../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js" type="text/javascript"></script>
+    <script src="../node_modules/blueimp-file-upload/js/jquery.iframe-transport.js" type="text/javascript"></script>
+    <script src="../node_modules/blueimp-file-upload/js/jquery.fileupload.js" type="text/javascript"></script>
+    <script src="../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js" type="text/javascript"></script>
+    <script src="../node_modules/cloudinary-jquery-file-upload/cloudinary-jquery-file-upload.js" type="text/javascript"></script>
+    <script src="js/cloudifyTest.js"></script>
+
+
+</body>
+
 </html>
