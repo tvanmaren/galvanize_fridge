@@ -1,10 +1,10 @@
 'use strict';
 
 exports.up = function(knex, Promise) {
-  return knex.schema.createTbale('announcements', (table) => {
+  return knex.schema.createTable('announcements', (table) => {
     table.increments();
     table.string('title').notNullable().defaultTo('');
-    table.text('content').notNUllable().defaultTo('');
+    table.text('content').notNullable().defaultTo('');
     table.timestamps(true, true);
   });
 };
