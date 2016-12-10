@@ -18,4 +18,19 @@ const {
 
 const boom = require('boom');
 
+router.get('/foods', (req, res, next) => {
+  //TODO order by date expired
+  knex('foods')
+    .then((foods) => {
+      res.send(foods)
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
+// router.post('/foods', (req, res next) => {
+//   knex('foods')
+// })
+
 module.exports = router;

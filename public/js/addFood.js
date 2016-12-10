@@ -43,7 +43,7 @@ function submitForm() {
   } else {
     expirationVal = Date.now() + (1000 * 60 * 60 * 24) * 3; //3 days is the default
   }
-
+    
   var category = "";
   if ($("#personalCat").prop("checked")) {
     category = "personalCat";
