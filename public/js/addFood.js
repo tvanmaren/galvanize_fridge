@@ -60,7 +60,6 @@ function submitForm() {
     expiration: $("#date-picker").val(),
     comments: $("#textarea1").val()
   };
-  console.log(newFood);
 
   if (!newFood.name) {
     Materialize.toast('Please enter user name', 3000);
@@ -68,6 +67,27 @@ function submitForm() {
   if (!newFood.photo) {
     Materialize.toast('Please take a photo of your food', 3000)
   }
+
   // TODO: Send newFood to server
   // The server will need to get the userID according to the name that was entered
+  var $xhr = $.ajax({
+    type: "POST",
+    url: "http://localhost:8000/foods",
+    data: newFood,
+    success: function(result) {
+      console.log("post successful ", result);
+    }
+  });
+
+  // var $xhr = $.getJSON('http://localhost:8000/foods');
+  // $xhr.done((data) => {
+  //   if ($xhr.status !== 200) {
+  //     console.error("something went wrong");
+  //     return;
+  //   }
+  //   console.log(data);
+  // });
+  $xhr.fail((err) => {
+    console.error(err);
+  });
 }
