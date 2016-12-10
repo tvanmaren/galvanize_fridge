@@ -52,6 +52,10 @@ app.get('/', (req, res, next) => {
   console.log('Hello Worlds');
 });
 
+app.post('/', (req, res, next) => {
+  console.log(req.body);
+});
+
 
 
 app.listen(port, () => {
