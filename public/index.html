@@ -1,44 +1,81 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Fridge Monster</title>
-        <!-- Main login/landing page. If the user has a token they will be redirected to fridge.html -->
 
-        <!-- materialize CDN -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js" defer></script>
-        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<head>
+    <meta charset="utf-8">
+    <title>Fridge Monster Login</title>
+    <!-- Main login/landing page. If the user has a token they will be redirected to fridge.html -->
 
-        <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+    <!-- materialize CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js" defer></script>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <!-- Custom Stylesheets -->
-        <link rel="stylesheet" href="styles/materialize-overwrite.css">
-    </head>
-    <body>
-        <nav>
-            <div class="nav-wrapper">
-                <a href="index.html" class="brand-logo">Fridge Monster</a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="register.html">Register</a></li>
-                    <li class="active"><a href="index.html">Log in</a></li>
-                </ul>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+    <!-- Custom Stylesheets -->
+    <link rel="stylesheet" href="styles/materialize-overwrite.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper orange darken-1">
+            <a href="index.html" class="brand-logo">Fridge Monster</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li class="active"><a href="index.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li class="active"><a href="index.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <h2 class="center">Log In</h2>
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col l6 s12 offset-l3">
+                    <input id="email" type="email" class="validate">
+                    <label for="email">Email</label>
+                </div>
             </div>
-        </nav>
+            <div class="row">
+                <div class="input-field col l6 s12 offset-l3">
+                    <input id="password" type="password" class="validate">
+                    <label for="password">Password</label>
+                </div>
+            </div>
+        </form>
+    </div>
 
-        <a href="#" id="upload_widget_opener">Upload multiple images</a>
+    <div class="container">
 
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
-        <script src="../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js" type="text/javascript"></script>
-        <script src="../node_modules/blueimp-file-upload/js/jquery.iframe-transport.js" type="text/javascript"></script>
-        <script src="../node_modules/blueimp-file-upload/js/jquery.fileupload.js" type="text/javascript"></script>
+        <p class="center">Blind would equal while oh mr do style. Lain led and fact none. One preferred sportsmen resolving the happiness continued. High at of in loud rich true. Oh conveying do immediate acuteness in he. Equally welcome her set nothing has gravity whether
+            parties. Fertile suppose shyness mr up pointed in staying on respect.
+        </p>
+    </div>
 
-        <script src="https://widget.cloudinary.com/global/all.js" type="text/javascript"></script>
-        <!-- <script src="../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js" type="text/javascript"></script> -->
-        <script src="../node_modules/cloudinary-jquery-file-upload/cloudinary-jquery-file-upload.js" type="text/javascript"></script>
-        <script src="js/cloudinaryTest.js"></script>
-    </body>
+    <input id="upload_field" type="file" accept="image/*">
+    <button id="test_button" type="button" name="button">Test Upload</button>
+
+    <!-- <input id="upload_field" type="file" accept="image/*">
+    <button id="test_button" type="button" name="button">Test Upload</button> -->
+    <a href="#" id="upload_widget_opener">Upload multiple images</a>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
+    <script src="../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js" type="text/javascript"></script>
+    <script src="../node_modules/blueimp-file-upload/js/jquery.iframe-transport.js" type="text/javascript"></script>
+    <script src="../node_modules/blueimp-file-upload/js/jquery.fileupload.js" type="text/javascript"></script>
+
+    <script src="https://widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+    <!-- <script src="../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js" type="text/javascript"></script> -->
+    <script src="../node_modules/cloudinary-jquery-file-upload/cloudinary-jquery-file-upload.js" type="text/javascript"></script>
+    <script src="js/cloudinaryTest.js"></script>
+  </body>
 </html>
