@@ -11,7 +11,7 @@ $(function() {
     submitForm();
   });
 
-  //TODO get a list of all user names from the server on load
+  //TODO Get request to server for pulling names of users
   $('input.autocomplete').autocomplete({
     data: {
       // TODO The keys will be the names of all users
@@ -36,7 +36,6 @@ function selectPhoto() {
 }
 
 function submitForm() {
-
   //Get the expiration date in Unix time
   var expirationVal = 0;
   if ($("#datePicker").val()) {
@@ -45,7 +44,6 @@ function submitForm() {
     expirationVal = Date.now() + (1000 * 60 * 60 * 24) * 3; //3 days is the default
   }
 
-  
   var category = "";
   if ($("#personalCat").prop("checked")) {
     category = "personalCat";
@@ -56,8 +54,8 @@ function submitForm() {
   }
 
   var newFood = {
-    name: $("#name").val(),
-    photo: photoURL,
+    email_address: $("#emailAddress").val(),
+    image_url: photoURL,
     category: category,
     expiration: $("#date-picker").val(),
     comments: $("#textarea1").val()
@@ -71,4 +69,5 @@ function submitForm() {
     Materialize.toast('Please take a photo of your food', 3000)
   }
   // TODO: Send newFood to server
+  // The server will need to get the userID according to the name that was entered
 }
