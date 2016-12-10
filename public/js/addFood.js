@@ -10,6 +10,8 @@ $(function() {
   $("#submitButton").click(function() {
     submitForm();
   });
+
+  //TODO get a list of all user names from the server on load
 });
 
 function selectPhoto() {
@@ -40,6 +42,14 @@ function submitForm() {
   };
   console.log(newFood);
 
-  // TODO: Client side form validation
+  if (!newFood.name) {
+    Materialize.toast('Please enter user name', 3000);
+  }
+  if (!newFood.photo) {
+    Materialize.toast('Please take a photo of your food', 3000)
+  }
+  if (!newFood.expiration) {
+    //TODO: Set default date
+  }
   // TODO: Send newFood to server
 }
