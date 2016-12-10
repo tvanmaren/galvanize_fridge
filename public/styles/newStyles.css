@@ -5,3 +5,9 @@
 .new-margins{
   margin: auto;
 }
+
+#foodCards {
+  width: 80%;
+  margin: 0 auto;
+  height: 500px;
+};

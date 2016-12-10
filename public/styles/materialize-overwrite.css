@@ -42,3 +42,12 @@ label{
    border-bottom: 1px solid #fb8c00 !important;
    box-shadow: 0 1px 0 0 #fb8c00 !important;
    }
+
+.food-action {
+  color: slategray;
+  transition: .35s;
+}
+.food-action:hover {
+  color:orange;
+  transform: scale(1.5);
+}

@@ -13,7 +13,7 @@ exports.seed = function(knex, Promise) {
           email: 'mason@galvanize.com',
           hashed_password: 'masonlovesthemonster',
           is_admin: true
-        })
+        }),
       ]);
     });
 };
