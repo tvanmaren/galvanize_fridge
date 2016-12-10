@@ -13,6 +13,20 @@ exports.seed = function(knex, Promise) {
           comments: 'Very tasty!',
           category: 1,
         }),
+        knex('food').insert({
+          id: 2,
+          user_id: 1,
+          image_url: '',
+          comments: 'yuck!',
+          category: 1,
+        }),
+        knex('food').insert({
+          id: 3,
+          user_id: 1,
+          image_url: '',
+          comments: 'community!',
+          category: 1,
+        }),
       ]);
     });
 };

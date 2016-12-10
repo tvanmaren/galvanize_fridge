@@ -7,7 +7,7 @@ exports.up = function(knex, Promise) {
     table.string('image_url').defaultTo('https://goo.gl/CWVE6o');
     table.text('comments').notNullable().defaultTo('');
     table.boolean('active').defaultTo(true);
-    table.integer('category').defaultTo(1).references('id').inTable('categories');
+    table.integer('category').defaultTo(1).references('id').inTable('categories').onDelete('CASCADE').index();
     table.timestamps(true, true);
   });
 };

@@ -14,10 +14,10 @@ app.use(bodyParser.json());
 
 app.use(express.static('./public'));
 
-// app.use('/users', users);
-// app.use('/foods', foods);
-// app.use('/token', token);
-// app.use('/admin', admin);
+app.use('/users', users);
+app.use('/foods', foods);
+app.use('/token', token);
+app.use('/admin', admin);
 
 app.get('/', (req, res, next) => {
   console.log('Hello Worlds');
