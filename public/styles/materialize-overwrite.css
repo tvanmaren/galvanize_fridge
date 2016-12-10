@@ -1,3 +1,44 @@
 a {
   color: blue;
 }
+
+/*moves the text in the left side of the header over a little*/
+.brand-logo {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/*changes radio button fill to be orange on new-entry.html*/
+
+[type="radio"].with-gap:checked + label:before {
+border-radius: 50%;
+border: 2px solid #fb8c00 !important; }
+
+[type="radio"] + label:after {
+border-radius: 50%;
+border: 2px solid #fb8c00 !important;
+background-color: #fb8c00 !important;
+z-index: 0;
+-webkit-transform: scale(.5);
+-moz-transform: scale(.5);
+-ms-transform: scale(.5);
+-o-transform: scale(.5);
+transform: scale(.5); }
+
+
+/*change label and line color for the forms*/
+
+/* label underline focus color */
+   .input-field input[type=text]:focus {
+     border-bottom: 1px solid #fb8c00 !important;
+     box-shadow: 0 1px 0 0 #fb8c00 !important;
+   }
+   /* label focus color */
+label{
+  color: #fb8c00 !important;
+}
+
+   .input-field textarea[class=materialize-textarea]:focus {
+   border-bottom: 1px solid #fb8c00 !important;
+   box-shadow: 0 1px 0 0 #fb8c00 !important;
+   }
