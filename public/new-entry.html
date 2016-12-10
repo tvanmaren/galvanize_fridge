@@ -7,8 +7,8 @@
     <!-- Page for adding items to the fridge -->
 
     <!-- materialize CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" defer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js" defer></script>
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -17,6 +17,9 @@
 
     <!-- Custom Stylesheets -->
     <link rel="stylesheet" href="styles/materialize-overwrite.css">
+
+    <!-- Custom JS Functionality -->
+    <script type="text/javascript" src="js/addFood.js" defer></script>
 </head>
 
 <body>
@@ -48,13 +51,10 @@
             </div>
             <!-- ADD PHOTO -->
             <div class="row">
-                <div class="file-field input-field col l4 s6 offset-l4 offset-s3">
-                    <div class="btn orange darken-1">
-                        <span>File</span>
-                        <input type="file" multiple>
-                    </div>
-                    <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Upload one file">
+                <div class="file-field input-field col l6 s6 offset-l5 offset-m4 offset-s4">
+                    <div id="upload_widget_opener" class="btn orange darken-1">
+                        <span>Take Photo</span>
+                        <!-- TODO add image preview -->
                     </div>
                 </div>
             </div>
@@ -83,13 +83,28 @@
                     <label for="textarea1">Comments</label>
                 </div>
             </div>
+
+            <div class="row center">
+              <div class="file-field input-field col l6 s6 offset-l5 offset-m5 offset-s4">
+                  <div id="submitButton" class="btn orange darken-1">
+                      <span>Submit</span>
+                  </div>
+              </div>
+            </div>
         </form>
     </div>
 
     <!-- END FORM -->
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
+    <script src="../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js" type="text/javascript"></script>
+    <script src="../node_modules/blueimp-file-upload/js/jquery.iframe-transport.js" type="text/javascript"></script>
+    <script src="../node_modules/blueimp-file-upload/js/jquery.fileupload.js" type="text/javascript"></script>
+
+    <script src="https://widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+    <!-- <script src="../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js" type="text/javascript"></script> -->
+    <script src="../node_modules/cloudinary-jquery-file-upload/cloudinary-jquery-file-upload.js" type="text/javascript"></script>
 </body>
 
 </html>
