@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>New Fridge Entry</title>
     <!-- Page for adding items to the fridge -->
@@ -9,17 +10,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 
     <!-- Custom Stylesheets -->
     <link rel="stylesheet" href="styles/materialize-overwrite.css">
-  </head>
-  <body>
+</head>
+
+<body>
+
+    <!-- START NAV -->
     <nav>
-        <div class="nav-wrapper">
+        <div class="nav-wrapper orange darken-1">
             <a href="index.html" class="brand-logo">Fridge Monster</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li>
@@ -28,8 +32,64 @@
             </ul>
         </div>
     </nav>
+    <!-- END NAV -->
+
+    <!-- START FORM -->
+    <h4 class="center">Add New Item</h4>
+
+    <div class="container">
+        <form>
+            <!-- NAME SHOULD USE AUTO-COMPLETE, WITH INITIALIZATION-->
+            <div class="row">
+                <div class="input-field col l6 s10 offset-l3 offset-s1">
+                    <input id="name" type="text" class="">
+                    <label for="name">Name</label>
+                </div>
+            </div>
+            <!-- ADD PHOTO -->
+            <div class="row">
+                <div class="file-field input-field col l4 s6 offset-l4 offset-s3">
+                    <div class="btn orange darken-1">
+                        <span>File</span>
+                        <input type="file" multiple>
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Upload one file">
+                    </div>
+                </div>
+            </div>
+            <!-- CATEGORY -->
+            <div class="row">
+                <p class="center equal-margins">
+                    <input name="group1" type="radio" id="personalCat" />
+                    <label for="personalCat">Personal</label>
+                    <input name="group1" type="radio" id="communityCat" />
+                    <label for="communityCat">Community</label>
+                    <input name="group1" type="radio" id="eventCat" />
+                    <label for="eventCat">Event</label>
+                </p>
+
+            </div>
+            <!-- DAYS UNTIL EXPERATION -->
+            <div class="row">
+              <!-- <label for="date-picker">Experation Date:</label> -->
+                <input type="date" class="datepicker col l4 s6 offset-l4 offset-s3 xs12" id="date-picker">
+            </div>
+
+            <!-- COMMENTS -->
+            <div class="row">
+                <div class="input-field col s10 offset-s1">
+                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                    <label for="textarea1">Comments</label>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- END FORM -->
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
-  </body>
+</body>
+
 </html>
