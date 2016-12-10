@@ -18,4 +18,17 @@ const {
 
 const boom = require('boom');
 
+router.post('/users', function(req,res){
+  console.log(req);
+  knex('users')
+  .orderBy('id')
+    .then((rows) => {
+      const users = camelizeKeys(rows);
+      res.send(users);
+    })
+    .catch((err) => {
+      next(err);
+    });
+})
+
 module.exports = router;
