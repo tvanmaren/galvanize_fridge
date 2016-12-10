@@ -29,8 +29,20 @@ router.get('/foods', (req, res, next) => {
     });
 });
 
-// router.post('/foods', (req, res next) => {
-//   knex('foods')
-// })
+router.post('/foods', (req, res, next) => {
+  knex('foods')
+    .insert({
+      user_id: req.body.user_id,
+      image_url: req.body.image_url,
+      comments: req.body.comments,
+      expiration: req.body.expiration
+    }, '*')
+    .then((foods) => {
+      res.send(foods[0]);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
 
 module.exports = router;
