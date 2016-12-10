@@ -20,8 +20,9 @@ router.get('/active', (req, res, next) => {
   });
 });
 
-router.get('/active/:filter', (req, res, next) => {
+router.get('/active/:id', (req, res, next) => {
   var activeItems;
+  var id = parseInt(req.params.id);
 
   knex('food')
   .where('active', true)
@@ -29,7 +30,12 @@ router.get('/active/:filter', (req, res, next) => {
     activeItems = data;
   })
   .then(() => {
-    
+    var fitting = activeItems.map((item) => {
+      if(item.category === id){
+        return item;
+      }
+    });
+    return fitting;
   });
 });
 
