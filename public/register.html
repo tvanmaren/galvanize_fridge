@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Fridge Monster Registration</title>
     <!-- Main login/landing page. If the user has a token they will be redirected to fridge.html -->
@@ -9,32 +10,82 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js" defer></script>
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 
     <!-- Custom Stylesheets -->
     <link rel="stylesheet" href="styles/materialize-overwrite.css">
-  </head>
-  <body>
-    <nav>
-        <div class="nav-wrapper">
-          <a href="index.html" class="brand-logo">Fridge Monster</a>
-          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-          <ul class="right hide-on-med-and-down">
-            <li><a class="active" href="index.html">Login</a></li>
-            <li class="active"><a href="register.html">Register</a></li>
-          </ul>
-          <ul class="side-nav" id="mobile-demo">
-            <li><a class="active" href="index.html">Login</a></li>
-            <li class="active"><a href="register.html">Register</a></li>
-          </ul>
-        </div>
-      </nav>
+</head>
 
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
-      <script src="./js/materialize-movement.js" charset="utf-8" defer></script>
-  </body>
+<body>
+    <nav>
+        <div class="nav-wrapper orange darken-1">
+            <a href="index.html" class="brand-logo">Fridge Monster</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a class="active" href="index.html">Login</a></li>
+                <li class="active"><a href="register.html">Register</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li><a class="active" href="index.html">Login</a></li>
+                <li class="active"><a href="register.html">Register</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <h2 class="center">Welcome!</h2>
+
+    <div class="container">
+        <form>
+            <div class="row">
+                <div class="input-field col l6 s12 offset-l3">
+                    <input id="first-name" type="text" class="">
+                    <label for="first-name">First Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col l6 s12 offset-l3">
+                    <input id="last-name" type="text" class="validate">
+                    <label for="last-name">Last Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col l6 s12 offset-l3">
+                    <input id="email" type="email" class="validate">
+                    <label for="email">Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col l6 s12 offset-l3">
+                    <input id="password" type="password" class="validate">
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col l6 s12 offset-l3">
+                    <input id="retype-password" type="password" class="validate">
+                    <label for="password">Retype Password</label>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container">
+
+        <p class="center">Little afraid its eat looked now. Very ye lady girl them good me make. It hardly cousin me always. An shortly village is raising we shewing replied. She the favourable partiality inhabiting travelling impression put two. His six are entreaties
+            instrument acceptance unsatiable her. Amongst as or on herself chapter entered carried no. Sold old ten are quit lose deal his sent. You correct how sex several far distant believe journey parties. We shyness enquire uncivil affixed it carried
+            to.
+        </p>
+        <p class="center">Eat imagine you chiefly few end ferrars compass. Be visitor females am ferrars inquiry. Latter law remark two lively thrown. Spot set they know rest its. Raptures law diverted believed jennings consider children the see. Had invited beloved carried
+            the colonel. Occasional principles discretion it as he unpleasing boisterous. She bed sing dear now son half.
+        </p>
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
+    <script src="./js/materialize-movement.js" charset="utf-8" defer></script>
+</body>
+
 </html>
