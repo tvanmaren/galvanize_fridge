@@ -36,15 +36,16 @@ function selectPhoto() {
 }
 
 function submitForm() {
-  console.log(Date.now());
+
+  //Get the expiration date in Unix time
   var expirationVal = 0;
-  if ($("#date-picker").val()) {
-    expirationVal = Date.now() + (1000 * 60 * 60 * 24) * $("#date-picker").val();
+  if ($("#datePicker").val()) {
+    expirationVal = Date.now() + (1000 * 60 * 60 * 24) * parseInt($("#datePicker").val());
   } else {
     expirationVal = Date.now() + (1000 * 60 * 60 * 24) * 3; //3 days is the default
   }
-  console.log(expirationVal);
 
+  
   var category = "";
   if ($("#personalCat").prop("checked")) {
     category = "personalCat";
