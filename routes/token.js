@@ -34,7 +34,7 @@ router.post('/token', function(req,res, next){
     }
     else{
       // const expiry = new Date(Date.now() + 1000 * 60 * 1 * 1); // 1 minute
-      const token = jwt.sign({ userId: users.id, exp: Math.floor(Date.now()/1000)+(60) }, process.env.JWT_SECRET);
+      const token = jwt.sign({ userId: users.id, exp: Math.floor(Date.now()/1000)+(60 * 1) }, process.env.JWT_SECRET);
       // next();
 
       // res.cookie('token', token, {
