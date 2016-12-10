@@ -7,17 +7,50 @@ $(function() {
 
   $.getJSON('http://localhost:8000/foods/active').done((data) => {
     data.map((item) => {
-      generateCard(item.user_id, item.image_url, item.comments, item.category);
+      generateCard(item.id, item.user_id, item.image_url, item.comments, item.category);
     });
   });
 
   $foodDiv.append(newCard);
 });
 
-function generateCard(user_id, image_url, comments, category) {
+function generateCard(id, user_id, image_url, comments, category) {
   var $foodDiv = $('#foodCards');
+  var categoryName = setCategory(category);
 
-  var newCard = `<div class="col s4"><div class="card-panel teal"><span class="white-text">${user_id} ${comments} ${category}</span></div></div>`;
+  var newCard = `
+        <div class="col s4" id="${id}">
+          <div class="card">
+            <div class="card-image">
+              <img src="${image_url}">
+            </div>
+            <div class="card-content">
+              <p>${comments}</p>
+            </div>
+            <div class="card-action">
+              <a><i class="material-icons food-action" value="${id}">delete</i></a>
+              <span class="new badge orange">${categoryName}</span>
+            </div>
+          </div>
+        </div>
+`;
 
   $foodDiv.append(newCard)
+}
+
+function setCategory (catID) {
+  switch (catID){
+    case 1:
+    return 'Personal';
+    break;
+    case 2:
+    return 'Community';
+    break;
+    case 3:
+    return 'Event';
+    break;
+    default:
+    return 'Personal';
+    break;
+  }
 }
