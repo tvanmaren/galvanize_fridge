@@ -41,12 +41,11 @@ router.post('/token', function (req, res, next) {
             exp: Math.floor(Date.now() / 1000) + (60 * 1)
           }, process.env.JWT_SECRET);
 
-          // req.body.token = token;
-          res.json({
-            success: true,
-            message: 'Enjoy your token!',
-            token: token
+          res.cookie('token', token, {
+            httpOnly: true
           });
+
+          res.redirect('/fridge');
         })
         .catch((err) => {
           console.error(err);
@@ -58,24 +57,5 @@ router.post('/token', function (req, res, next) {
     });
 });
 
-router.use(function (req, res, next) {
-  var token = req.body.token || req.query.token || req.headers['x-access-token'];
-  if (token) {
-    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-      if (err) {
-        return boom.create(403, 'INVALID TOKEN');
-      }
-      req.userInfo = decoded;
-      console.log('user verified with info:', req.decoded);
-      // res.send(true);
-      next();
-    });
-  } else {
-    return res.status(403).send({
-      success: false,
-      message: 'No token provided.'
-    });
-  }
-});
 
 module.exports = router;

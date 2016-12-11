@@ -13,9 +13,7 @@ $(
         (response) => {
           // sessionStorage.setItem('token', response.token);
           if (response.token) {
-            $.ajaxSetup({
-              'x-access-token': response.token
-            });
+            sessionStorage.setItem('token',response.token);
           }
           else {
             console.log('response:',response);
