@@ -2,21 +2,22 @@
 $(
   $('form.login').submit(function (event) {
     event.preventDefault();
-    let email = $('#email').text();
-    let password = $('#password').text();
+    let email = $('#email').val();
+    let password = $('#password').val();
     $.post('/token', {
         email,
         password
       })
       .then(
         (response) => {
-          console.log(response);
+          console.log("RESPONSE:",response);
+          sessionStorage.setItem('token', response.token);
         },
         (error) => {
-          console.error(error);
+          console.error("ERROR",error);
         },
-        (always) => {
-          console.log('REQUEST COMPLETE:', always);
+        () => {
+          console.log("POST COMPLETE");
         });
   })
 );

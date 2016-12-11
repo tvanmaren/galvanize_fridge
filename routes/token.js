@@ -22,6 +22,7 @@ const {
 const boom = require('boom');
 
 router.post('/token', function(req,res, next){
+  console.log(req.body);
   knex('users')
   .where('email', req.body.email)
   .first()
@@ -31,7 +32,7 @@ router.post('/token', function(req,res, next){
     if (!users) {
       res.json({ success: false, message: 'Login failed. User not found '});
     }
-
+    req.body.hashedPassword=req.body.password;
     if (users.hashedPassword !== req.body.hashedPassword){
       res.json({ success: false, message: 'Login failed. User not found '});
     }

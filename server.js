@@ -17,7 +17,7 @@ const port = process.env.PORT || 8000;
 app.set('superSecret', config.secret);
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 app.use(morgan('dev'));
 
 app.use(express.static('./public'));
