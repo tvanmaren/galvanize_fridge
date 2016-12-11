@@ -37,12 +37,7 @@ function selectPhoto() {
 
 function submitForm() {
   //Get the expiration date in Unix time
-  var expirationVal = 0;
-  if ($("#datePicker").val()) {
-    expirationVal = Date.now() + (1000 * 60 * 60 * 24) * parseInt($("#datePicker").val());
-  } else {
-    expirationVal = Date.now() + (1000 * 60 * 60 * 24) * 3; //3 days is the default
-  }
+  var expirationVal = Date.now() + (1000 * 60 * 60 * 24) * parseInt($("#datePicker").val());;
 
   var category = "";
   if ($("#personalCat").prop("checked")) {
@@ -57,13 +52,13 @@ function submitForm() {
     email_address: $("#emailAddress").val(),
     image_url: photoURL,
     category: category,
-    expiration: $("#date-picker").val(),
+    expiration: expirationVal,
     comments: $("#textarea1").val()
   };
 
-  if (!newFood.name) {
-    Materialize.toast('Please enter user name', 3000);
-  } else if (!newFood.photo) {
+  if (!newFood.email_address) {
+    Materialize.toast('Please enter email', 3000);
+  } else if (!newFood.image_url) {
     Materialize.toast('Please take a photo of your food', 3000)
   } else {
     var $xhr = $.ajax({

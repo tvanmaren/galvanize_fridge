@@ -51,6 +51,7 @@ router.get('/foods', (req, res, next) => {
 });
 
 router.post('/foods', (req, res, next) => {
+  //TODO get user ID from header, add userID to insert
   knex('foods')
     .insert({
       user_id: req.body.user_id,
