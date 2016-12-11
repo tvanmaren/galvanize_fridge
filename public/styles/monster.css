@@ -5,8 +5,9 @@
 .centerMonster {
   text-align:center;
   color:#494636;
-  overflow-y:scroll;
-  overflow-x:hidden;
+  /*overflow-y:scroll;*/
+  /*overflow-y:scroll;
+  overflow-x:hidden;*/
 }
 
 
@@ -30,7 +31,7 @@ figure {
         width:200px;
         height:200px;
         padding:40px;
-        box-shadow:inset -10px -30px rgba(0,0,0,.06);
+        /*box-shadow:inset -10px -30px rgba(0,0,0,.06);*/
         -moz-border-radius:100px;
         -webkit-border-radius:100px;
         border-radius:50%;
