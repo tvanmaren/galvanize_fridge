@@ -23,30 +23,29 @@ app.use(morgan('dev'));
 app.use(express.static('./public'));
 
 app.use(foods);
-app.use('/users', users);
-app.use('/token', token);
-app.use('/admin', admin);
+app.use(users);
 app.use(token);
+app.use(admin);
 
-app.use(function(req,res,next){
-  var token = req.body.token || req.query.token || req.headers['x-access-token'];
-  if(token){
-    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-    if (err) {
-      return res.send(false);
-    }
-    req.decoded = decoded;
-    // res.send(true);
-    next();
-    });
-  }
-  else{
-    return res.status(403).send({
-      success: false,
-      message: 'No token provided.'
-    });
-  }
-});
+// app.use(function(req,res,next){
+//   var token = req.body.token || req.query.token || req.headers['x-access-token'];
+//   if(token){
+//     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+//     if (err) {
+//       return res.send(false);
+//     }
+//     req.decoded = decoded;
+//     // res.send(true);
+//     next();
+//     });
+//   }
+//   else{
+//     return res.status(403).send({
+//       success: false,
+//       message: 'No token provided.'
+//     });
+//   }
+// });
 
 app.get('/', (req, res, next) => {
   console.log('Hello Worlds');

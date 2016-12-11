@@ -39,6 +39,7 @@ router.post('/users', (req, res, next) => {
         password
     } = req.body;
 
+
     if (!email) {
         return next(boom.create(400, 'Email must not be blank'));
     }
@@ -59,6 +60,7 @@ router.post('/users', (req, res, next) => {
                         firstName,
                         lastName
                     } = req.body;
+
                     knex('users')
                         .insert({
                             first_name: firstName,
@@ -68,7 +70,7 @@ router.post('/users', (req, res, next) => {
                         })
                         .then(() => {
                             return knex('users')
-                                .select('id', 'first_name', 'last_name', 'email')
+                                // .select('id', 'first_name', 'last_name', 'email')
                                 .where('email', email)
                                 .first()
                                 .then((result) => {

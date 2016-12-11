@@ -13,6 +13,8 @@ function submitLogin() {
         password: $("#set-password").val()
     };
 
+console.log(newUser);
+
     if ($("#set-password").val() !== $("#retype-password").val()) {
         Materialize.toast('Passwords do not match', 3000)
     }
