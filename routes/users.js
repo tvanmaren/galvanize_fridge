@@ -20,7 +20,6 @@ const {
 
 const boom = require('boom');
 
-
 // router.get('/users', (req, res, next) => {
 //     knex('users')
 //         .orderBy('first_name')
@@ -76,7 +75,10 @@ router.post('/users', (req, res, next) => {
                                 .then((result) => {
                                     res.set('Content-Type', 'application/json');
                                     const resultCamel = camelizeKeys(result);
-                                    res.send(resultCamel);
+                                    // res.send(resultCamel);
+                                    req.body.email=email;
+                                    req.body.password=password;
+                                    next('/token');
                                 })
                         })
                         .catch((err) => {
