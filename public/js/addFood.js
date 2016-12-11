@@ -32,7 +32,12 @@ function selectPhoto() {
       function(error, result) {
         console.log(error);
         photoURL = result[0].secure_url;
+        console.log(result[0]);
+        // console.log($("#photoPreview").attr("src"));
+        $("#photoPreview").attr("src", result[0].secure_url);
       });
+  //TODO Display thumbnail
+
 }
 
 function submitForm() {
@@ -79,6 +84,10 @@ function submitForm() {
     }
   });
 
+  $xhr.fail((err) => {
+    console.error(err);
+  });
+
   // var $xhr = $.getJSON('http://localhost:8000/foods');
   // $xhr.done((data) => {
   //   if ($xhr.status !== 200) {
@@ -87,7 +96,4 @@ function submitForm() {
   //   }
   //   console.log(data);
   // });
-  $xhr.fail((err) => {
-    console.error(err);
-  });
 }
