@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/caspeter/galvanize_fridge#readme",
   "dependencies": {
+    "bcrypt-as-promised": "^1.1.0",
     "blueimp-file-upload": "^9.14.1",
     "body-parser": "^1.15.2",
     "boom": "^4.2.0",

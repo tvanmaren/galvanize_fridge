@@ -11,6 +11,7 @@ const dotenv = require('dotenv').config();
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const knex = require('../knex');
+const bcrypt=require('bcrypt-as-promised');
 const app = require('../server.js');
 
 const {
@@ -25,12 +26,14 @@ router.post('/token', function(req,res, next){
   .where('email', req.body.email)
   .first()
   .then((rows) =>{
+    console.log(rows);
     const users = camelizeKeys(rows);
     if (!users) {
-      res.json({ success: false, message: 'Auth failed. User not found '});
+      res.json({ success: false, message: 'Login failed. User not found '});
     }
+
     if (users.hashedPassword !== req.body.hashedPassword){
-      res.json({ success: false, message: 'Auth failed. User not found '});
+      res.json({ success: false, message: 'Login failed. User not found '});
     }
     else{
       // const expiry = new Date(Date.now() + 1000 * 60 * 1 * 1); // 1 minute
