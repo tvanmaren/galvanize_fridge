@@ -23,17 +23,30 @@ const {
 const boom = require('boom');
 
 
-// router.get('/users', (req, res, next) => {
-//     knex('users')
-//         .orderBy('first_name')
-//         .then((result) => {
-//           const user = camelizeKeys(result)
-//             res.send(user)
-//         })
-//         .catch((err)=>{
-//           next(err)
-//         })
-// })
+router.get('/users', (req, res, next) => {
+    knex('users')
+        .orderBy('first_name')
+        .then((result) => {
+            const user = camelizeKeys(result)
+            res.send(user)
+        })
+        .catch((err) => {
+            next(err)
+        })
+})
+
+router.get('/users/:id', (req, res, next) => {
+    knex('users')
+        .where('id', req.params.id)
+        .first()
+        .then((result) => {
+            const user = camelizeKeys(result)
+            res.send(user)
+        })
+        .catch((err) => {
+            next(err)
+        })
+})
 
 router.post('/users', (req, res, next) => {
     const {
@@ -65,10 +78,10 @@ router.post('/users', (req, res, next) => {
 
                     knex('users')
                         .insert({
-                            first_name: firstName,
-                            last_name: lastName,
-                            email: email,
-                            hashed_password: hashedPassword
+                            "first_name": firstName,
+                            "last_name": lastName,
+                            "email": email,
+                            "hashed_password": hashedPassword
                         })
                         .then(() => {
                             return knex('users')
@@ -79,15 +92,17 @@ router.post('/users', (req, res, next) => {
                                     res.set('Content-Type', 'application/json');
                                     const resultCamel = camelizeKeys(result);
                                     const token = jwt.sign({
-                                      userId: result.id,
-                                      userEmail: result.email,
-                                      exp: Math.floor(Date.now() / 1000) + (60 * 1)
+                                        userId: result.id,
+                                        userEmail: result.email,
+                                        exp: Math.floor(Date.now() / 1000) + (60 * 1)
                                     }, process.env.JWT_SECRET);
-                                    res.json({
-                                      success: true,
-                                      message: 'Enjoy your token!',
-                                      token: token
-                                    });
+                                    // res.redirect('/fridge')
+                                    // res.json({
+                                    //     success: true,
+                                    //     message: 'Enjoy your token!',
+                                    //     token: token
+                                    // });
+                                    res.send(result)
                                 })
                         })
                         .catch((err) => {
@@ -102,5 +117,50 @@ router.post('/users', (req, res, next) => {
             next(err)
         })
 });
+
+router.patch('/users/:id', (req, res, next) => {
+    if (isNaN(req.params.id)) {
+        return next(boom.create(404, 'Not Found'));
+    }
+
+    return knex('users')
+        .where('id', req.params.id)
+        .first()
+        .then((pickUser) => {
+            if (!pickUser) {
+                return next(boom.create(404, 'Not Found'));
+            }
+
+            const body = req.body;
+            const updateUserInfo = {
+                "first_name": body.firstName,
+                "last_name": body.lastName,
+                "email": body.email,
+                "hashed_password": pickUser.hashed_password,
+                "is_admin": pickUser.is_admin
+            };
+
+            return knex('users')
+                .update(updateUserInfo, '*')
+                .where('id', req.params.id)
+                .then((updatedUser) => {
+                    res.set('Content-Type', 'application/json');
+                    const updatedUserCamel = camelizeKeys(updatedUser);
+                    res.send(updatedUserCamel[0])
+                    res.send({
+                      id: updatedUserCamel[0].id,
+                      firstName: updatedUserCamel[0].firstName,
+                      lastName: updatedUserCamel[0].lastName,
+                      email: updatedUserCamel[0].email
+                    })
+                })
+                .catch((err) => {
+                    next(err);
+                })
+        })
+        .catch((err) => {
+            next(err);
+        })
+})
 
 module.exports = router;
