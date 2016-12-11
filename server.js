@@ -22,6 +22,10 @@ app.use(morgan('dev'));
 
 app.use(express.static('./public'));
 
+app.use(foods);
+app.use('/users', users);
+app.use('/token', token);
+app.use('/admin', admin);
 app.use(token);
 
 app.use(function(req,res,next){
@@ -43,10 +47,6 @@ app.use(function(req,res,next){
     });
   }
 });
-
-app.use(users);
-// app.use('/foods', foods);
-// app.use('/admin', admin);
 
 app.get('/', (req, res, next) => {
   console.log('Hello Worlds');
