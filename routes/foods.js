@@ -43,7 +43,7 @@ router.get('/foods', (req, res, next) => {
   //TODO order by date expired
   knex('foods')
     .then((foods) => {
-      res.send(foods)
+      res.send(foods);
     })
     .catch((err) => {
       next(err);
