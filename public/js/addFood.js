@@ -49,14 +49,14 @@ function submitForm() {
   }
 
   var newFood = {
-    email_address: $("#emailAddress").val(),
+    email: $("#emailAddress").val(),
     image_url: photoURL,
     category: category,
     expiration: expirationVal,
     comments: $("#textarea1").val()
   };
 
-  if (!newFood.email_address) {
+  if (!newFood.email) {
     Materialize.toast('Please enter email', 3000);
   } else if (!newFood.image_url) {
     Materialize.toast('Please take a photo of your food', 3000)

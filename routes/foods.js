@@ -51,16 +51,26 @@ router.get('/foods', (req, res, next) => {
 });
 
 router.post('/foods', (req, res, next) => {
-  //TODO get user ID from header, add userID to insert
-  knex('foods')
-    .insert({
-      user_id: req.body.user_id,
-      image_url: req.body.image_url,
-      comments: req.body.comments,
-      expiration: req.body.expiration
-    }, '*')
-    .then((foods) => {
-      res.send(foods[0]);
+
+  // NOTE The user_id retreval is untested
+  knex ('users')
+    .where('email', req.body.email)
+    .first()
+    .then((result) => {
+      console.log(result);
+      knex('foods')
+        .insert({
+          user_id: result.user_id,
+          image_url: req.body.image_url,
+          comments: req.body.comments,
+          expiration: req.body.expiration
+        }, '*')
+        .then((foods) => {
+          res.send(foods[0]);
+        })
+        .catch((err) => {
+          next(err);
+        });
     })
     .catch((err) => {
       next(err);
