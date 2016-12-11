@@ -1,9 +1,22 @@
 'use strict';
-
 $(
-  $("form.login").submit(function (event) {
+  $('form.login').submit(function (event) {
     event.preventDefault();
-    alert('submitted');
-    event.submit();
+    let email = $('#email').text();
+    let password = $('#password').text();
+    $.post('/token', {
+        email,
+        password
+      })
+      .then(
+        (response) => {
+          console.log(response);
+        },
+        (error) => {
+          console.error(error);
+        },
+        (always) => {
+          console.log('REQUEST COMPLETE:', always);
+        });
   })
 );
