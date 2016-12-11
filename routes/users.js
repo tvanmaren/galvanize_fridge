@@ -23,17 +23,30 @@ const {
 const boom = require('boom');
 
 
-// router.get('/users', (req, res, next) => {
-//     knex('users')
-//         .orderBy('first_name')
-//         .then((result) => {
-//           const user = camelizeKeys(result)
-//             res.send(user)
-//         })
-//         .catch((err)=>{
-//           next(err)
-//         })
-// })
+router.get('/users', (req, res, next) => {
+    knex('users')
+        .orderBy('first_name')
+        .then((result) => {
+            const user = camelizeKeys(result)
+            res.send(user)
+        })
+        .catch((err) => {
+            next(err)
+        })
+})
+
+router.get('/users/:id', (req, res, next) => {
+    knex('users')
+        .where('id', req.params.id)
+        .first()
+        .then((result) => {
+            const user = camelizeKeys(result)
+            res.send(user)
+        })
+        .catch((err) => {
+            next(err)
+        })
+})
 
 router.post('/users', (req, res, next) => {
     const {
@@ -79,14 +92,15 @@ router.post('/users', (req, res, next) => {
                                     res.set('Content-Type', 'application/json');
                                     const resultCamel = camelizeKeys(result);
                                     const token = jwt.sign({
-                                      userId: result.id,
-                                      userEmail: result.email,
-                                      exp: Math.floor(Date.now() / 1000) + (60 * 1)
+                                        userId: result.id,
+                                        userEmail: result.email,
+                                        exp: Math.floor(Date.now() / 1000) + (60 * 1)
                                     }, process.env.JWT_SECRET);
+                                    // res.redirect('/fridge')
                                     res.json({
-                                      success: true,
-                                      message: 'Enjoy your token!',
-                                      token: token
+                                        success: true,
+                                        message: 'Enjoy your token!',
+                                        token: token
                                     });
                                 })
                         })
@@ -102,5 +116,54 @@ router.post('/users', (req, res, next) => {
             next(err)
         })
 });
+
+router.patch('/users/:id', (req, res, next) => {
+    const body = req.body;
+
+    if (isNaN(req.body.params)) {
+        return next(boom.create(404, 'Not Found'));
+    }
+
+    knex('users')
+    .where('id', req.params.id)
+    .first()
+    .then(() => {
+
+
+    const updateUserInfo = {
+        first_name: body.firstName,
+        last_name: body.lastName,
+        email: body.email
+    }
+
+    const updateUser = decamelizeKeys(updateUserInfo);
+
+    return knex('users')
+        .where('id', req.params.id)
+        .first()
+        .then((pickUser) => {
+            if (!pickUser) {
+                return next(boom.create(404, 'Not Found'));
+            }
+            return knex('users')
+                .update(updateUser, '*')
+                .where('id', req.params.id)
+                .then((updatedUser) => {
+                    res.set('Content-Type', 'application/json');
+                    const updatedUserCamel = camelizeKeys(updatedUser);
+                    res.send(updatedUserCamel)
+                })
+                .catch((err) => {
+                    next(err);
+                })
+        })
+        .catch((err) => {
+            next(err);
+        })
+      })
+      .catch((err) => {
+        next(err);
+      })
+})
 
 module.exports = router;
