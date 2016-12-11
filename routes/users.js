@@ -81,25 +81,27 @@ router.post('/users', (req, res, next) => {
                     userEmail: result.email,
                     exp: Math.floor(Date.now() / 1000) + (60 * 1)
                   }, process.env.JWT_SECRET);
-
+                  req.cookie('token', token, {
+                    httpOnly: false
+                  });
                   res.cookie('token', token, {
                     httpOnly: true
                   });
 
                   res.redirect('/fridge');
-                })
+                });
             })
             .catch((err) => {
-              next(err)
-            })
+              next(err);
+            });
         })
         .catch((err) => {
-          next(err)
-        })
+          next(err);
+        });
     })
     .catch((err) => {
-      next(err)
-    })
+      next(err);
+    });
 });
 
 module.exports = router;

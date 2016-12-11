@@ -11,13 +11,7 @@ $(
       })
       .then(
         (response) => {
-          // sessionStorage.setItem('token', response.token);
-          if (response.token) {
-            sessionStorage.setItem('token',response.token);
-          }
-          else {
-            console.log('response:',response);
-          }
+          console.log('response:',response);
           $('#email').val('');
           $('#password').val('');
         },

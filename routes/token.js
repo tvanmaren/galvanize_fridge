@@ -26,6 +26,7 @@ router.post('/token', function (req, res, next) {
     .where('email', req.body.email)
     .first()
     .then((rows) => {
+      console.log(rows);
       const users = camelizeKeys(rows);
       if (!users) {
         res.json({
@@ -41,6 +42,9 @@ router.post('/token', function (req, res, next) {
             exp: Math.floor(Date.now() / 1000) + (60 * 1)
           }, process.env.JWT_SECRET);
 
+          req.cookie('token', token, {
+            httpOnly: false
+          });
           res.cookie('token', token, {
             httpOnly: true
           });
@@ -50,12 +54,10 @@ router.post('/token', function (req, res, next) {
         .catch((err) => {
           console.error(err);
           res.json({
-            success: false,
-            message: 'Login failed. User not found'
+            'Error': new Error(err)
           });
         });
     });
 });
-
 
 module.exports = router;
