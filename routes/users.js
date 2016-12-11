@@ -6,29 +6,101 @@ const express = require('express');
 const ev = require('express-validation');
 // const validations = require('../validations/books');
 
+const bcrypt = require('bcrypt-as-promised');
+
 // eslint-disable-next-line new-cap
 const router = express.Router();
 
 const knex = require('../knex');
 
+const jwt = require('jsonwebtoken');
+
 const {
-  camelizeKeys,
-  decamelizeKeys
+    camelizeKeys,
+    decamelizeKeys
 } = require('humps');
 
 const boom = require('boom');
 
-router.post('/users', function(req,res){
-  console.log(req);
-  knex('users')
-  .orderBy('id')
-    .then((rows) => {
-      const users = camelizeKeys(rows);
-      res.send(users);
-    })
-    .catch((err) => {
-      next(err);
-    });
-})
+
+// router.get('/users', (req, res, next) => {
+//     knex('users')
+//         .orderBy('first_name')
+//         .then((result) => {
+//           const user = camelizeKeys(result)
+//             res.send(user)
+//         })
+//         .catch((err)=>{
+//           next(err)
+//         })
+// })
+
+router.post('/users', (req, res, next) => {
+    const {
+        email,
+        password
+    } = req.body;
+
+
+    if (!email) {
+        return next(boom.create(400, 'Email must not be blank'));
+    }
+    if (!password) {
+        return next(boom.create(400, 'Password must not be blank'));
+    }
+
+    knex('users')
+        .where('email', email)
+        .first()
+        .then((result) => {
+            if (result) {
+                return next(boom.create(400, 'Account already exists'));
+            }
+            return bcrypt.hash(password, 12)
+                .then((hashedPassword) => {
+                    const {
+                        firstName,
+                        lastName
+                    } = req.body;
+
+                    knex('users')
+                        .insert({
+                            first_name: firstName,
+                            last_name: lastName,
+                            email: email,
+                            hashed_password: hashedPassword
+                        })
+                        .then(() => {
+                            return knex('users')
+                                // .select('id', 'first_name', 'last_name', 'email')
+                                .where('email', email)
+                                .first()
+                                .then((result) => {
+                                    res.set('Content-Type', 'application/json');
+                                    const resultCamel = camelizeKeys(result);
+                                    const token = jwt.sign({
+                                      userId: result.id,
+                                      userEmail: result.email,
+                                      exp: Math.floor(Date.now() / 1000) + (60 * 1)
+                                    }, process.env.JWT_SECRET);
+                                    res.json({
+                                      success: true,
+                                      message: 'Enjoy your token!',
+                                      token: token
+                                    });
+                                })
+                        })
+                        .catch((err) => {
+                            next(err)
+                        })
+                })
+                .catch((err) => {
+                    next(err)
+                })
+        })
+        .catch((err) => {
+            next(err)
+        })
+});
 
 module.exports = router;
