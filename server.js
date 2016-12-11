@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 
-const users = require ('./routes/users');
+const users = require('./routes/users');
 const token = require ('./routes/token');
 const admin = require ('./routes/admin');
 const foods = require ('./routes/foods');
@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 app.use(express.static('./public'));
 
-// app.use('/users', users);
+app.use(users);
 // app.use('/foods', foods);
 // app.use('/token', token);
 // app.use('/admin', admin);
