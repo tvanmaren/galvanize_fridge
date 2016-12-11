@@ -61,17 +61,17 @@
                 </div>
             </div>
             <div class="row">
-              <div class="center-align">
-                <img src="http://placehold.it/200x200" alt="photo preview" class="photoPreview" id="photoPreview">
-                <h6 class="center-align">Image Preview</h6>
-              </div>
+                <div class="center-align">
+                    <img src="http://placehold.it/200x200" alt="photo preview" class="photoPreview" id="photoPreview">
+                    <h6 class="center-align">Image Preview</h6>
+                </div>
             </div>
             <br>
             <hr>
             <br>
             <!-- CATEGORY -->
             <div class="row">
-              <h5 class="center-align">Select Category</h5>
+                <h5 class="center-align">Select Category</h5>
                 <p class="center equal-margins">
                     <input name="group1" type="radio" id="personalCat" checked/>
                     <label for="personalCat">Personal</label>
@@ -86,14 +86,22 @@
             <br>
             <!-- DAYS UNTIL EXPERATION -->
             <div class="row center-align">
-              <label for="datePicker">Number of Days Until Expiration</label>
+                <label for="datePicker">Number of Days Until Expiration</label>
             </div>
             <div class="row">
                 <div class="datepicker col l4 s6 offset-l4 offset-s3 xs12">
 
-                  <p class="range-field">
-                    <input type="range" id="datePicker" class="active" min="1" max="5" />
-                  </p>
+                    <!-- <p class="range-field">
+                        <input type="range" id="datePicker" class="active" min="1" max="5" />
+                    </p> -->
+                    <!-- <label>Number of Days Until Expiration</label> -->
+                    <select class="browser-default">
+                      <option value="1">1 day</option>
+                      <option value="2">2 days</option>
+                      <option value="3" selected>3 days</option>
+                      <option value="4">4 days</option>
+                      <option value="5">5 days</option>
+                    </select>
                 </div>
 
             </div>
@@ -108,11 +116,11 @@
             </div>
 
             <div class="row center">
-              <div class="center-align">
-                  <div id="submitButton" class="btn orange darken-1">
-                      <span>Submit</span>
-                  </div>
-              </div>
+                <div class="center-align">
+                    <div id="submitButton" class="btn orange darken-1">
+                        <span>Submit</span>
+                    </div>
+                </div>
             </div>
         </form>
     </div>
