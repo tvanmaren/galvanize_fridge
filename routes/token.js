@@ -10,6 +10,7 @@ const dotenv = require('dotenv').config();
 // eslint-disable-next-line new-cap
 const router = express.Router();
 const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
 const knex = require('../knex');
 const bcrypt = require('bcrypt-as-promised');
 const app = require('../server.js');
@@ -29,6 +30,7 @@ router.post('/token', function (req, res, next) {
       console.log(rows);
       const users = camelizeKeys(rows);
       if (!users) {
+        req.cookies={};
         res.json({
           success: false,
           message: 'Login failed. User not found '
@@ -41,15 +43,12 @@ router.post('/token', function (req, res, next) {
             userId: users.id,
             exp: Math.floor(Date.now() / 1000) + (60 * 1)
           }, process.env.JWT_SECRET);
-
-          req.cookie('token', token, {
-            httpOnly: false
-          });
+          req.cookies={'token': token};
           res.cookie('token', token, {
             httpOnly: true
           });
-
-          res.redirect('/fridge');
+          
+          res.redirect('/');
         })
         .catch((err) => {
           console.error(err);

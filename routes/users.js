@@ -81,14 +81,11 @@ router.post('/users', (req, res, next) => {
                     userEmail: result.email,
                     exp: Math.floor(Date.now() / 1000) + (60 * 1)
                   }, process.env.JWT_SECRET);
-                  req.cookie('token', token, {
-                    httpOnly: false
-                  });
+                  req.cookies={'token': token};
                   res.cookie('token', token, {
                     httpOnly: true
                   });
-
-                  res.redirect('/fridge');
+                  res.redirect('/');
                 });
             })
             .catch((err) => {

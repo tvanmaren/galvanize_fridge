@@ -32,20 +32,14 @@ app.use(users);
 app.use(token);
 
 app.use(function (req, res, next) {
-  var token;
-  if (req.cookie) {
-    token = req.cookie.token;
-  } else {
-    token = req.body.token || req.query.token || req.headers['x-access-token'];
-  }
+  var token = req.cookies.token || req.body.token || req.query.token || req.headers['x-access-token'];
   if (token) {
     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
       if (err) {
         next(boom.create(500, 'Token Validation Error'));
       }
       req.userInfo = decoded;
-      console.log('user verified with info:', req.decoded);
-      // res.send(true);
+      console.log('user verified with info:', req.userInfo);
       next();
     });
   } else {
