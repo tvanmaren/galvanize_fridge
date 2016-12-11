@@ -22,12 +22,10 @@ const {
 const boom = require('boom');
 
 router.post('/token', function(req,res, next){
-  console.log(req.body);
   knex('users')
   .where('email', req.body.email)
   .first()
   .then((rows) =>{
-    console.log(rows);
     const users = camelizeKeys(rows);
     if (!users) {
       res.json({ success: false, message: 'Login failed. User not found '});
