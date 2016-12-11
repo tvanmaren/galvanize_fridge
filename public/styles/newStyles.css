@@ -1,3 +1,7 @@
+body {
+  /*background-color: rgb(255, 201, 41);*/
+}
+
 .center{
   text-align: center;
 }
@@ -5,6 +9,14 @@
 .new-margins{
   margin: auto;
 }
+
+.photoPreview {
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+  overflow: hidden;
+};
+
 
 #foodCards {
   width: 80%;
