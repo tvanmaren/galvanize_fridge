@@ -47,14 +47,12 @@ router.post('/token', function (req, res, next) {
           res.cookie('token', token, {
             httpOnly: true
           });
-          
-          res.redirect('/');
+
+          res.status(200).json({userId: users.id, email: users.email});
         })
         .catch((err) => {
           console.error(err);
-          res.json({
-            'Error': new Error(err)
-          });
+          next(boom.create(403, 'Password Invalid'));
         });
     });
 });
