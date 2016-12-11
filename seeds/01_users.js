@@ -11,9 +11,12 @@ exports.seed = function(knex, Promise) {
           first_name: 'Master Mason',
           last_name: 'Admin',
           email: 'mason@galvanize.com',
-          hashed_password: 'masonlovesthemonster',
+          hashed_password: '$2a$12$awS7JbhTyfgDlw2Q06CqNOdhvALQRRG0uScHhO6XPSs3UbzdlfjZS',
           is_admin: true
         })
       ]);
-    });
+    })
+    .then(() => {
+          return knex.raw("SELECT setval('users_id_seq', (SELECT MAX(id) FROM users));")
+        });
 };
