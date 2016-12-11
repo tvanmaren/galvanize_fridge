@@ -78,10 +78,10 @@ router.post('/users', (req, res, next) => {
 
                     knex('users')
                         .insert({
-                            first_name: firstName,
-                            last_name: lastName,
-                            email: email,
-                            hashed_password: hashedPassword
+                            "first_name": firstName,
+                            "last_name": lastName,
+                            "email": email,
+                            "hashed_password": hashedPassword
                         })
                         .then(() => {
                             return knex('users')
@@ -97,11 +97,12 @@ router.post('/users', (req, res, next) => {
                                         exp: Math.floor(Date.now() / 1000) + (60 * 1)
                                     }, process.env.JWT_SECRET);
                                     // res.redirect('/fridge')
-                                    res.json({
-                                        success: true,
-                                        message: 'Enjoy your token!',
-                                        token: token
-                                    });
+                                    // res.json({
+                                    //     success: true,
+                                    //     message: 'Enjoy your token!',
+                                    //     token: token
+                                    // });
+                                    res.send(result)
                                 })
                         })
                         .catch((err) => {
@@ -118,25 +119,9 @@ router.post('/users', (req, res, next) => {
 });
 
 router.patch('/users/:id', (req, res, next) => {
-    const body = req.body;
-
-    if (isNaN(req.body.params)) {
+    if (isNaN(req.params.id)) {
         return next(boom.create(404, 'Not Found'));
     }
-
-    knex('users')
-    .where('id', req.params.id)
-    .first()
-    .then(() => {
-
-
-    const updateUserInfo = {
-        first_name: body.firstName,
-        last_name: body.lastName,
-        email: body.email
-    }
-
-    const updateUser = decamelizeKeys(updateUserInfo);
 
     return knex('users')
         .where('id', req.params.id)
@@ -145,13 +130,29 @@ router.patch('/users/:id', (req, res, next) => {
             if (!pickUser) {
                 return next(boom.create(404, 'Not Found'));
             }
+
+            const body = req.body;
+            const updateUserInfo = {
+                "first_name": body.firstName,
+                "last_name": body.lastName,
+                "email": body.email,
+                "hashed_password": pickUser.hashed_password,
+                "is_admin": pickUser.is_admin
+            };
+
             return knex('users')
-                .update(updateUser, '*')
+                .update(updateUserInfo, '*')
                 .where('id', req.params.id)
                 .then((updatedUser) => {
                     res.set('Content-Type', 'application/json');
                     const updatedUserCamel = camelizeKeys(updatedUser);
-                    res.send(updatedUserCamel)
+                    res.send(updatedUserCamel[0])
+                    res.send({
+                      id: updatedUserCamel[0].id,
+                      firstName: updatedUserCamel[0].firstName,
+                      lastName: updatedUserCamel[0].lastName,
+                      email: updatedUserCamel[0].email
+                    })
                 })
                 .catch((err) => {
                     next(err);
@@ -160,10 +161,6 @@ router.patch('/users/:id', (req, res, next) => {
         .catch((err) => {
             next(err);
         })
-      })
-      .catch((err) => {
-        next(err);
-      })
 })
 
 module.exports = router;
