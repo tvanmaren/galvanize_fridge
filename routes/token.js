@@ -30,7 +30,7 @@ router.post('/token', function(req,res, next){
     if (!users) {
       res.json({ success: false, message: 'Login failed. User not found '});
     }
-    req.body.hashedPassword=req.body.password;
+    req.body.hashedPassword=req.body.password; // need to actually hash here
     if (users.hashedPassword !== req.body.hashedPassword){
       res.json({ success: false, message: 'Login failed. User not found '});
     }
@@ -58,24 +58,24 @@ router.post('/token', function(req,res, next){
     });
   });
 
-  // router.use(function(req,res,next){
-  //   var token = req.body.token || req.query.token || req.headers['x-access-token'];
-  //   if(token){
-  //     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-  //     if (err) {
-  //       return res.send(false);
-  //     }
-  //     req.decoded = decoded;
-  //     // res.send(true);
-  //     next();
-  //     });
-  //   }
-  //   else{
-  //     return res.status(403).send({
-  //       success: false,
-  //       message: 'No token provided.'
-  //     });
-  //   }
-  // });
+  router.use(function(req,res,next){
+    var token = req.body.token || req.query.token || req.headers['x-access-token'];
+    if(token){
+      jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+      if (err) {
+        return boom.create(403, 'INVALID TOKEN');
+      }
+      req.decoded = decoded;
+      // res.send(true);
+      next();
+      });
+    }
+    else{
+      return res.status(403).send({
+        success: false,
+        message: 'No token provided.'
+      });
+    }
+  });
 
 module.exports = router;
