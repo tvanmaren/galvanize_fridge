@@ -66,6 +66,7 @@ router.post('/token', function(req,res, next){
         return boom.create(403, 'INVALID TOKEN');
       }
       req.decoded = decoded;
+      console.log('user verified with info:',req.decoded);
       // res.send(true);
       next();
       });
