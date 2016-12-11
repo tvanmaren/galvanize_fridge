@@ -20,6 +20,7 @@ const {
 
 const boom = require('boom');
 
+
 router.get('/users', (req, res, next) => {
     knex('users')
         .orderBy('first_name')
