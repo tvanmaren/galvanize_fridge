@@ -15,14 +15,11 @@ $(function() {
   $('input.autocomplete').autocomplete({
     data: {
       // TODO The keys will be the names of all users
-      "Anna": null,
+      "annaklotko@gmail.com": null,
       "Cassie": null,
       "Tristen": null,
       "Kevin": null,
       "Evan": null
-      // "Apple": null,
-      // "Microsoft": null,
-      // "Google": 'http://placehold.it/250x250'
     }
   });
 });
@@ -30,13 +27,11 @@ $(function() {
 function selectPhoto() {
   cloudinary.openUploadWidget({ cloud_name: 'dgt2xab7d', upload_preset: 'x2hiolgr'},
       function(error, result) {
-        console.log(error);
+        console.error(error);
         photoURL = result[0].secure_url;
-        console.log(result[0]);
-        // console.log($("#photoPreview").attr("src"));
+        // Display photo preview
         $("#photoPreview").attr("src", result[0].secure_url);
       });
-  //TODO Display thumbnail
 
 }
 
@@ -68,25 +63,22 @@ function submitForm() {
 
   if (!newFood.name) {
     Materialize.toast('Please enter user name', 3000);
-  }
-  if (!newFood.photo) {
+  } else if (!newFood.photo) {
     Materialize.toast('Please take a photo of your food', 3000)
+  } else {
+    var $xhr = $.ajax({
+      type: "POST",
+      url: "http://localhost:8000/foods",
+      data: newFood,
+      success: function(result) {
+        console.log("post successful ", result);
+      }
+    });
+
+    $xhr.fail((err) => {
+      console.error(err);
+    });
   }
-
-  // TODO: Send newFood to server
-  // The server will need to get the userID according to the name that was entered
-  var $xhr = $.ajax({
-    type: "POST",
-    url: "http://localhost:8000/foods",
-    data: newFood,
-    success: function(result) {
-      console.log("post successful ", result);
-    }
-  });
-
-  $xhr.fail((err) => {
-    console.error(err);
-  });
 
   // var $xhr = $.getJSON('http://localhost:8000/foods');
   // $xhr.done((data) => {

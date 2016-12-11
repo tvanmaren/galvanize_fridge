@@ -17,6 +17,7 @@
 
     <!-- Custom Stylesheets -->
     <link rel="stylesheet" href="styles/materialize-overwrite.css">
+    <link rel="stylesheet" href="styles/newStyles.css">
 
     <!-- Custom JS Functionality -->
     <script type="text/javascript" src="js/addFood.js" defer></script>
@@ -49,25 +50,30 @@
                     <label for="emailAddress">Email Address</label>
                 </div>
             </div>
+            <br>
+            <hr>
+            <br>
             <!-- ADD PHOTO -->
             <div class="row">
-                <div class="col l6 s6 offset-l5 offset-m4 offset-s4">
+                <div class="center-align">
                     <div id="upload_widget_opener" class="btn orange darken-1">
                         <span>Take Photo</span>
                     </div>
                 </div>
             </div>
             <div class="row">
-              <div class="col l6 s6 offset-l5 offset-m4 offset-s4">
-                <!-- TODO Add CSS to this to limit the size of the image preview -->
-                <img src="http://placehold.it/200x200" alt="photo preview" id="photoPreview">
+              <div class="center-align">
+                <img src="http://placehold.it/200x200" alt="photo preview" class="photoPreview" id="photoPreview">
               </div>
             </div>
             <br>
+            <hr>
+            <br>
             <!-- CATEGORY -->
             <div class="row">
+              <h5 class="center-align">Select Category</h5>
                 <p class="center equal-margins">
-                    <input name="group1" type="radio" id="personalCat" />
+                    <input name="group1" type="radio" id="personalCat" checked/>
                     <label for="personalCat">Personal</label>
                     <input name="group1" type="radio" id="communityCat" />
                     <label for="communityCat">Community</label>
@@ -76,20 +82,22 @@
                 </p>
             </div>
             <br>
+            <hr>
+            <br>
             <!-- DAYS UNTIL EXPERATION -->
+            <div class="row center-align">
+              <label for="datePicker">Number of Days Until Expiration</label>
+            </div>
             <div class="row">
-              <!-- <label for="date-picker">Experation Date:</label> -->
-                <!-- <input type="date" class="datepicker col l4 s6 offset-l4 offset-s3 xs12" id="date-picker"> -->
                 <div class="datepicker col l4 s6 offset-l4 offset-s3 xs12">
-                  <!-- TODO: Center this label -->
-                  <label for="datePicker" >Number of Days Until Expiration</label>
+
                   <p class="range-field">
-                    <input type="range" id="datePicker" class="" min="1" max="5" />
+                    <input type="range" id="datePicker" class="active" min="1" max="5" />
                   </p>
-                  <!-- TODO 1 and 5 as the slider range -->
                 </div>
 
             </div>
+            <hr>
 
             <!-- COMMENTS -->
             <div class="row">
@@ -100,7 +108,7 @@
             </div>
 
             <div class="row center">
-              <div class="file-field input-field col l6 s6 offset-l5 offset-m5 offset-s4">
+              <div class="center-align">
                   <div id="submitButton" class="btn orange darken-1">
                       <span>Submit</span>
                   </div>

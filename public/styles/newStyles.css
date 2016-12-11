@@ -1,3 +1,13 @@
+body {
+  /*background-color: rgb(255, 201, 41);*/
+}
+
+.photoPreview {
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+};
+
 .center{
   text-align: center;
 }
@@ -11,3 +21,24 @@
   margin: 0 auto;
   height: 500px;
 };
+
+
+.cloudinary-overlay {
+  background-color: rgba(246, 146, 81, 0.73) !important;
+}
+
+.drag_area {
+
+}
+
+.cloudinary_fileupload {
+
+}
+
+.label {
+
+}
+
+.label_multiple {
+
+}
