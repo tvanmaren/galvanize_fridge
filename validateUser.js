@@ -1,5 +1,17 @@
 'use strict';
-function validate (req, res, next) {
+
+const express = require('express');
+const ev = require('express-validation');
+
+const dotenv = require('dotenv').config();
+// const validations = require('../validations/books');
+
+const router = express.Router();
+const jwt = require('jsonwebtoken');
+
+const boom = require('boom');
+
+function validateUser (req, res, next) {
   var token = req.cookies.token || req.query.token || req.headers['x-access-token'];
   if (token) {
     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
@@ -16,4 +28,6 @@ function validate (req, res, next) {
   }
 }
 
-module.exports=validate;
+router.use('/', validateUser);
+
+module.exports=validateUser;
