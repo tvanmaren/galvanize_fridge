@@ -19,6 +19,10 @@ $(function () {
     });
   });
 
+  // LOGOUT
+  $('.logout').click(function () {
+    logout();
+  });
 });
 
 function checkUserInfo() {
@@ -108,6 +112,20 @@ function checkFridgeStats() {
       $('#content').text(`Fridge items to date: ${result.length}`);
       //TODO add user data (items per user) & expiration data
       //NEED to make foods route more useful for these queries
+    }
+  });
+
+  $xhr.fail((err) => {
+    console.error(err);
+  });
+}
+
+function logout() {
+  var $xhr = $.ajax({
+    type: "DELETE",
+    url: "/token",
+    success: function (result) {
+      console.log("DELETE /token successful ", result);
     }
   });
 
