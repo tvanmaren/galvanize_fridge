@@ -26,7 +26,7 @@ function submitLogin() {
         url: "/users",
         data: newUser,
         success: function(result) {
-            Materialize.toast(`User ${result.id} created with ${result.email}`, 1000);
+            Materialize.toast(`SUCCESS: User ${result.email} registered`, 1000);
             setTimeout(()=>{window.location.replace('/fridge.html');}, 1500);
         }
     });
