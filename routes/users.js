@@ -94,6 +94,7 @@ router.post('/users', (req, res, next) => {
                                     const token = jwt.sign({
                                         userId: resultCamel.id,
                                         userEmail: resultCamel.email,
+                                        isAdmin: resultCamel.isAdmin,
                                         exp: Math.floor(Date.now() / 1000) + (60 * 1)
                                     }, process.env.JWT_SECRET);
                                     // req.cookies={'token': token};
