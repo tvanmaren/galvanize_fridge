@@ -36,7 +36,7 @@ router.post('/token', function (req, res, next) {
             userId: users.id,
             userEmail: users.email,
             isAdmin: users.isAdmin,
-            // exp: Math.floor(Date.now() / 1000) + (60 * 1)
+            exp: Math.floor(Date.now() / 1000) + (60 * 1)
           }, process.env.JWT_SECRET);
 
           res.cookie('token', token, {
