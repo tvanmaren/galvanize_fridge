@@ -47,7 +47,6 @@ function submitForm() {
   } else if ($("#eventCat").prop("checked")){
     category = "eventCat";
   }
-  console.log(expirationVal);
   var newFood = {
     email: $("#emailAddress").val(),
     image_url: photoURL,
@@ -56,28 +55,24 @@ function submitForm() {
     comments: $("#textarea1").val()
   };
 
-  if (!newFood.email) {
-    Materialize.toast('Please enter email', 3000);
-  } else if (!newFood.image_url) {
-    Materialize.toast('Please take a photo of your food', 3000)
-  } else {
-    console.log("!!!");
+  // if (!newFood.email) {
+  //   Materialize.toast('Please enter email', 3000);
+  // } else if (!newFood.image_url) {
+  //   Materialize.toast('Please take a photo of your food', 3000)
+  // } else {
     var $xhr = $.ajax({
       type: "POST",
       url: "http://localhost:8000/foods",
       data: newFood,
       success: function(result) {
-        console.log("post successful ", result);
-      },
-      fail: function(err) {
-        console.error("err: ", err);
+        // console.log("post successful ", result);
       }
     });
 
-    // $xhr.fail((err) => {
-    //   console.error(err);
-    // });
-  }
+    $xhr.fail((err) => {
+      console.error(err);
+    });
+// }
 
   // var $xhr = $.getJSON('http://localhost:8000/foods');
   // $xhr.done((data) => {
