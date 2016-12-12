@@ -101,13 +101,7 @@ router.post('/users', (req, res, next) => {
                                     res.cookie('token', token, {
                                       httpOnly: false
                                     });
-                                    // res.redirect('/');
-                                    // res.redirect('/fridge')
-                                    // res.json({
-                                    //     success: true,
-                                    //     message: 'Enjoy your token!',
-                                    //     token: token
-                                    // });
+
                                     res.send(resultCamel);
                                 });
                         })
