@@ -69,6 +69,7 @@ function submitForm() {
       data: newFood,
       success: function(result) {
         console.log("post successful ", result);
+        window.location.href = '../fridge.html';
       }
     });
 
