@@ -26,7 +26,7 @@ router.get('/token', (req, res, next) => {
 
 router.get('/token', (req, res, next) => {
   res.sendStatus(200);
-});                                   // once the next of the authorize route triggers, go here
+});                   // once the next of the authorize route triggers, go here
 
 router.post('/token', function (req, res, next) {
   knex('users')

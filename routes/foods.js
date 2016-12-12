@@ -6,17 +6,19 @@ const express = require('express');
 const ev = require('express-validation');
 const router = express.Router();
 const knex = require('../knex');
-const {camelizeKeys,decamelizeKeys} = require('humps');
+const {
+  camelizeKeys,
+  decamelizeKeys
+} = require('humps');
 const boom = require('boom');
 const jwt = require('jsonwebtoken');
 
 const authorize = require('./modules/authorize');
 
-
 router.get('/foods', (req, res, next) => {
   //TODO order by date expired
   knex('foods')
-  .where('active', true)
+    .where('active', true)
     .then((foods) => {
       res.send(foods);
     })
@@ -25,31 +27,40 @@ router.get('/foods', (req, res, next) => {
     });
 });
 
+router.get('/foods/:id', (req, res, _next) => {
+  knex('foods')
+    .where('active', true)
+    .andWhere('user_id', req.params.id)
+    .then((items) => {
+      res.send(items);
+    });
+});
+
 router.get('/foods/personal', (req, res, next) => {
   knex('foods')
-  .where('active', true)
-  .andWhere('category', 1)
-  .then((items) => {
-    res.send(items);
-  });
+    .where('active', true)
+    .andWhere('category', 1)
+    .then((items) => {
+      res.send(items);
+    });
 });
 
 router.get('/foods/community', (req, res, next) => {
   knex('foods')
-  .where('active', true)
-  .andWhere('category', 2)
-  .then((items) => {
-    res.send(items);
-  });
+    .where('active', true)
+    .andWhere('category', 2)
+    .then((items) => {
+      res.send(items);
+    });
 });
 
 router.get('/foods/event', (req, res, next) => {
   knex('foods')
-  .where('active', true)
-  .andWhere('category', 3)
-  .then((items) => {
-    res.send(items);
-  });
+    .where('active', true)
+    .andWhere('category', 3)
+    .then((items) => {
+      res.send(items);
+    });
 });
 
 router.post('/foods', authorize, (req, res, next) => {
@@ -72,12 +83,12 @@ router.post('/foods', authorize, (req, res, next) => {
 
 router.delete('/foods/:id', (req, res, next) => {
   knex('foods')
-  .where('id', req.params.id)
-  .first()
-  .update('active', false)
-  .then((item) => {
-    res.send(item.active);
-  });
+    .where('id', req.params.id)
+    .first()
+    .update('active', false)
+    .then((item) => {
+      res.send(item.active);
+    });
 });
 
 module.exports = router;
