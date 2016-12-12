@@ -34,6 +34,24 @@ router.get('/foods/personal', (req, res, next) => {
   });
 });
 
+router.get('/foods/community', (req, res, next) => {
+  knex('foods')
+  .where('active', true)
+  .andWhere('category', 2)
+  .then((items) => {
+    res.send(items);
+  });
+});
+
+router.get('/foods/event', (req, res, next) => {
+  knex('foods')
+  .where('active', true)
+  .andWhere('category', 3)
+  .then((items) => {
+    res.send(items);
+  });
+});
+
 router.post('/foods', authorize, (req, res, next) => {
   //TODO get user ID from header, add userID to insert
   console.log(req.token.userId);
