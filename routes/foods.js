@@ -18,7 +18,7 @@ const authorize = function(req, res, next) {
     if (err) {
       return next(boom.create(401, 'Unauthorized'));
     }
-
+    console.log(decoded);
     req.token = decoded;
 
     next();
@@ -28,7 +28,7 @@ const authorize = function(req, res, next) {
 
 
 
-router.get('/active', authorize, (req, res, next) => {
+router.get('/active', (req, res, next) => {
   knex('food')
   .where('active', true)
   .then((data) => {
@@ -39,7 +39,7 @@ router.get('/active', authorize, (req, res, next) => {
   });
 });
 
-router.get('/active/:id', authorize, (req, res, next) => {
+router.get('/active/:id', (req, res, next) => {
   var activeItems;
   var id = parseInt(req.params.id);
 
@@ -58,7 +58,7 @@ router.get('/active/:id', authorize, (req, res, next) => {
   });
 });
 
-router.get('/foods', authorize, (req, res, next) => {
+router.get('/foods', (req, res, next) => {
   //TODO order by date expired
   knex('foods')
     .then((foods) => {
@@ -71,9 +71,10 @@ router.get('/foods', authorize, (req, res, next) => {
 
 router.post('/foods', authorize, (req, res, next) => {
   //TODO get user ID from header, add userID to insert
+  console.log(req.token.userId);
   knex('foods')
     .insert({
-      user_id: req.body.user_id,
+      user_id: req.token.userId,
       image_url: req.body.image_url,
       comments: req.body.comments,
       expiration: req.body.expiration

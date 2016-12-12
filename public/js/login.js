@@ -28,7 +28,7 @@ console.log(newUser);
         data: newUser,
         success: function(result) {
             console.log("post successful ", result);
-            window.location.href = '../fridge.html';
+            window.location.href = '../new-entry.html';
         }
     });
 
