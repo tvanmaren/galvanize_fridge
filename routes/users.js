@@ -27,26 +27,26 @@ router.get('/users', (req, res, next) => {
     knex('users')
         .orderBy('first_name')
         .then((result) => {
-            const user = camelizeKeys(result)
-            res.send(user)
+            const user = camelizeKeys(result);
+            res.send(user);
         })
         .catch((err) => {
-            next(err)
-        })
-})
+            next(err);
+        });
+});
 
 router.get('/users/:id', (req, res, next) => {
     knex('users')
         .where('id', req.params.id)
         .first()
         .then((result) => {
-            const user = camelizeKeys(result)
-            res.send(user)
+            const user = camelizeKeys(result);
+            res.send(user);
         })
         .catch((err) => {
-            next(err)
-        })
-})
+            next(err);
+        });
+});
 
 router.post('/users', (req, res, next) => {
     const {
@@ -92,30 +92,35 @@ router.post('/users', (req, res, next) => {
                                     res.set('Content-Type', 'application/json');
                                     const resultCamel = camelizeKeys(result);
                                     const token = jwt.sign({
-                                        userId: result.id,
-                                        userEmail: result.email,
+                                        userId: resultCamel.id,
+                                        userEmail: resultCamel.email,
                                         exp: Math.floor(Date.now() / 1000) + (60 * 1)
                                     }, process.env.JWT_SECRET);
+                                    // req.cookies={'token': token};
+                                    res.cookie('token', token, {
+                                      httpOnly: false
+                                    });
+                                    // res.redirect('/');
                                     // res.redirect('/fridge')
                                     // res.json({
                                     //     success: true,
                                     //     message: 'Enjoy your token!',
                                     //     token: token
                                     // });
-                                    res.send(result)
-                                })
+                                    res.send(resultCamel);
+                                });
                         })
                         .catch((err) => {
-                            next(err)
-                        })
+                            next(err);
+                        });
                 })
                 .catch((err) => {
-                    next(err)
-                })
+                    next(err);
+                });
         })
         .catch((err) => {
-            next(err)
-        })
+            next(err);
+        });
 });
 
 router.patch('/users/:id', (req, res, next) => {
@@ -146,21 +151,21 @@ router.patch('/users/:id', (req, res, next) => {
                 .then((updatedUser) => {
                     res.set('Content-Type', 'application/json');
                     const updatedUserCamel = camelizeKeys(updatedUser);
-                    res.send(updatedUserCamel[0])
+                    res.send(updatedUserCamel[0]);
                     res.send({
                       id: updatedUserCamel[0].id,
                       firstName: updatedUserCamel[0].firstName,
                       lastName: updatedUserCamel[0].lastName,
                       email: updatedUserCamel[0].email
-                    })
+                    });
                 })
                 .catch((err) => {
                     next(err);
-                })
+                });
         })
         .catch((err) => {
             next(err);
-        })
-})
+        });
+});
 
 module.exports = router;

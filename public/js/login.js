@@ -1,3 +1,4 @@
+'use strict';
 $(function() {
   console.log('Getting into login.js');
     $("#register-button").click(function() {
@@ -16,7 +17,7 @@ function submitLogin() {
 console.log(newUser);
 
     if ($("#set-password").val() !== $("#retype-password").val()) {
-        Materialize.toast('Passwords do not match', 3000)
+        Materialize.toast('Passwords do not match', 3000);
     }
 
     // TODO: Send newFood to server
@@ -27,10 +28,11 @@ console.log(newUser);
         data: newUser,
         success: function(result) {
             console.log("post successful ", result);
+            window.location.href = '../fridge.html';
         }
     });
 
     $xhr.fail((err) => {
         console.error(err);
     });
-};
+}

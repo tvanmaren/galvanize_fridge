@@ -26,6 +26,7 @@
     "boom": "^4.2.0",
     "cloudinary": "^1.4.6",
     "cloudinary-jquery-file-upload": "^2.1.7",
+    "cookie-parser": "^1.4.3",
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
     "express-validation": "^1.0.1",
