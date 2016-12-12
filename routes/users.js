@@ -82,7 +82,7 @@ router.post('/users', (req, res, next) => {
         .first()
         .then((result) => {
             if (result) {
-                return next(boom.create(400, 'Account already exists'));
+              next(boom.create(400, 'Account already exists'));
             }
             return bcrypt.hash(password, 12)
                 .then((hashedPassword) => {
@@ -90,6 +90,9 @@ router.post('/users', (req, res, next) => {
                         firstName,
                         lastName
                     } = req.body;
+                    console.log(req.body);
+                    console.log(firstName);
+                    console.log(lastName);
 
                     knex('users')
                         .insert({
@@ -100,7 +103,6 @@ router.post('/users', (req, res, next) => {
                         })
                         .then(() => {
                             return knex('users')
-                                // .select('id', 'first_name', 'last_name', 'email')
                                 .where('email', email)
                                 .first()
                                 .then((result) => {
@@ -112,11 +114,12 @@ router.post('/users', (req, res, next) => {
                                         isAdmin: resultCamel.isAdmin,
                                         // exp: Math.floor(Date.now() / 1000) + (60 * 1)
                                     }, process.env.JWT_SECRET);
-                                    // req.cookies={'token': token};
+
                                     res.cookie('token', token, {
                                       httpOnly: false
                                     });
 
+                                    delete resultCamel.hashedPassword;
                                     res.send(resultCamel);
                                 });
                         })
