@@ -25,21 +25,21 @@ $(function () {
   });
 });
 
-function checkUserInfo() {
-  var $xhr = $.ajax({
-    type: "GET",
-    url: "/users",
-    success: function (result) {
-      $('#nameGoesHere').text(result[0].firstName);
-      $('#contentHere').text(result[0].email);
-      console.log("GET successful ", result);
-    }
-  });
-
-  $xhr.fail((err) => {
-    console.error(err);
-  });
-}
+// function checkUserInfo() {
+//   var $xhr = $.ajax({
+//     type: "GET",
+//     url: "/users",
+//     success: function (result) {
+//       $('#nameGoesHere').text(result[0].firstName);
+//       $('#contentHere').text(result[0].email);
+//       console.log("GET successful ", result);
+//     }
+//   });
+//
+//   $xhr.fail((err) => {
+//     console.error(err);
+//   });
+// }
 
 function generateCards(id, user_id, image_url, comments, category) {
   var $foodDiv = $('#foodCards');
@@ -104,21 +104,22 @@ function deleteItem(id) {
 //
 
 function checkFridgeStats() {
-  var $xhr = $.ajax({
-    type: "GET",
-    url: "/foods",
-    success: function (result) {
-      console.log(result);
-      $('#content').text(`Fridge items to date: ${result.length}`);
+  $.json('/users/')
+  .then((userList) => {
+    console.log(userList);
+  });
+  $.json("/foods")
+  .then((result) => {
       //TODO add user data (items per user) & expiration data
       //NEED to make foods route more useful for these queries
-    }
-  });
+      console.log(result);
+      $('#content').text(`Fridge items to date: ${result.length}`);
+    }, (err) => {
+      console.error(err);
+    });
 
-  $xhr.fail((err) => {
-    console.error(err);
-  });
-}
+    $.json('/foods')
+  }
 
 function logout() {
   var $xhr = $.ajax({
