@@ -1,7 +1,7 @@
 'use strict';
 $(function() {
   console.log('Getting into login.js');
-    $("form.register").click(function (event) {
+    $("#register-button").click(function (event) {
         event.preventDefault();
         submitLogin();
     });
@@ -32,6 +32,9 @@ function submitLogin() {
     });
 
     $xhr.fail((err) => {
-        console.error(err);
+        if(err.responseText === 'Account already exists'){
+          Materialize.toast('Email already exists in database');
+        }
+        console.error('clientside error: ', err);
     });
 }

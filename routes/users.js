@@ -82,7 +82,7 @@ router.post('/users', (req, res, next) => {
         .first()
         .then((result) => {
             if (result) {
-                return next(boom.create(400, 'Account already exists'));
+              next(boom.create(400, 'Account already exists'));
             }
             return bcrypt.hash(password, 12)
                 .then((hashedPassword) => {
