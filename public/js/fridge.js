@@ -18,6 +18,11 @@ $(function() {
 
 });
 
+//Sorting by category functionality
+$('#personalCat').click(function() {
+  alert('see you in hell');
+});
+
 function checkUserInfo() {
   var $xhr = $.ajax({
       type: "GET",
