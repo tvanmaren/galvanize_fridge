@@ -27,7 +27,7 @@ $(function() {
 function selectPhoto() {
   cloudinary.openUploadWidget({ cloud_name: 'dgt2xab7d', upload_preset: 'x2hiolgr'},
       function(error, result) {
-        console.error(error);
+        // console.error(error);
         photoURL = result[0].secure_url;
         // Display photo preview
         $("#photoPreview").attr("src", result[0].secure_url);
@@ -61,18 +61,24 @@ function submitForm() {
   } else if (!newFood.image_url) {
     Materialize.toast('Please take a photo of your food', 3000)
   } else {
+    console.log("!!!");
     var $xhr = $.ajax({
       type: "POST",
       url: "http://localhost:8000/foods",
       data: newFood,
       success: function(result) {
         console.log("post successful ", result);
+      },
+      fail: function(err) {
+        console.error("err: ", err);
       }
     });
 
-    $xhr.fail((err) => {
-      console.error(err);
-    });
+    // $xhr.fail((err) => {
+    //   console.error(err);
+    // });
+
+    console.log("ajax complete");
   }
 
   // var $xhr = $.getJSON('http://localhost:8000/foods');

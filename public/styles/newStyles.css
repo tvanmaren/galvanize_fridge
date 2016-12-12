@@ -17,6 +17,9 @@ body {
   overflow: hidden;
 };
 
+.drag_area {
+  background-color: rgb(206, 255, 101) !important;
+}
 
 #foodCards {
   width: 80%;

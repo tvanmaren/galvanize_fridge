@@ -5,6 +5,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
 
 const users = require('./routes/users');
 const token = require ('./routes/token');
@@ -19,6 +20,7 @@ app.set('superSecret', config.secret);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
+app.use(cookieParser());
 
 app.use(express.static('./public'));
 
@@ -34,8 +36,6 @@ app.get('/', (req, res, next) => {
 app.post('/', (req, res, next) => {
   console.log(req.body);
 });
-
-
 
 app.listen(port, () => {
   console.log('Listening on port', port);
