@@ -144,19 +144,28 @@ function deleteItem(id) {
 //
 
 function checkFridgeStats() {
-  $.json('/users/')
+  $.getJSON("/users")
     .then((userList) => {
-      console.log(userList);
+      userList.forEach((user) => {
+        $.getJSON(`/foods/${user.id}`)
+        .then((result) => {
+          console.log(user.id,result);
+        },
+        (err) => {
+          console.error(err);
+        });
+      });
     });
-  $.json("/foods")
+
+  $.getJSON("/foods")
     .then((result) => {
       //TODO add user data (items per user) & expiration data
-      //NEED to make foods route more useful for these queries
       console.log(result);
       $('#content').text(`Fridge items to date: ${result.length}`);
     }, (err) => {
       console.error(err);
     });
+
 }
 
 function logout() {

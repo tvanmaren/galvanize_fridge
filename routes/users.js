@@ -27,8 +27,8 @@ router.get('/users', (req, res, next) => {
     knex('users')
         .orderBy('id')
         .then((result) => {
-            const user = camelizeKeys(result);
-            res.send(user);
+            const users = camelizeKeys(result);
+            res.send(users);
         })
         .catch((err) => {
             next(err);
