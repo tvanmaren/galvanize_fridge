@@ -9,8 +9,8 @@ $(function() {
 
 function submitLogin() {
     var newUser = {
-        first_name: $("#give-first-name").val(),
-        last_name: $("#give-last-name").val(),
+        firstName: $("#give-first-name").val(),
+        lastName: $("#give-last-name").val(),
         email: $("#give-email").val(),
         password: $("#set-password").val()
     };
