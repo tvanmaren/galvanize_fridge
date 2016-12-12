@@ -2,14 +2,13 @@
 
 $(function() {
   var $foodDiv = $('#foodCards');
-
   $foodDiv.css({'height': '800px'});
-
   $.getJSON('/foods').done((data) => {
     data.map((item) => {
       generateCards(item.id, item.user_id, item.image_url, item.comments, item.category);
     });
   });
+
 
   //Click on User Icon
 // $('#checkUser').click(function() {
