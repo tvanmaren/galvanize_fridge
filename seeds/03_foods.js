@@ -11,15 +11,25 @@ exports.seed = function(knex, Promise) {
           user_id: 1,
           image_url: 'https://goo.gl/CWVE6o',
           comments: 'This food is great!',
-          expiration: 34235
+          expiration: 34235,
+          category: 1,
         }),
         knex('foods').insert({
           id: 2,
           user_id: 1,
           image_url: 'https://goo.gl/CWVE6o',
           comments: 'This food is okay',
-          expiration: 34235
-        })
+          expiration: 34235,
+          category: 2,
+        }),
+        knex('foods').insert({
+          id: 3,
+          user_id: 1,
+          image_url: 'https://goo.gl/CWVE6o',
+          comments: 'This food is okay',
+          expiration: 34235,
+          category: 3,
+        }),
       ]);
     })
     .then(() => {
