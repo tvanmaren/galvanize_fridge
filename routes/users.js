@@ -48,6 +48,21 @@ router.get('/users/:id', (req, res, next) => {
         });
 });
 
+router.get('/useremails', (req, res, next) => {
+  console.log("1");
+  knex('users')
+    .then((result) => {
+      let emails = [];
+      for (var i = 0; i < result.length; i++) {
+        emails.push(result[i].email);
+      }
+      res.send(emails);
+    })
+    .catch((err) => {
+      next(err);
+    })
+})
+
 router.post('/users', (req, res, next) => {
     const {
         email,

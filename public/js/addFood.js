@@ -11,15 +11,19 @@ $(function() {
     submitForm();
   });
 
-  //TODO Get request to server for pulling names of users
-  $('input.autocomplete').autocomplete({
-    data: {
-      // TODO The keys will be the names of all users
-      "annaklotko@gmail.com": null,
-      "Cassie": null,
-      "Tristen": null,
-      "Kevin": null,
-      "Evan": null
+  // This populates the email field to provide autocomplete
+  var $xhr = $.ajax({
+    type: "GET",
+    url: "http://localhost:8000/useremails",
+    success: function(result) {
+      //for each email, create a key with a null value
+      var emailObj = {};
+      for (var i = 0; i < result.length; i++) {
+        emailObj[result[i]] = null;
+      }
+      $('input.autocomplete').autocomplete({
+        data: emailObj
+      });
     }
   });
 });
