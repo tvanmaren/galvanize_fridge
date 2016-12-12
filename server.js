@@ -13,6 +13,9 @@ const foods = require ('./routes/foods');
 const announce = require ('./routes/announce');
 const config = require('./knexfile');
 
+const jwt = require('jsonwebtoken');
+const boom = require('boom');
+
 const port = process.env.PORT || 8000;
 
 app.set('superSecret', config.secret);
@@ -22,7 +25,43 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use(cookieParser());
 
+app.use(function (req, res, next) {
+  const token = req.cookies.token;
+
+  if (token) {
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+      if (err) {
+        return next(boom.create(401, 'Unauthorized'));
+      }
+      req.user = decoded;
+      console.log(req.user);
+      next();
+    });
+  } else {
+    next();
+  }
+
+})
+
+app.use('/fridge.html', function (req,res,next) {
+  if (!req.user) {
+    res.redirect('/')
+  } else {
+    next();
+  }
+});
+
+app.use('/new-entry.html', function (req,res,next) {
+  if (!req.user) {
+    res.redirect('/')
+  } else {
+    next();
+  }
+});
+
 app.use(express.static('./public'));
+
+// app.use('/secure', express.static('./public/secure'));
 
 app.use(users);
 app.use(token);
