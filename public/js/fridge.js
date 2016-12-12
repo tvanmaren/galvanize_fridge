@@ -63,6 +63,7 @@ function generateCards(id, user_id, image_url, comments, category) {
   var Id = `#${id}`;
 
   $(Id).click(function() {
+    console.log($(this).attr('id'));
     deleteItem($(this).attr('id'));
   });
 }
@@ -85,11 +86,17 @@ function setCategory (catID) {
 }
 
 function deleteItem(id) {
-  var $xhr = $.ajax({
-      type: "DELETE",
+  $.ajax({
       url: `http://localhost:8000/foods/${id}`,
+      type: "DELETE",
       success: function(result) {
-          console.log("Delete successful ", result);
+          console.log("Delete successful " + result);
       }
   });
+  // $('#foodCards').empty();
+  // $.getJSON('http://localhost:8000/foods').done((data) => {
+  //   data.map((item) => {
+  //     generateCards(item.id, item.user_id, item.image_url, item.comments, item.category);
+  //   });
+  // });
 }

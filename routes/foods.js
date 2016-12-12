@@ -29,6 +29,7 @@ const authorize = function(req, res, next) {
 router.get('/foods', (req, res, next) => {
   //TODO order by date expired
   knex('foods')
+  .where('active', true)
     .then((foods) => {
       res.send(foods);
     })
@@ -56,19 +57,8 @@ router.post('/foods', authorize, (req, res, next) => {
 });
 
 router.delete('/foods/:id', (req, res, next) => {
-  var id = req.params.id;
+  res.send('pingpong' + req.params.id+2);
 
-  knex('foods')
-  .where('id', id)
-  .first()
-  .then((item) => {
-    if(!item) {
-      return next();
-    }
-
-    item.is_active = false;
-    
-  });
 });
 
 module.exports = router;
