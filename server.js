@@ -4,7 +4,6 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 
 const users = require('./routes/users');
