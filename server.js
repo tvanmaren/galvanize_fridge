@@ -11,6 +11,7 @@ const users = require('./routes/users');
 const token = require ('./routes/token');
 const admin = require ('./routes/admin');
 const foods = require ('./routes/foods');
+const announce = require ('./routes/announce');
 const config = require('./knexfile');
 
 const port = process.env.PORT || 8000;
@@ -28,6 +29,7 @@ app.use(users);
 app.use(token);
 
 app.use(foods);
+app.use(announce);
 app.use(admin);
 
 app.get('/', (req, res, next) => {
