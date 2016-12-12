@@ -1,7 +1,8 @@
 'use strict';
 $(function() {
   console.log('Getting into login.js');
-    $("#register-button").click(function() {
+    $("#register-button").click(function (event) {
+        event.preventDefault();
         submitLogin();
     });
 });
@@ -14,8 +15,6 @@ function submitLogin() {
         password: $("#set-password").val()
     };
 
-console.log(newUser);
-
     if ($("#set-password").val() !== $("#retype-password").val()) {
         Materialize.toast('Passwords do not match', 3000);
     }
@@ -24,15 +23,11 @@ console.log(newUser);
     // The server will need to get the userID according to the name that was entered
     var $xhr = $.ajax({
         type: "POST",
-        url: "http://localhost:8000/users",
+        url: "/users",
         data: newUser,
         success: function(result) {
-          if(result === 'res.send Account already exists'){
-            Materialize.toast('Email already exists in database');
-            return;
-          }
-            console.log("post successful ", result);
-            window.location.href = '../new-entry.html';
+            Materialize.toast(`SUCCESS: User ${result.email} registered`, 1000);
+            setTimeout(()=>{window.location.replace('/fridge.html');}, 1500);
         }
     });
 
