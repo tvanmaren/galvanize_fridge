@@ -1,9 +1,11 @@
 'use strict';
 
-$(function() {
+$(function () {
   var $foodDiv = $('#foodCards');
 
-  $foodDiv.css({'height': '800px'});
+  $foodDiv.css({
+    'height': '800px'
+  });
 
   $.getJSON('/foods').done((data) => {
     data.map((item) => {
@@ -11,30 +13,29 @@ $(function() {
     });
   });
 
-  //Click on User Icon
-// $('#checkUser').click(function() {
-//   checkUserInfo()
-// })
+  // Click on Admin Icon
+  $('#admin').click(function () {
+    adminPanel();
+  })
 
 });
 
 function checkUserInfo() {
   var $xhr = $.ajax({
-      type: "GET",
-      url: "/users",
-      success: function(result) {
-        $('#nameGoesHere').text(result[0].firstName);
-        $('#contentHere').text(result[0].email)
-          console.log("GET successful ", result);
-      }
+    type: "GET",
+    url: "/users",
+    success: function (result) {
+      $('#nameGoesHere').text(result[0].firstName);
+      $('#contentHere').text(result[0].email)
+      console.log("GET successful ", result);
+    }
   });
 
   $xhr.fail((err) => {
-      console.error(err);
+    console.error(err);
   });
 
 }
-
 
 function generateCards(id, user_id, image_url, comments, category) {
   var $foodDiv = $('#foodCards');
@@ -62,24 +63,24 @@ function generateCards(id, user_id, image_url, comments, category) {
 
   var Id = `#${id}`;
 
-  $(Id).click(function() {
+  $(Id).click(function () {
     console.log($(this).attr('id'));
     deleteItem($(this).attr('id'));
   });
 }
 
-function setCategory (catID) {
-  switch (catID){
-    case 1:
+function setCategory(catID) {
+  switch (catID) {
+  case 1:
     return 'Personal';
     break;
-    case 2:
+  case 2:
     return 'Community';
     break;
-    case 3:
+  case 3:
     return 'Event';
     break;
-    default:
+  default:
     return 'Personal';
     break;
   }
@@ -87,11 +88,11 @@ function setCategory (catID) {
 
 function deleteItem(id) {
   $.ajax({
-      url: `/foods/${id}`,
-      type: "DELETE",
-      success: function(result) {
-          location.reload();
-          console.log("Delete successful " + result);
-      }
+    url: `/foods/${id}`,
+    type: "DELETE",
+    success: function (result) {
+      location.reload();
+      console.log("Delete successful " + result);
+    }
   });
 }
