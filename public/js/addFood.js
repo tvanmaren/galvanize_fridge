@@ -37,7 +37,7 @@ function selectPhoto() {
 
 function submitForm() {
   //Get the expiration date in Unix time
-  var expirationVal = Date.now() + (1000 * 60 * 60 * 24) * parseInt($("#datePicker").val());;
+  var expirationVal = Date.now() + (1000 * 60 * 60 * 24) * parseInt($("option").filter(":selected").val());
 
   var category = "";
   if ($("#personalCat").prop("checked")) {
@@ -47,7 +47,7 @@ function submitForm() {
   } else if ($("#eventCat").prop("checked")){
     category = "eventCat";
   }
-
+  console.log(expirationVal);
   var newFood = {
     email: $("#emailAddress").val(),
     image_url: photoURL,
@@ -77,8 +77,6 @@ function submitForm() {
     // $xhr.fail((err) => {
     //   console.error(err);
     // });
-
-    console.log("ajax complete");
   }
 
   // var $xhr = $.getJSON('http://localhost:8000/foods');

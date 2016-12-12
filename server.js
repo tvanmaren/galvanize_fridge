@@ -25,8 +25,8 @@ app.use(cookieParser());
 app.use(express.static('./public'));
 
 app.use(users);
-app.use(token);
 app.use(foods);
+app.use(token);
 app.use(admin);
 
 app.get('/', (req, res, next) => {
