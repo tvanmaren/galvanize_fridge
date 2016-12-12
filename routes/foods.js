@@ -55,4 +55,20 @@ router.post('/foods', authorize, (req, res, next) => {
     });
 });
 
+router.delete('/foods/:id', (req, res, next) => {
+  var id = req.params.id;
+
+  knex('foods')
+  .where('id', id)
+  .first()
+  .then((item) => {
+    if(!item) {
+      return next();
+    }
+
+    item.is_active = false;
+    
+  });
+});
+
 module.exports = router;

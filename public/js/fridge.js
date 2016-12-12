@@ -15,6 +15,7 @@ $(function() {
 // $('#checkUser').click(function() {
 //   checkUserInfo()
 // })
+
 });
 
 function checkUserInfo() {
@@ -40,7 +41,7 @@ function generateCards(id, user_id, image_url, comments, category) {
   var categoryName = setCategory(category);
 
   var newCard = `
-        <div class="col s4" id="${id}">
+        <div class="col s4">
           <div class="card">
             <div class="card-image">
               <img src="${image_url}">
@@ -49,13 +50,21 @@ function generateCards(id, user_id, image_url, comments, category) {
               <p>${comments}</p>
             </div>
             <div class="card-action">
-              <a><i class="material-icons food-action" value="${id}">delete</i></a>
+              <a><i class="delete-food material-icons food-action" id="${id}">delete</i></a>
+              <a><i class="material-icons food-action" value="${id}">create</i></a>
               <span class="new badge orange">${categoryName}</span>
             </div>
           </div>
         </div>
 `;
+
   $foodDiv.append(newCard);
+
+  var Id = `#${id}`;
+
+  $(Id).click(function() {
+    deleteItem($(this).attr('id'));
+  });
 }
 
 function setCategory (catID) {
@@ -73,4 +82,14 @@ function setCategory (catID) {
     return 'Personal';
     break;
   }
+}
+
+function deleteItem(id) {
+  var $xhr = $.ajax({
+      type: "DELETE",
+      url: `http://localhost:8000/foods/${id}`,
+      success: function(result) {
+          console.log("Delete successful ", result);
+      }
+  });
 }
