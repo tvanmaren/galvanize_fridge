@@ -149,7 +149,7 @@ function checkFridgeStats() {
       userList.forEach((user) => {
         $.getJSON(`/foods/${user.id}`)
         .then((result) => {
-          console.log(user.id,result);
+          $('#content').html(`${$('#content').html()} <p> ${user.firstName} ${user.lastName} has ${result.length} items in the fridge.`);
         },
         (err) => {
           console.error(err);
@@ -161,7 +161,7 @@ function checkFridgeStats() {
     .then((result) => {
       //TODO add user data (items per user) & expiration data
       console.log(result);
-      $('#content').text(`Fridge items to date: ${result.length}`);
+      $('#content').html(`${$('#content').html()} <p> Fridge items to date: ${result.length}`);
     }, (err) => {
       console.error(err);
     });
