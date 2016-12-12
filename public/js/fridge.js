@@ -16,6 +16,11 @@ $(function() {
 //   checkUserInfo()
 // })
 
+// LOGOUT
+$('.logout').click(function() {
+  logout()
+})
+
 });
 
 function checkUserInfo() {
@@ -93,5 +98,19 @@ function deleteItem(id) {
           location.reload();
           console.log("Delete successful " + result);
       }
+  });
+}
+
+function logout() {
+  var $xhr = $.ajax({
+      type: "DELETE",
+      url: "/token",
+      success: function(result) {
+          console.log("DELETE /token successful ", result);
+      }
+  });
+
+  $xhr.fail((err) => {
+      console.error(err);
   });
 }
