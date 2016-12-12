@@ -27,12 +27,19 @@ console.log(newUser);
         url: "http://localhost:8000/users",
         data: newUser,
         success: function(result) {
+          if(result === 'res.send Account already exists'){
+            Materialize.toast('Email already exists in database');
+            return;
+          }
             console.log("post successful ", result);
             window.location.href = '../new-entry.html';
         }
     });
 
     $xhr.fail((err) => {
-        console.error(err);
+        if(err.responseText === 'Account already exists'){
+          Materialize.toast('Email already exists in database');
+        }
+        console.error('clientside error: ', err);
     });
 }
