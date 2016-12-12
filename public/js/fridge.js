@@ -5,7 +5,7 @@ $(function() {
 
   $foodDiv.css({'height': '800px'});
 
-  $.getJSON('http://localhost:8000/foods').done((data) => {
+  $.getJSON('/foods').done((data) => {
     data.map((item) => {
       generateCards(item.id, item.user_id, item.image_url, item.comments, item.category);
     });
@@ -21,7 +21,7 @@ $(function() {
 function checkUserInfo() {
   var $xhr = $.ajax({
       type: "GET",
-      url: "http://localhost:8000/users",
+      url: "/users",
       success: function(result) {
         $('#nameGoesHere').text(result[0].firstName);
         $('#contentHere').text(result[0].email)
@@ -87,7 +87,7 @@ function setCategory (catID) {
 
 function deleteItem(id) {
   $.ajax({
-      url: `http://localhost:8000/foods/${id}`,
+      url: `/foods/${id}`,
       type: "DELETE",
       success: function(result) {
           location.reload();
