@@ -27,7 +27,9 @@ $(function() {
 function selectPhoto() {
   cloudinary.openUploadWidget({ cloud_name: 'dgt2xab7d', upload_preset: 'x2hiolgr'},
       function(error, result) {
-        console.error(error);
+        if (error) {
+          console.error(error);
+        }
         photoURL = result[0].secure_url;
         // Display photo preview
         $("#photoPreview").attr("src", result[0].secure_url);
@@ -37,7 +39,7 @@ function selectPhoto() {
 
 function submitForm() {
   //Get the expiration date in Unix time
-  var expirationVal = Date.now() + (1000 * 60 * 60 * 24) * parseInt($("#datePicker").val());;
+  var expirationVal = Date.now() + (1000 * 60 * 60 * 24) * parseInt($("option").filter(":selected").val());
 
   var category = "";
   if ($("#personalCat").prop("checked")) {
@@ -49,14 +51,14 @@ function submitForm() {
   }
 
   var newFood = {
-    email_address: $("#emailAddress").val(),
+    email: $("#emailAddress").val(),
     image_url: photoURL,
     category: category,
     expiration: expirationVal,
     comments: $("#textarea1").val()
   };
 
-  if (!newFood.email_address) {
+  if (!newFood.email) {
     Materialize.toast('Please enter email', 3000);
   } else if (!newFood.image_url) {
     Materialize.toast('Please take a photo of your food', 3000)
@@ -67,6 +69,7 @@ function submitForm() {
       data: newFood,
       success: function(result) {
         console.log("post successful ", result);
+        window.location.href = '../fridge.html';
       }
     });
 
@@ -74,13 +77,4 @@ function submitForm() {
       console.error(err);
     });
   }
-
-  // var $xhr = $.getJSON('http://localhost:8000/foods');
-  // $xhr.done((data) => {
-  //   if ($xhr.status !== 200) {
-  //     console.error("something went wrong");
-  //     return;
-  //   }
-  //   console.log(data);
-  // });
 }
