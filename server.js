@@ -13,6 +13,8 @@ const admin = require ('./routes/admin');
 const foods = require ('./routes/foods');
 const config = require('./knexfile');
 
+const validate = require('validate');
+
 const port = process.env.PORT || 8000;
 
 app.set('superSecret', config.secret);
@@ -26,8 +28,8 @@ app.use(express.static('./public'));
 
 app.use(users);
 app.use(token);
-app.use(foods);
-app.use(admin);
+app.use(validate,foods);
+app.use(validate,admin);
 
 app.get('/', (req, res, next) => {
   console.log('Hello Worlds');
