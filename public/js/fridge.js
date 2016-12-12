@@ -129,3 +129,17 @@ function deleteItem(id) {
       }
   });
 }
+
+function logout() {
+  var $xhr = $.ajax({
+      type: "DELETE",
+      url: "/token",
+      success: function(result) {
+          console.log("DELETE /token successful ", result);
+      }
+  });
+
+  $xhr.fail((err) => {
+      console.error(err);
+  });
+}
