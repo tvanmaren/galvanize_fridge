@@ -18,7 +18,7 @@
    display:inline-block;
    vertical-align:top;
    text-align:center;
-   width:260px;
+   width:50px;
    list-style:none;
    margin:0 auto;
    padding:15px 30px;
@@ -28,8 +28,8 @@
 /* Creature ================== */
 figure {
   display:inline-block;
-        width:600px;
-        height:600px;
+        width:45%;
+        height:45%;
         padding:40px;
         /*box-shadow:inset -10px -30px rgba(0,0,0,.06);*/
         -moz-border-radius:100px;
