@@ -25,6 +25,15 @@ router.get('/foods', (req, res, next) => {
     });
 });
 
+router.get('/foods/personal', (req, res, next) => {
+  knex('foods')
+  .where('active', true)
+  .andWhere('category', 1)
+  .then((items) => {
+    res.send(items);
+  });
+});
+
 router.post('/foods', authorize, (req, res, next) => {
   //TODO get user ID from header, add userID to insert
   console.log(req.token.userId);
