@@ -55,8 +55,7 @@ function generateCards(id, user_id, image_url, comments, category) {
           </div>
         </div>
 `;
-
-  $foodDiv.append(newCard)
+  $foodDiv.append(newCard);
 }
 
 function setCategory (catID) {
