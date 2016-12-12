@@ -3,7 +3,7 @@ $(
   // When the submit button is clicked, send a POST of the data to /token, then stores the token in the header for all future requests
   $('form.login').submit(function (event) {
     event.preventDefault();
-    let email = $('#email').val();
+    let email = $('#email').val().toLowerCase();
     let password = $('#password').val();
     $.post('/token', {
         email,

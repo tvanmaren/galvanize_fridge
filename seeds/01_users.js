@@ -13,6 +13,46 @@ exports.seed = function(knex, Promise) {
           email: 'mason@galvanize.com',
           hashed_password: '$2a$12$awS7JbhTyfgDlw2Q06CqNOdhvALQRRG0uScHhO6XPSs3UbzdlfjZS',
           is_admin: true
+        }),
+        knex('users').insert({
+          id: 2,
+          first_name: 'Cassie',
+          last_name: 'Peterson',
+          email: 'cassie.peterson@comcast.net',
+          hashed_password: '$2a$12$bhR.d3cbb5jehk2ConAo6.Nb/fK9Y27EkRVG1CVFAq9fnxl.YXyca',
+          is_admin: true
+        }),
+        knex('users').insert({
+          id: 3,
+          first_name: 'Anna',
+          last_name: 'Lotko',
+          email: 'annaklotko@gmail.com',
+          hashed_password: '$2a$12$bhR.d3cbb5jehk2ConAo6.Nb/fK9Y27EkRVG1CVFAq9fnxl.YXyca',
+          is_admin: true
+        }),
+        knex('users').insert({
+          id: 4,
+          first_name: 'Kevin',
+          last_name: 'Cowley',
+          email: 'cowley.kevin.l@gmail.com',
+          hashed_password: '$2a$12$bhR.d3cbb5jehk2ConAo6.Nb/fK9Y27EkRVG1CVFAq9fnxl.YXyca',
+          is_admin: true
+        }),
+        knex('users').insert({
+          id: 5,
+          first_name: 'Tristan',
+          last_name: 'Van Maren',
+          email: 'tm.vanmaren@gmail.com',
+          hashed_password: '$2a$12$bhR.d3cbb5jehk2ConAo6.Nb/fK9Y27EkRVG1CVFAq9fnxl.YXyca',
+          is_admin: true
+        }),
+        knex('users').insert({
+          id: 6,
+          first_name: 'Evan',
+          last_name: 'Busse',
+          email: 'evanbusse@gmail.com',
+          hashed_password: '$2a$12$bhR.d3cbb5jehk2ConAo6.Nb/fK9Y27EkRVG1CVFAq9fnxl.YXyca',
+          is_admin: true
         })
       ]);
     })

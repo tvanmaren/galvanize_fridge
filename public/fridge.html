@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+  <head>
     <meta charset="utf-8">
     <title>Fridge Monster - Fridge</title>
     <!-- Main fridge view page for both users and the fridge account -->
@@ -28,81 +28,100 @@
     <script type="text/javascript" src="js/announceJS.js" defer></script>
 </head>
 
-<body>
+  <body>
 
     <!-- NAVIGATION BAR -->
     <nav>
-        <div class="nav-wrapper orange darken-1">
-            <a href="index.html" class="brand-logo">Fridge Monster</a>
-            <ul class="right">
+      <div class="nav-wrapper orange darken-1">
+        <a href="fridge.html" class="brand-logo">Fridge Monster</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="new-entry.html"><i class="large material-icons" id="checkUser">add</i></a></li>
+          <li><a href="index.html" class="logout">Logout</a></li>
+          <li><a href="#adminPanel"><i class="large material-icons" id="settings">settings</i></a></li>
+        </ul>
 
-              <!-- <li><a href="new-entry.html" class="btn light-blue darken-2">Add New Item</a></li> -->
-                <!-- <li><a href="#modal1"><i class="material-icons" id="checkUser">perm_identity</i></a></li> -->
-                <li><a href="new-entry.html"><i class="large material-icons" id="checkUser">add</i></a></li>
-            </ul>
-        </div>
+        <!-- <li><a href="new-entry.html" class="btn light-blue darken-2">Add New Item</a></li> -->
+        <!-- <li><a href="#modal1"><i class="material-icons" id="checkUser">perm_identity</i></a></li> -->
+        <ul class="side-nav" id="mobile-demo">
+          <li><a href="new-entry.html"><i class="large material-icons" id="checkUser">add</i></a></li>
+          <li><a href="index.html" class="logout">Logout</a></li>
+          <li><a href="#adminPanel"><i class="large material-icons" id="settings">settings</i></a></li>
+        </ul>
+      </div>
 
     </nav>
+
+    <!-- <nav>
+        <div class="nav-wrapper orange darken-1">
+            <a href="index.html" class="brand-logo">Fridge Monster</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li class="active"><a href="index.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li class="active"><a href="index.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+        </div>
+    </nav> -->
 
     <!-- END NAVIGATION BAR -->
 
     <!-- <a class="waves-effect waves-light btn" href="#modal1">Modal</a> -->
 
+    <!-- MODAL -->
 
-<!-- MODAL -->
+    <div id="adminPanel" class="modal bottom-sheet">
+      <div class="modal-content">
+        <h4 id="name">Fridge History</h4>
+        <p id="content"></p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Dismiss</a>
+      </div>
+    </div>
 
-<!-- <div id="modal1" class="modal">
-   <div class="modal-content">
-     <h4 id="nameGoesHere"></h4>
-     <p id="contentHere"></p>
-   </div>
-   <div class="modal-footer">
-     <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-   </div>
- </div> -->
-
-<!-- END MODAL -->
-
+    <!-- END MODAL -->
 
     <!-- MONSTER -->
     <div class="container centerMonster">
 
-    <div class="click-anim">
+      <div class="click-anim">
         <figure class="hungry" style="background-color:#ffb74d">
-            <div class="eye"></div>
-            <div class="eye"></div>
-            <div class="mouth"></div>
-            <!-- <div class="mouth teeth"></div> -->
+          <div class="eye"></div>
+          <div class="eye"></div>
+          <div class="mouth"></div>
+          <!-- <div class="mouth teeth"></div> -->
         </figure>
+      </div>
+      <!-- <div class="shadow"></div> -->
     </div>
-    <!-- <div class="shadow"></div> -->
-  </div>
     <!-- END MONSTER -->
 
-
-<!-- SETTING/ADD BAR -->
-<div class="container">
-  <form class="">
-    <div class="row center-align">
-        <div class="input-field col s4 offset-s2">
+    <!-- SETTING/ADD BAR -->
+    <div class="container">
+      <form class="">
+        <div class="row center-align">
+          <div class="input-field col s4 offset-s2">
             <input id="filterName" type="text" class="autocomplete">
             <label for="filterName">Name</label>
+          </div>
+          <div class="col s4">
+            <p>
+              <input name="group1" type="radio" id="personalCat" checked/>
+              <label for="personalCat">Personal</label>
+              <input name="group1" type="radio" id="communityCat" />
+              <label for="communityCat">Community</label>
+              <input name="group1" type="radio" id="eventCat" />
+              <label for="eventCat">Event</label>
+            </p>
+          </div>
         </div>
-        <div class="col s4">
-        <p>
-            <input name="group1" type="radio" id="personalCat" checked/>
-            <label for="personalCat">Personal</label>
-            <input name="group1" type="radio" id="communityCat" />
-            <label for="communityCat">Community</label>
-            <input name="group1" type="radio" id="eventCat" />
-            <label for="eventCat">Event</label>
-        </p>
-      </div>
+      </form>
     </div>
-  </form>
-</div>
-<!-- END SETTING/ADD BAR -->
-
+    <!-- END SETTING/ADD BAR -->
 
 <!-- ANNOUNCEMENTS GO HERE -->
   <div class="container" id="announcementsDiv">
@@ -137,13 +156,11 @@
   </div>
 <!-- END ANNOUNCEMENTS -->
 
-<!-- FILTER BY -->
+    <!-- FILTER BY -->
 
-<!-- END FILTER BY -->
+    <!-- END FILTER BY -->
     <div id="foodCards" class="row"></div>
 
-
-
-</body>
+  </body>
 
 </html>
