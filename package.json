@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "knex": "knex",
-    "heroku-postbuild": "knex migrate:latest",
+    "heroku-postbuild": "knex migrate:latest && knex seed:run",
     "start": "nodemon server.js"
   },
   "repository": {
