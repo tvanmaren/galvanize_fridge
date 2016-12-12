@@ -20,8 +20,13 @@ const {
 
 const boom = require('boom');
 
-router.get('/token', authorize);
+router.get('/token', (req, res, next) => {
+  authorize(req, res, next);
 });
+
+router.get('/token', (req, res, next) => {
+  res.sendStatus(200);
+});                                   // once the next of the authorize route triggers, go here
 
 router.post('/token', function (req, res, next) {
   knex('users')
@@ -39,7 +44,7 @@ router.post('/token', function (req, res, next) {
             userId: users.id,
             userEmail: users.email,
             isAdmin: users.isAdmin,
-            exp: Math.floor(Date.now() / 1000) + (60 * 1)
+            exp: Math.floor(Date.now() / 1000) + (60 * 60)  // token lasts 1 hr
           }, process.env.JWT_SECRET);
 
           res.cookie('token', token, {
