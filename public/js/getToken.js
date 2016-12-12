@@ -10,21 +10,21 @@ $(
         password
       })
       .then(
-        (response) => {
-          // sessionStorage.setItem('token', response.token);
-          if (response.token) {
-            $.ajaxSetup({
-              'x-access-token': response.token
-            });
+        (response, statusTest, xhr) => {
+          console.log('response:', response);
+          console.log('status:', xhr.status);
+          if (xhr.status === 200) {
+            Materialize.toast('Login successful');
+            window.location.replace("/fridge.html");
+          } else {
+            $('#email').val('');
+            $('#password').val('');
           }
-          else {
-            console.log('response:',response);
-          }
-          $('#email').val('');
-          $('#password').val('');
         },
         (error) => {
-          console.error("ERROR",error);
+          Materialize.toast('Login failed');
+          $('#password').val('');
+          console.error("ERROR", error);
         });
   })
 );

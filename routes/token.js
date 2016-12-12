@@ -27,11 +27,8 @@ router.post('/token', function (req, res, next) {
     .first()
     .then((rows) => {
       const users = camelizeKeys(rows);
-      if (!users) {
-        res.json({
-          success: false,
-          message: 'Login failed. User not found '
-        });
+      if (typeof users === 'undefined') {
+        next(boom.create(403, 'Login failed. User not found'));
       }
       let password = req.body.password;
       bcrypt.compare(password, users.hashedPassword)
@@ -41,19 +38,14 @@ router.post('/token', function (req, res, next) {
             exp: Math.floor(Date.now() / 1000) + (60 * 1)
           }, process.env.JWT_SECRET);
 
-          // req.body.token = token;
-          res.json({
-            success: true,
-            message: 'Enjoy your token!',
-            token: token
+          res.cookie('token', token, {
+            httpOnly: false
           });
+          res.send(200);
         })
         .catch((err) => {
           console.error(err);
-          res.json({
-            success: false,
-            message: 'Login failed. User not found'
-          });
+          next(boom.create(403, 'Login failed. Password invalid.'));
         });
     });
 });
@@ -71,10 +63,7 @@ router.use(function (req, res, next) {
       next();
     });
   } else {
-    return res.status(403).send({
-      success: false,
-      message: 'No token provided.'
-    });
+    next(boom.create(403, 'No token provided'));
   }
 });
 
