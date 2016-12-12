@@ -27,6 +27,7 @@ app.use(express.static('./public'));
 
 app.use(users);
 app.use(token);
+
 app.use(foods);
 app.use(announce);
 app.use(admin);
@@ -35,7 +36,7 @@ app.get('/', (req, res, next) => {
   console.log('Hello Worlds');
 });
 
-app.post('/', (req, res, next) => {
+app.post('/', (req, _res, _next) => {
   console.log(req.body);
 });
 

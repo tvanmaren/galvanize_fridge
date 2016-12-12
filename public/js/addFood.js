@@ -14,7 +14,7 @@ $(function() {
   // This populates the email field to provide autocomplete
   var $xhr = $.ajax({
     type: "GET",
-    url: "http://localhost:8000/useremails",
+    url: "/useremails",
     success: function(result) {
       //for each email, create a key with a null value
       var emailObj = {};
@@ -69,7 +69,7 @@ function submitForm() {
   } else {
     var $xhr = $.ajax({
       type: "POST",
-      url: "http://localhost:8000/foods",
+      url: "/foods",
       data: newFood,
       success: function(result) {
         console.log("post successful ", result);

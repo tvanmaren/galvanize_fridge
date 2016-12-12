@@ -26,41 +26,10 @@ const authorize = function(req, res, next) {
 };
 
 
-
-
-router.get('/active', (req, res, next) => {
-  knex('food')
-  .where('active', true)
-  .then((data) => {
-    if(data.length === 0) {
-      res.status(416).send('Requested Range not satisfiable');
-    }
-    res.send(data);
-  });
-});
-
-router.get('/active/:id', (req, res, next) => {
-  var activeItems;
-  var id = parseInt(req.params.id);
-
-  knex('food')
-  .where('active', true)
-  .then((data) => {
-    activeItems = data;
-  })
-  .then(() => {
-    var fitting = activeItems.map((item) => {
-      if(item.category === id){
-        return item;
-      }
-    });
-    return fitting;
-  });
-});
-
 router.get('/foods', (req, res, next) => {
   //TODO order by date expired
   knex('foods')
+  .where('active', true)
     .then((foods) => {
       res.send(foods);
     })
@@ -85,6 +54,16 @@ router.post('/foods', authorize, (req, res, next) => {
     .catch((err) => {
       next(err);
     });
+});
+
+router.delete('/foods/:id', (req, res, next) => {
+  knex('foods')
+  .where('id', req.params.id)
+  .first()
+  .update('active', false)
+  .then((item) => {
+    res.send(item.active);
+  });
 });
 
 module.exports = router;

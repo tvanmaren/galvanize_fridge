@@ -3,16 +3,15 @@
 /* eslint-disable camelcase*/
 
 const express = require('express');
-const ev = require('express-validation');
+
 const dotenv = require('dotenv').config();
+const ev = require('express-validation');
 // const validations = require('../validations/books');
 
-// eslint-disable-next-line new-cap
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const knex = require('../knex');
 const bcrypt = require('bcrypt-as-promised');
-const app = require('../server.js');
 
 const {
   camelizeKeys,
@@ -37,13 +36,13 @@ router.post('/token', function (req, res, next) {
             userId: users.id,
             userEmail: users.email,
             isAdmin: users.isAdmin,
-            // exp: Math.floor(Date.now() / 1000) + (60 * 1)
+            exp: Math.floor(Date.now() / 1000) + (60 * 1)
           }, process.env.JWT_SECRET);
 
           res.cookie('token', token, {
             httpOnly: false
           });
-          res.send(200);
+          res.sendStatus(200);
         })
         .catch((err) => {
           console.error(err);
@@ -51,6 +50,5 @@ router.post('/token', function (req, res, next) {
         });
     });
 });
-
 
 module.exports = router;
