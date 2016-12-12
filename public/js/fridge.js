@@ -18,11 +18,51 @@ $(function () {
       generateCards(item.id, item.user_id, item.image_url, item.comments, item.category);
     });
   });
+});
 
-  // LOGOUT
-  $('.logout').click(function () {
-    logout();
+//Radio Button Listeners
+$('#allCat').click(function () {
+  $('foodCards').empty();
+
+  $.getJSON('/foods').done((data) => {
+    data.map((item) => {
+      generateCards(item.id, item.user_id, item.image_url, item.comments, item.category);
+    });
   });
+});
+
+// LOGOUT
+$('.logout').click(function () {
+  logout();
+
+  $('#personalCat').click(function () {
+    $('#foodCards').empty();
+    $.getJSON('/foods/personal').done((data) => {
+      data.map((item) => {
+        generateCards(item.id, item.user_id, item.image_url, item.comments, item.category);
+      });
+    });
+  });
+
+  $('#communityCat').click(function () {
+    $('#foodCards').empty();
+    $.getJSON('/foods/community').done((data) => {
+      data.map((item) => {
+        generateCards(item.id, item.user_id, item.image_url, item.comments, item.category);
+      });
+    });
+  });
+
+  $('#eventCat').click(function () {
+    $('#foodCards').empty();
+    $.getJSON('/foods/event').done((data) => {
+      data.map((item) => {
+        generateCards(item.id, item.user_id, item.image_url, item.comments, item.category);
+      });
+    });
+  });
+  //End Radio Button Listeners
+
 });
 
 // function checkUserInfo() {
@@ -105,11 +145,11 @@ function deleteItem(id) {
 
 function checkFridgeStats() {
   $.json('/users/')
-  .then((userList) => {
-    console.log(userList);
-  });
+    .then((userList) => {
+      console.log(userList);
+    });
   $.json("/foods")
-  .then((result) => {
+    .then((result) => {
       //TODO add user data (items per user) & expiration data
       //NEED to make foods route more useful for these queries
       console.log(result);
@@ -117,9 +157,7 @@ function checkFridgeStats() {
     }, (err) => {
       console.error(err);
     });
-
-    $.json('/foods')
-  }
+}
 
 function logout() {
   var $xhr = $.ajax({
