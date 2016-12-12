@@ -12,13 +12,16 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const knex = require('../knex');
 const bcrypt = require('bcrypt-as-promised');
+const authorize=require('./modules/authorize');
 
 const {
-  camelizeKeys,
-  decamelizeKeys
+  camelizeKeys
 } = require('humps');
 
 const boom = require('boom');
+
+router.get('/token', authorize);
+});
 
 router.post('/token', function (req, res, next) {
   knex('users')
