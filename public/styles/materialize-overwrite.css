@@ -8,6 +8,10 @@ a {
   margin-right: 10px;
 }
 
+.right {
+  margin-right: 10px;
+}
+
 /*changes radio button fill to be orange on new-entry.html*/
 
 [type="radio"].with-gap:checked + label:before {

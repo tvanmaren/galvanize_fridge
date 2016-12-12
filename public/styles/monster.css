@@ -5,8 +5,8 @@
 .centerMonster {
   text-align:center;
   color:#494636;
-  /*overflow-y:scroll;*/
   /*overflow-y:scroll;
+  overflow-y:scroll;
   overflow-x:hidden;*/
 }
 
@@ -18,7 +18,7 @@
    display:inline-block;
    vertical-align:top;
    text-align:center;
-   width:260px;
+   width:50px;
    list-style:none;
    margin:0 auto;
    padding:15px 30px;
@@ -28,23 +28,23 @@
 /* Creature ================== */
 figure {
   display:inline-block;
-        width:200px;
-        height:200px;
+        width:45%;
+        height:45%;
         padding:40px;
         /*box-shadow:inset -10px -30px rgba(0,0,0,.06);*/
         -moz-border-radius:100px;
         -webkit-border-radius:100px;
         border-radius:50%;
-        animation:bobble 5s ease-in-out infinite;
+        /*animation:bobble 10s ease-in-out infinite;*/
         transform-origin:center bottom;
         transition:padding .3s, bottom .3s;
         text-align:center;
     }
     @keyframes bobble { 33%{ transform:rotate(5deg); } 66%{ transform:rotate(-5deg); } }
 
-    li:nth-child(5n+1) figure { animation-delay:-3s; background-color:#ffa726; }
+    li:nth-child(5n+1) figure { animation-delay:-3s; background-color:#fff3e0; }
     li:nth-child(5n+2) figure { animation-delay:-1s; background-color:dodgerblue; }
-    li:nth-child(5n+3) figure { animation-delay:-4s; background-color:coral; }
+    li:nth-child(5n+3) figure { animation-delay:-4s; background-color:#fff3e0; }
     li:nth-child(5n+4) figure { animation-delay:-.2.5s; background-color:limegreen; }
 
 
@@ -88,9 +88,9 @@ figure {
 /* Eyes ======================================================== */
     .eye {
         display:inline-block;
-        width:10px;
-        height:15px;
-        margin:0 5px 5px;
+        width:30px;
+        height:45px;
+        margin:0 15px 20px;
         background:rgba(0,0,0,.9);
         border-radius:10px;
         border-radius:50%;
