@@ -49,9 +49,12 @@ function generateAnnnouncements(title, content) {
   var $announceDiv = $('#announcementsDiv');
 
   var newAnnounce = `
+    <div class="row announcementRow">
       <p class="announcementP">${title}:</p>
       <p class="announcementP">${content}</p>
-      <br>
+      <a class="btn-floating btn-small waves-effect waves-light orange" id="deleteAnnounce"><i class="material-icons">delete</i></a>
+    </div>
+    <br>
   `;
 
   $announceDiv.append(newAnnounce);
