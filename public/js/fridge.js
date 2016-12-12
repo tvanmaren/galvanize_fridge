@@ -10,18 +10,47 @@ $(function() {
       generateCards(item.id, item.user_id, item.image_url, item.comments, item.category);
     });
   });
-
-  //Click on User Icon
-// $('#checkUser').click(function() {
-//   checkUserInfo()
-// })
-
-// LOGOUT
-$('.logout').click(function() {
-  logout()
-})
-
 });
+
+//Radio Button Listeners
+$('#allCat').click(function() {
+  $('foodCards').empty();
+
+  $.getJSON('/foods').done((data) => {
+    data.map((item) => {
+      generateCards(item.id, item.user_id, item.image_url, item.comments, item.category);
+    });
+  });
+});
+
+$('#personalCat').click(function() {
+  $('#foodCards').empty();
+  $.getJSON('/foods/personal').done((data) => {
+    data.map((item) => {
+      generateCards(item.id, item.user_id, item.image_url, item.comments, item.category);
+    });
+  });
+});
+
+$('#communityCat').click(function() {
+  $('#foodCards').empty();
+  $.getJSON('/foods/community').done((data) => {
+    data.map((item) => {
+      generateCards(item.id, item.user_id, item.image_url, item.comments, item.category);
+    });
+  });
+});
+
+$('#eventCat').click(function() {
+  $('#foodCards').empty();
+  $.getJSON('/foods/event').done((data) => {
+    data.map((item) => {
+      generateCards(item.id, item.user_id, item.image_url, item.comments, item.category);
+    });
+  });
+});
+//End Radio Button Listeners
+
 
 function checkUserInfo() {
   var $xhr = $.ajax({
