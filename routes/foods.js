@@ -57,8 +57,13 @@ router.post('/foods', authorize, (req, res, next) => {
 });
 
 router.delete('/foods/:id', (req, res, next) => {
-  res.send('pingpong' + req.params.id+2);
-
+  knex('foods')
+  .where('id', req.params.id)
+  .first()
+  .update('active', false)
+  .then((item) => {
+    res.send(item.active);
+  });
 });
 
 module.exports = router;

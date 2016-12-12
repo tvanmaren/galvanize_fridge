@@ -90,13 +90,8 @@ function deleteItem(id) {
       url: `http://localhost:8000/foods/${id}`,
       type: "DELETE",
       success: function(result) {
+          location.reload();
           console.log("Delete successful " + result);
       }
   });
-  // $('#foodCards').empty();
-  // $.getJSON('http://localhost:8000/foods').done((data) => {
-  //   data.map((item) => {
-  //     generateCards(item.id, item.user_id, item.image_url, item.comments, item.category);
-  //   });
-  // });
 }
