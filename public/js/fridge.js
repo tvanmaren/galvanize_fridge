@@ -1,6 +1,12 @@
 'use strict';
 
 $(function () {
+
+  // Click on Admin Icon
+  $('#settings').click(function () {
+    checkFridgeStats();
+  });
+
   var $foodDiv = $('#foodCards');
 
   $foodDiv.css({
@@ -13,11 +19,6 @@ $(function () {
     });
   });
 
-  // Click on Admin Icon
-  $('#admin').click(function () {
-    adminPanel();
-  })
-
 });
 
 function checkUserInfo() {
@@ -26,7 +27,7 @@ function checkUserInfo() {
     url: "/users",
     success: function (result) {
       $('#nameGoesHere').text(result[0].firstName);
-      $('#contentHere').text(result[0].email)
+      $('#contentHere').text(result[0].email);
       console.log("GET successful ", result);
     }
   });
@@ -34,7 +35,6 @@ function checkUserInfo() {
   $xhr.fail((err) => {
     console.error(err);
   });
-
 }
 
 function generateCards(id, user_id, image_url, comments, category) {
@@ -94,5 +94,24 @@ function deleteItem(id) {
       location.reload();
       console.log("Delete successful " + result);
     }
+  });
+}
+
+//
+
+function checkFridgeStats() {
+  var $xhr = $.ajax({
+    type: "GET",
+    url: "/foods",
+    success: function (result) {
+      console.log(result);
+      $('#content').text(`Fridge items to date: ${result.length}`);
+      //TODO add user data (items per user) & expiration data
+      //NEED to make foods route more useful for these queries
+    }
+  });
+
+  $xhr.fail((err) => {
+    console.error(err);
   });
 }
