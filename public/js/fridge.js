@@ -2,7 +2,7 @@
 
 $(function() {
 
-    let admin;
+    let admin=false;
     //check if I'm an admin, and assign that to a global
     $.getJSON('/users/self')
         .done((user) => {
