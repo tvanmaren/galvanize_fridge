@@ -22,6 +22,8 @@ const {
 
 const boom = require('boom');
 
+const decodeToken=require('./modules/decodeToken');
+
 
 router.get('/users', (req, res, next) => {
     knex('users')
@@ -37,18 +39,19 @@ router.get('/users', (req, res, next) => {
 
 router.get('/users/:id', (req, res, next) => {
   if (req.params.id==='self') {
-    req.params.id=req.user.userId;
+    const userInfo=decodeToken(req, res, next);
+    req.params.id=userInfo.userId;
   }
-    knex('users')
-        .where('id', req.params.id)
-        .first()
-        .then((result) => {
-            const user = camelizeKeys(result);
-            res.send(user);
-        })
-        .catch((err) => {
-            next(err);
-        });
+  knex('users')
+      .where('id', req.params.id)
+      .first()
+      .then((result) => {
+          const user = camelizeKeys(result);
+          res.send(user);
+      })
+      .catch((err) => {
+          next(err);
+      });
 });
 
 router.get('/useremails', (req, res, next) => {
