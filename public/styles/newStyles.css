@@ -34,3 +34,7 @@ body {
   float:left;
   display:inline-block;
 }
+
+.dropdown-item {
+  color: orange !important;
+}

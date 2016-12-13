@@ -3,8 +3,9 @@
 $(function() {
 
     let admin;
+
     //check if I'm an admin, and assign that to a global
-    $.getJSON('/users/self')
+    $.getJSON('/users/self/')
         .done((user) => {
             admin = user.isAdmin;
         })
@@ -41,21 +42,21 @@ $(function() {
     $('#personalCat').click(function() {
         $('#foodCards').empty();
         generateCards(foodsJSON.filter((obj) => {
-          return obj.category === 1;
+            return obj.category === 1;
         }));
     });
 
     $('#communityCat').click(function() {
         $('#foodCards').empty();
         generateCards(foodsJSON.filter((obj) => {
-          return obj.category === 2;
+            return obj.category === 2;
         }));
     });
 
     $('#eventCat').click(function() {
         $('#foodCards').empty();
         generateCards(foodsJSON.filter((obj) => {
-          return obj.category === 3;
+            return obj.category === 3;
         }));
     });
 
@@ -69,10 +70,10 @@ function generateCards(jsonObject) {
     var $foodDiv = $('#foodCards');
 
     jsonObject.map((obj) => {
-      var categoryName = setCategory(obj.category);
+        var categoryName = setCategory(obj.category);
 
-      var newCard = `
-      <div class="col s4">
+        var newCard = `
+      <div class="col s12 m6 l4">
       <div class="card">
       <div class="card-image">
       <img src="${obj.image_url}">
@@ -89,14 +90,14 @@ function generateCards(jsonObject) {
       </div>
       `;
 
-      $foodDiv.append(newCard);
+        $foodDiv.append(newCard);
 
-      var Id = `#${obj.id}`;
+        var Id = `#${obj.id}`;
 
-      $(Id).click(function() {
-        console.log($(this).attr('id'));
-        deleteItem($(this).attr('id'));
-      });
+        $(Id).click(function() {
+            console.log($(this).attr('id'));
+            deleteItem($(this).attr('id'));
+        });
     });
 }
 
@@ -125,6 +126,7 @@ function deleteItem(id) {
 }
 
 function checkFridgeStats() {
+<<<<<<< HEAD
   $.getJSON("/users")
     .then((userList) => {
       userList.forEach((user) => {
@@ -136,6 +138,19 @@ function checkFridgeStats() {
             },
             (err) => {
               console.error(err);
+=======
+  $('#name').text(`Fridge History`);
+    $.getJSON("/users")
+        .then((userList) => {
+            userList.forEach((user) => {
+                $.getJSON(`/foods/${user.id}/`)
+                    .then((result) => {
+                            $('#content').html(`${$('#content').html()} <p> ${user.firstName} ${user.lastName} has ${result.length} items in the fridge.`);
+                        },
+                        (err) => {
+                            console.error(err);
+                        });
+>>>>>>> 015a95fdb5e2f51f9b06a3f0c9325224387deecb
             });
         });
       });
@@ -154,10 +169,11 @@ function checkFridgeStats() {
 function checkUserInfo() {
     var $xhr = $.ajax({
         type: "GET",
-        url: "/users",
+        url: "/users/self/",
         success: function(result) {
-            $('#nameGoesHere').text(result[0].firstName);
-            $('#contentHere').text(result[0].email);
+            $('#name').text(`${result.firstName} ${result.lastName}`);
+            $('#content').text(`Email: ${result.email}`);
+            $('#content').append(`<p> User ID: ${result.id}`);
             console.log("GET successful ", result);
         }
     });

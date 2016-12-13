@@ -35,7 +35,7 @@
     </script>
 </head>
 
-<body style="background-color:#FFE888">
+<body>
 
     <!-- NAVIGATION BAR -->
     <nav>
@@ -86,7 +86,7 @@
 
     <div id="adminPanel" class="modal bottom-sheet">
       <div class="modal-content">
-        <h4 id="name">Fridge History</h4>
+        <h4 id="name"></h4>
         <p id="content"></p>
       </div>
       <div class="modal-footer">
@@ -120,16 +120,14 @@
             <label for="filterName">Name</label>
           </div>
           <div class="col s4">
-            <p>
-              <input name="group1" type="radio" id="personalCat" />
-              <label for="personalCat">Personal</label>
-              <input name="group1" type="radio" id="communityCat" />
-              <label for="communityCat">Community</label>
-              <input name="group1" type="radio" id="eventCat" />
-              <label for="eventCat">Event</label>
-              <input name="group1" type="radio" id="allCat" checked/>
-              <label for="allCat">All</label>
-            </p>
+            <a class="dropdown-button btn orange" data-activates="categorySelect">Categories</a>
+
+              <ul id="categorySelect" class="dropdown-content">
+                <li><a class="dropdown-item" id="allCat">All Food</a></li>
+                <li><a class="dropdown-item" id="personalCat">Personal Food</a></li>
+                <li><a class="dropdown-item" id="communityCat">Community Food</a></li>
+                <li><a class="dropdown-item" id="eventCat">Event Food</a></li>
+              </ul>
           </div>
         </div>
       </form>
