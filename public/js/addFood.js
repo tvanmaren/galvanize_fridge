@@ -2,12 +2,12 @@
 
 var photoURL;
 
-$(function() {
-  $("#upload_widget_opener").click(function() {
+$(function () {
+  $("#upload_widget_opener").click(function () {
     selectPhoto();
   });
 
-  $("#submitButton").click(function() {
+  $("#submitButton").click(function () {
     submitForm();
   });
 
@@ -15,7 +15,7 @@ $(function() {
   var $xhr = $.ajax({
     type: "GET",
     url: "/useremails",
-    success: function(result) {
+    success: function (result) {
       //for each email, create a key with a null value
       var emailObj = {};
       for (var i = 0; i < result.length; i++) {
@@ -29,15 +29,18 @@ $(function() {
 });
 
 function selectPhoto() {
-  cloudinary.openUploadWidget({ cloud_name: 'dgt2xab7d', upload_preset: 'x2hiolgr'},
-      function(error, result) {
-        if (error) {
-          console.error(error);
-        }
-        photoURL = result[0].secure_url;
-        // Display photo preview
-        $("#photoPreview").attr("src", result[0].secure_url);
-      });
+  cloudinary.openUploadWidget({
+      cloud_name: 'dgt2xab7d',
+      upload_preset: 'x2hiolgr'
+    },
+    function (error, result) {
+      if (error) {
+        console.error(error);
+      }
+      photoURL = result[0].secure_url;
+      // Display photo preview
+      $("#photoPreview").attr("src", result[0].secure_url);
+    });
 
 }
 
@@ -50,11 +53,11 @@ function submitForm() {
     category = 1;
   } else if ($("#communityCat").prop("checked")) {
     category = 2;
-  } else if ($("#eventCat").prop("checked")){
+  } else if ($("#eventCat").prop("checked")) {
     category = 3;
   }
-  let email=$("#emailAddress").val();
-  
+  let email = $("#emailAddress").val();
+
   var newFood = {
     imageUrl: photoURL,
     category: category,
@@ -68,24 +71,21 @@ function submitForm() {
     Materialize.toast('Please take a photo of your food', 3000);
   } else {
     $.getJSON(`/users?email=${email}`)
-    .done((userData) =>{
-      newFood['userId']=userData.id;
-      console.log('New Food Item',newFood);
-      var $xhr = $.ajax({
-        type: "POST",
-        url: "/foods",
-        data: newFood,
-        success: function(result) {
-          console.log("post successful ", result);
-          window.location.href = '../fridge.html';
-        }
-      });
-      $xhr.fail((err) => {
+      .done((userData) => {
+        console.log(userData);
+        newFood['userId'] = userData.id;
+        console.log('New Food Item', newFood);
+        $.post('/foods', newFood)
+          .done((result) => {
+            console.log("post successful ", result);
+            window.location.href = '../fridge.html';
+          })
+          .fail((err) => {
+            console.error(err);
+          });
+      })
+      .fail((err) => {
         console.error(err);
       });
-    })
-    .fail((err)=>{
-      console.error(err);
-    });
   }
 }

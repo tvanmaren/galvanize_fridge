@@ -25,39 +25,39 @@ const boom = require('boom');
 const authorize = require('./modules/authorize');
 
 router.get('/users', (req, res, next) => {
-  knex('users')
-    .orderBy('id')
-    .then((result) => {
-      result.forEach((user) => {
-        delete user.hashed_password;
+  if (req.query.email) {
+    console.log('USERS',req.query);
+    knex('users')
+      .where('email', req.query.email)
+      .first()
+      .then((result) => {
+        delete result.hashed_password;
+        const user = camelizeKeys(result);
+        res.send(user);
+      })
+      .catch((err) => {
+        console.error(err);
+        next(err);
       });
-      const users = camelizeKeys(result);
-      res.send(users);
-    })
-    .catch((err) => {
-      next(err);
-    });
-});
-
-router.get('/users?email=:email&id=:id', (req, res, next) => {
-  let id = req.params.id || '*';
-  let email = req.params.email || '*';
-  knex('users')
-    .where({'id': id, 'email': email})
-    .first()
-    .then((result) => {
-      console.log('RESULT:',result);
-      delete result.hashed_password;
-      const user = camelizeKeys(result);
-      res.send(user);
-    })
-    .catch((err) => {
-      console.error(err);
-      next(err);
-    });
+  } else {
+    console.log('ALL USERS');
+    knex('users')
+      .orderBy('id')
+      .then((result) => {
+        result.forEach((user) => {
+          delete user.hashed_password;
+        });
+        const users = camelizeKeys(result);
+        res.send(users);
+      })
+      .catch((err) => {
+        next(err);
+      });
+  }
 });
 
 router.get('/users/self/', authorize, (req, res, next) => {
+  console.log('USER/SELF/');
   knex('users')
     .where('id', req.token.userId)
     .first()
@@ -71,8 +71,8 @@ router.get('/users/self/', authorize, (req, res, next) => {
     });
 });
 
-router.get('/useremails', (req, res, next) => {
-  console.log("1");
+router.get('/useremails/', (req, res, next) => {
+  console.log("/USEREMAILS/");
   knex('users')
     .then((result) => {
       let emails = [];
