@@ -10,7 +10,6 @@ $(function() {
   $announceDiv.css({'height': 'auto'});
   $.getJSON('/announce').done((data) => {
     generateAnnnouncements(data);
-    // });
   });
 
 });
@@ -49,7 +48,6 @@ $('#submitNewAnnounce').click(function(){
       console.error(err);
     }
   }));
-  //TODO wrap POST in promise, only POST once GET '/users/email' returns
 
   Promise.all(requests).then(function(results){
     userID = parseInt(results[0].id);
@@ -79,22 +77,38 @@ $('#submitNewAnnounce').click(function(){
       });
     }
   });
-
 });
 
-//param for generateAnnnouncements = data?
+$('#announcementsDiv').on('click', '.delete', function(){
+  var idTag = this.id;
+  console.log(idTag);
+  $.ajax({
+    type: "DELETE",
+    url: `/announce/${idTag}`,
+    success: function() {
+      console.log("Delete announcement successful");
+      window.location.href = '../fridge.html';
+    },
+    error: function(err) {
+      console.error(err);
+    }
+  })
+
+  // this.attr('id')
+});
+
 function generateAnnnouncements(data) {
   // data = GET result off all announcements
   var appendObj = {};
   var promises = [];
-  // var dataTop = data.length - 1;
   var dataBottom = data.length - 3;
   var sortedData = sortByKey(data, 'id');
   for(var i=dataBottom; i<data.length; i++){
     userID = sortedData[i].userId;
     appendObj[i] = {
       title: sortedData[i].title,
-      content: sortedData[i].content
+      content: sortedData[i].content,
+      idid: sortedData[i].id
     };
     console.log('userID- ', userID);
     promises.push(
@@ -118,7 +132,6 @@ function generateAnnnouncements(data) {
       appendObj[i].name = result[key].firstName;
       key++;
     }
-    // result = array of user data objects
     appendAnnounce(appendObj);
   });
 }
@@ -129,13 +142,14 @@ function appendAnnounce(obj){
     var title = obj[key].title;
     var content = obj[key].content;
     var name = obj[key].name;
+    var idTag = obj[key].idid;
 
     var newAnnounce = `
     <div class="row announcementRow">
     <p class="announcementP">${title}:</p>
     <p class="announcementP">${content}</p>
     <p class="announcementP">From: ${name}</p>
-    <a class="btn-floating btn-small waves-effect waves-light orange" id="${title}"><i class="material-icons">delete</i></a>
+    <a class="btn-floating btn-small waves-effect waves-light orange delete" id="${idTag}"><i class="material-icons">delete</i></a>
     </div>
     <br>
     `;
