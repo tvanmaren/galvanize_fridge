@@ -55,7 +55,7 @@ router.get('/users/:id', (req, res, next) => {
     .where('id', req.params.id)
     .first()
     .then((result) => {
-      // delete result.hashed_password;
+      delete result.hashed_password;
       const user = camelizeKeys(result);
       res.send(user);
     })
