@@ -4,7 +4,7 @@ $(function() {
 
     let admin=false;
     //check if I'm an admin, and assign that to a global
-    $.getJSON('/users/self')
+    $.getJSON('/users/self/')
         .done((user) => {
             admin = user.isAdmin;
         })
@@ -125,6 +125,7 @@ function deleteItem(id) {
 }
 
 function checkFridgeStats() {
+  $('#name').text(`Fridge History`);
     $.getJSON("/users")
         .then((userList) => {
             userList.forEach((user) => {
@@ -151,10 +152,11 @@ function checkFridgeStats() {
 function checkUserInfo() {
     var $xhr = $.ajax({
         type: "GET",
-        url: "/users",
+        url: "/users/self/",
         success: function(result) {
-            $('#nameGoesHere').text(result[0].firstName);
-            $('#contentHere').text(result[0].email);
+            $('#name').text(`${result.firstName} ${result.lastName}`);
+            $('#content').text(`Email: ${result.email}`);
+            $('#content').append(`<p> User ID: ${result.id}`);
             console.log("GET successful ", result);
         }
     });
