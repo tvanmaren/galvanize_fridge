@@ -104,6 +104,6 @@ router.delete('/announce/:id', (req, res, next) =>{
     next(err);
   });
 
-})
+});
 
 module.exports = router;

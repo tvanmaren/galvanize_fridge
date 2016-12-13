@@ -25,7 +25,8 @@
 
     <!-- Custom JS Functionality -->
     <script type="text/javascript" src="js/fridge.js" defer></script>
-  </head>
+    <script type="text/javascript" src="js/announceJS.js" defer></script>
+</head>
 
   <body>
 
@@ -122,8 +123,38 @@
     </div>
     <!-- END SETTING/ADD BAR -->
 
-    <!-- ANNOUNCEMENTS GO HERE -->
-    <!-- END ANNOUNCEMENTS -->
+<!-- ANNOUNCEMENTS GO HERE -->
+  <div class="container" id="announcementsDiv">
+      <h4>Announcements</h4>
+      <!-- append here -->
+      <a class="btn-floating btn-small waves-effect waves-light orange" id="addAnnounce"><i class="material-icons">add</i></a>
+  </div>
+
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Add Announcement</h4>
+      <!-- ADD FORM HERE -->
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s6">
+            <textarea id="newAnnounceTitle" class="materialize-textarea"></textarea>
+            <label for="newAnnounceTitle">Title</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <textarea id="newAnnounceContent" class="materialize-textarea"></textarea>
+            <label for="newAnnounceContent">Content</label>
+          </div>
+        </div>
+      </form>
+
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" id="submitNewAnnounce">Submit</a>
+    </div>
+  </div>
+<!-- END ANNOUNCEMENTS -->
 
     <!-- FILTER BY -->
 
