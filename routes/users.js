@@ -36,6 +36,9 @@ router.get('/users', (req, res, next) => {
 });
 
 router.get('/users/:id', (req, res, next) => {
+  if (req.params.id==='self') {
+    req.params.id=req.user.userId;
+  }
     knex('users')
         .where('id', req.params.id)
         .first()
