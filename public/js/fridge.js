@@ -73,6 +73,7 @@ function generateCards(jsonObject) {
     var categoryName = setCategory(obj.category);
 
     var exp = new Date(parseInt(obj.expiration));
+    var badgeColor = setStatus(exp);
 
     var newCard = `
       <div class="col s12 m6 l4">
@@ -87,7 +88,7 @@ function generateCards(jsonObject) {
       <a><i class="delete-food material-icons food-action" id="${obj.id}">delete</i></a>
       <a><i class="material-icons food-action" value="${obj.id}">create</i></a>
       <span class="new badge orange" data-badge-caption="">${categoryName}</span>
-      <span class="badge">EXP ${exp.getMonth()+1}/${exp.getDate()}/${exp.getFullYear()}</span>
+      <span class="new badge ${badgeColor}" data-badge-caption="">EXP ${exp.getMonth()}/${exp.getDate()}/${exp.getFullYear()}</span>
       </div>
       </div>
       </div>
@@ -102,6 +103,7 @@ function generateCards(jsonObject) {
       deleteItem($(this).attr('id'));
     });
   });
+  console.log($('#foodCards').children());
 }
 
 function setCategory(catID) {
@@ -188,4 +190,18 @@ function logout() {
   $xhr.fail((err) => {
     console.error(err);
   });
+}
+
+//checks for expired food
+function setStatus(expiration) {
+  expiration = parseInt((expiration/(1000*60*60*24)));
+  var now = parseInt((Date.now()/(1000*60*60*24)));
+
+  if((expiration - now) > 0){
+    return "green lighten-1";
+  }else if((expiration - now) < 0){
+    return "red lighten-1";
+  }else{
+    return "amber lighten-1";
+  }
 }
