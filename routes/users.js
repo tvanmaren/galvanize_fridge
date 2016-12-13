@@ -26,7 +26,6 @@ const authorize = require('./modules/authorize');
 
 router.get('/users', (req, res, next) => {
   if (req.query.email) {
-    console.log('USERS',req.query);
     knex('users')
       .where('email', req.query.email)
       .first()
@@ -39,8 +38,8 @@ router.get('/users', (req, res, next) => {
         console.error(err);
         next(err);
       });
-  } else {
-    console.log('ALL USERS');
+  }
+  else {
     knex('users')
       .orderBy('id')
       .then((result) => {
@@ -57,7 +56,6 @@ router.get('/users', (req, res, next) => {
 });
 
 router.get('/users/self/', authorize, (req, res, next) => {
-  console.log('USER/SELF/');
   knex('users')
     .where('id', req.token.userId)
     .first()
@@ -72,7 +70,6 @@ router.get('/users/self/', authorize, (req, res, next) => {
 });
 
 router.get('/useremails/', (req, res, next) => {
-  console.log("/USEREMAILS/");
   knex('users')
     .then((result) => {
       let emails = [];
