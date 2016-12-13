@@ -70,6 +70,42 @@ router.post('/foods', (req, res, next) => {
     });
 });
 
+router.patch('/foods/:id', (req,res,next) => {
+  const id = parseInt(req.params.id);
+
+  if (isNaN(id)) {
+    return next(boom.create(405, 'Invalid item ID'));
+  }
+
+  knex('foods')
+    .where('foods.id', id)
+    .then((val) => {
+      if (!(val[0])) {
+        return next();
+      }
+
+      if (!req.body) {
+        return next(boom.create(400, 'Missing update info in request body'));
+      }
+
+      const replacement = decamelizeKeys(req.body);
+
+      knex('foods')
+        .where('foods.id', id)
+        .update(replacement, '*')
+        .first()
+        .then((updatedRow) => {
+          res.send(camelizeKeys(updatedRow));
+        })
+        .catch((err) => {
+          next(err);
+        });
+    })
+    .catch((err) => {
+      return next(err);
+    });
+});
+
 router.delete('/foods/:id', (req, res, next) => {
   knex('foods')
     .where('id', req.params.id)
