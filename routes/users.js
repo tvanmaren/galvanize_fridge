@@ -22,6 +22,8 @@ const {
 
 const boom = require('boom');
 
+const authorize = require('./modules/authorize');
+
 router.get('/users', (req, res, next) => {
   knex('users')
     .orderBy('id')
@@ -51,23 +53,18 @@ router.get('/users?:id', (req, res, next) => {
     });
 });
 
-router.get('/users/self/', (req, res, next) => {
-  jwt.verify(req.cookies.token, process.env.JWT_SECRET, (err, decoded) => {
-    if (err) {
-      return next(boom.create(401, 'Unauthorized'));
-    }
-    knex('users')
-      .where('id', decoded.userId)
-      .first()
-      .then((result) => {
-        delete result.hashed_password;
-        const user = camelizeKeys(result);
-        res.send(user);
-      })
-      .catch((err) => {
-        next(err);
-      });
-  });
+router.get('/users/self/', authorize, (req, res, next) => {
+  knex('users')
+    .where('id', decoded.userId)
+    .first()
+    .then((result) => {
+      delete result.hashed_password;
+      const user = camelizeKeys(result);
+      res.send(user);
+    })
+    .catch((err) => {
+      next(err);
+    });
 });
 
 router.get('/useremails', (req, res, next) => {
