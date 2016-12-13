@@ -34,7 +34,6 @@ function authorize (req, res, next) {
         return next(boom.create(401, 'Unauthorized'));
       }
       req.user = decoded;
-      console.log(req.user);
       next();
     });
   } else {
