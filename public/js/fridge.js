@@ -136,7 +136,9 @@ function checkFridgeStats() {
       userList.forEach((user) => {
         $.getJSON(`/foods/${user.id}/`)
           .then((result) => {
-              $('#content').append(`<p> ${user.firstName} ${user.lastName} (${user.email}) has ${result.length} items in the fridge.`);
+              if (result.length > 0) {
+                $('#content').append(`<p> ${user.firstName} ${user.lastName} (${user.email}) has ${result.length} items in the fridge.`);
+              }
             },
             (err) => {
               console.error(err);
