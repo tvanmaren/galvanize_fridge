@@ -87,7 +87,7 @@ function generateCards(jsonObject) {
       <a><i class="delete-food material-icons food-action" id="${obj.id}">delete</i></a>
       <a><i class="material-icons food-action" value="${obj.id}">create</i></a>
       <span class="new badge orange" data-badge-caption="">${categoryName}</span>
-      <span class="badge">EXP ${exp.getMonth()}/${exp.getDate()}/${exp.getFullYear()}</span>
+      <span class="badge">EXP ${exp.getMonth()+1}/${exp.getDate()}/${exp.getFullYear()}</span>
       </div>
       </div>
       </div>
