@@ -1,7 +1,10 @@
 'use strict';
 $(function() {
-  console.log("loaded");
   AJAX_JSON_Req(jsonfile);
+
+  $("#svg_container").click(function() {
+    updateAnimation();
+  })
 });
 
 var jsonfile = "fridge_monster.json",
@@ -32,6 +35,10 @@ function AJAX_JSON_Req( url )
 
     AJAX_req.onreadystatechange = handle_AJAX_Complete;
     AJAX_req.send();
+}
+
+function updateAnimation() {
+
 }
 
 // On click, load differen Json files when an animation completes?
