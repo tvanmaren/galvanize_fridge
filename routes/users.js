@@ -22,24 +22,41 @@ const {
 
 const boom = require('boom');
 
+const authorize = require('./modules/authorize');
+
 router.get('/users', (req, res, next) => {
-  knex('users')
-    .orderBy('id')
-    .then((result) => {
-      result.forEach((user) => {
-        delete user.hashed_password;
+  if (req.query.email) {
+    knex('users')
+      .where('email', req.query.email)
+      .first()
+      .then((result) => {
+        delete result.hashed_password;
+        const user = camelizeKeys(result);
+        res.send(user);
+      })
+      .catch((err) => {
+        console.error(err);
+        next(err);
       });
-      const users = camelizeKeys(result);
-      res.send(users);
-    })
-    .catch((err) => {
-      next(err);
-    });
+  } else {
+    knex('users')
+      .orderBy('id')
+      .then((result) => {
+        result.forEach((user) => {
+          delete user.hashed_password;
+        });
+        const users = camelizeKeys(result);
+        res.send(users);
+      })
+      .catch((err) => {
+        next(err);
+      });
+  }
 });
 
-router.get('/users?:id', (req, res, next) => {
+router.get('/users/self/', authorize, (req, res, next) => {
   knex('users')
-    .where('id', req.params.id)
+    .where('id', req.token.userId)
     .first()
     .then((result) => {
       delete result.hashed_password;
@@ -51,28 +68,7 @@ router.get('/users?:id', (req, res, next) => {
     });
 });
 
-router.get('/users/self/', (req, res, next) => {
-  jwt.verify(req.cookies.token, process.env.JWT_SECRET, (err, decoded) => {
-    if (err) {
-      return next(boom.create(401, 'Unauthorized'));
-    }
-    knex('users')
-      .where('id', decoded.userId)
-      .first()
-      .then((result) => {
-        delete result.hashed_password;
-        const user = camelizeKeys(result);
-        console.log('user is',user);
-        res.send(user);
-      })
-      .catch((err) => {
-        next(err);
-      });
-  });
-});
-
-router.get('/useremails', (req, res, next) => {
-  console.log("1");
+router.get('/useremails/', (req, res, next) => {
   knex('users')
     .then((result) => {
       let emails = [];
