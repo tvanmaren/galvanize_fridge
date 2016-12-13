@@ -2,18 +2,18 @@
 
 $(function() {
 
-    // Click on Admin Icon
-    $('#settings').click(function() {
-        checkFridgeStats();
-    });
+  // Click on Admin Icon
+  $('#settings').click(function() {
+      checkFridgeStats();
+  });
 
-    var $foodDiv = $('#foodCards');
+  var $foodDiv = $('#foodCards');
 
-    $foodDiv.css({
-        'height': '800px'
-    });
+  $foodDiv.css({
+      'height': '800px'
   });
 });
+
 
 
   //Click on User Icon
