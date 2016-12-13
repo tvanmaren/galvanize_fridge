@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use(cookieParser());
 
-app.use(function (req, res, next) {
+function authorize (req, res, next) {
   const token = req.cookies.token;
 
   if (token) {
@@ -41,19 +41,19 @@ app.use(function (req, res, next) {
     next();
   }
 
-})
+};
 
-app.use('/fridge.html', function (req,res,next) {
+app.use('/fridge.html', authorize, function (req,res,next) {
   if (!req.user) {
-    res.redirect('/')
+    res.redirect('/');
   } else {
     next();
   }
 });
 
-app.use('/new-entry.html', function (req,res,next) {
+app.use('/new-entry.html', authorize, function (req,res,next) {
   if (!req.user) {
-    res.redirect('/')
+    res.redirect('/');
   } else {
     next();
   }

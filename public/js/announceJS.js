@@ -14,6 +14,22 @@ $(function() {
 
 $('#addAnnounce').click(function(){
   $('#modal1').modal('open');
+  // This populates the email field to provide autocomplete
+  var $xhr = $.ajax({
+    type: "GET",
+    url: "/useremails",
+    success: function(result) {
+      //for each email, create a key with a null value
+      var emailObj = {};
+      for (var i = 0; i < result.length; i++) {
+        emailObj[result[i]] = null;
+      }
+      $('#emailAddressAnnouncement').autocomplete({
+        data: emailObj
+      });
+    }
+  });
+
 });
 
 $('#submitNewAnnounce').click(function(){

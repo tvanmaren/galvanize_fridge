@@ -139,8 +139,8 @@
 <!-- ANNOUNCEMENTS GO HERE -->
   <div class="container" id="announcementsDiv">
       <h4>Announcements</h4>
-      <!-- append here -->
       <a class="btn-floating btn-small waves-effect waves-light orange" id="addAnnounce"><i class="material-icons">add</i></a>
+      <!-- append here -->
   </div>
 
   <div id="modal1" class="modal modal-fixed-footer">
@@ -148,6 +148,12 @@
       <h4>Add Announcement</h4>
       <!-- ADD FORM HERE -->
       <form class="col s12">
+        <div class="row">
+          <div class="input-field col l6 s10 offset-l3 offset-s1">
+              <input id="emailAddressAnnouncement" type="text" class="autocomplete">
+              <label for="emailAddress">Email Address</label>
+          </div>
+        </div>
         <div class="row">
           <div class="input-field col s6">
             <textarea id="newAnnounceTitle" class="materialize-textarea"></textarea>
@@ -161,7 +167,6 @@
           </div>
         </div>
       </form>
-
     </div>
     <div class="modal-footer">
       <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" id="submitNewAnnounce">Submit</a>

@@ -13,7 +13,6 @@ $(function() {
         'height': '800px'
     });
   });
-});
 
 
   //Click on User Icon
