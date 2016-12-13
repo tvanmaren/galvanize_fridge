@@ -72,6 +72,8 @@ function generateCards(jsonObject) {
   jsonObject.map((obj) => {
     var categoryName = setCategory(obj.category);
 
+    var exp = new Date(parseInt(obj.expiration));
+
     var newCard = `
       <div class="col s12 m6 l4">
       <div class="card">
@@ -84,7 +86,8 @@ function generateCards(jsonObject) {
       <div class="card-action">
       <a><i class="delete-food material-icons food-action" id="${obj.id}">delete</i></a>
       <a><i class="material-icons food-action" value="${obj.id}">create</i></a>
-      <span class="new badge orange">${categoryName}</span>
+      <span class="new badge orange" data-badge-caption="">${categoryName}</span>
+      <span class="badge">EXP ${exp.getMonth()}/${exp.getDate()}/${exp.getFullYear()}</span>
       </div>
       </div>
       </div>
@@ -144,13 +147,13 @@ function checkFridgeStats() {
 
   $.getJSON("/foods")
     .then((result) => {
-      //TODO add user data (items per user) & expiration data
-      console.log(result);
-      $('#content').append(`<p> Fridge items to date: ${result.length}`);
-    },
-    (err) => {
-      console.error(err);
-    });
+        //TODO add user data (items per user) & expiration data
+        console.log(result);
+        $('#content').append(`<p> Fridge items to date: ${result.length}`);
+      },
+      (err) => {
+        console.error(err);
+      });
 }
 
 function checkUserInfo() {
