@@ -37,7 +37,7 @@ router.get('/users', (req, res, next) => {
     });
 });
 
-router.get('/users/:email', (req, res, next) => {
+router.get('/emails/:email', (req, res, next) => {
     knex('users')
         .where('email', req.params.email)
         .first()
@@ -50,12 +50,12 @@ router.get('/users/:email', (req, res, next) => {
         });
 });
 
-router.get('/users?:id', (req, res, next) => {
+router.get('/users/:id', (req, res, next) => {
   knex('users')
     .where('id', req.params.id)
     .first()
     .then((result) => {
-      delete result.hashed_password;
+      // delete result.hashed_password;
       const user = camelizeKeys(result);
       res.send(user);
     })

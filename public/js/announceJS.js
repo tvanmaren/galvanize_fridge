@@ -9,18 +9,7 @@ $(function() {
   $announceDiv.css({'height': 'auto'});
   $.getJSON('/announce').done((data) => {
     data.map((announce) => {
-      $.ajax({
-        type: "GET",
-        url: `/users/${announce.userId}`,
-        success: function(result) {
-          console.log("get user by email successful");
-
-        },
-        error: function(err) {
-          console.error(err);
-        }
-      })
-      generateAnnnouncements(announce.title, announce.content, announce.firstName);
+      generateAnnnouncements(announce.title, announce.content, announce.userId);
     });
   });
 
@@ -52,7 +41,7 @@ $('#submitNewAnnounce').click(function(){
   var email = $('#emailAddressAnnouncement').val();
   requests.push($.ajax({
     type: "GET",
-    url: `/users/${email}`,
+    url: `/emails/${email}`,
     success: function(result) {
       console.log("get user by email successful");
     },
@@ -96,20 +85,38 @@ $('#submitNewAnnounce').click(function(){
 
 });
 
-function generateAnnnouncements(title, content, name) {
+function generateAnnnouncements(title, content, userID) {
   var $announceDiv = $('#announcementsDiv');
+  var userName;
+  var promises = [];
+  console.log('userID- ', userID);
+  promises.push(
+  $.ajax({
+    type: "GET",
+    url: `/users/${userID}`,
+    success: function(result) {
+      console.log("get user by userID result- ", result);
+    },
+    error: function(err) {
+      console.error(err);
+    }
+  }));
+  Promise.all(promises).then(function(result){
+    // console.log('promiseAll result- ', result[0]);
+    userName = result[0].firstName;
 
-  var newAnnounce = `
-    <div class="row announcementRow">
-      <p class="announcementP">${title}:</p>
-      <p class="announcementP">${content}</p>
-      <p class="announcementP">From: ${name}</p>
-      <a class="btn-floating btn-small waves-effect waves-light orange" id="deleteAnnounce"><i class="material-icons">delete</i></a>
-    </div>
-    <br>
-  `;
+    var newAnnounce = `
+      <div class="row announcementRow">
+        <p class="announcementP">${title}:</p>
+        <p class="announcementP">${content}</p>
+        <p class="announcementP">From: ${userName}</p>
+        <a class="btn-floating btn-small waves-effect waves-light orange" id="deleteAnnounce"><i class="material-icons">delete</i></a>
+      </div>
+      <br>
+    `;
 
-  $announceDiv.append(newAnnounce);
+    $announceDiv.append(newAnnounce);
+  })
   // var Id = `#${id}`;
   //
   // $(Id).click(function() {
