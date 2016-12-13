@@ -1,5 +1,5 @@
 body {
-  background-color: #fff3e0;
+  background-color: #F2F2F2;
 }
 
 .center{
@@ -24,6 +24,14 @@ body {
   justify-content: center;
 }
 
+.full-width {
+  width: 100%;
+}
+
+.top-padding{
+  padding-top: 20px
+}
+
 #foodCards {
   width: 80%;
   margin: 0 auto;
@@ -38,5 +46,14 @@ body {
 }
 
 .dropdown-item {
-  color: orange !important;
+  color: #E10D49 !important;
+}
+
+.section-header {
+  font-weight: bold;
+  color: #F2F2F2;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
