@@ -35,9 +35,9 @@ router.get('/users', (req, res, next) => {
         });
 });
 
-router.get('/users/:id', (req, res, next) => {
+router.get('/users/:email', (req, res, next) => {
     knex('users')
-        .where('id', req.params.id)
+        .where('email', req.params.email)
         .first()
         .then((result) => {
             const user = camelizeKeys(result);
