@@ -62,6 +62,7 @@ router.get('/users/self/', (req, res, next) => {
       .then((result) => {
         delete result.hashed_password;
         const user = camelizeKeys(result);
+        console.log('user is',user);
         res.send(user);
       })
       .catch((err) => {

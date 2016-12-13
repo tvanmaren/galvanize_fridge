@@ -8,6 +8,10 @@ a {
   margin-right: 10px;
 }
 
+html {
+    font-family: 'Raleway', sans-serif;
+  }
+
 .right {
   margin-right: 10px;
 }
