@@ -50,7 +50,7 @@ router.get('/users?:id', (req, res, next) => {
 router.get('/users/self/', (req, res, next) => {
   jwt.verify(req.cookies.token, process.env.JWT_SECRET, (err, decoded) => {
     if (err) {
-      return next(boom.create(401, 'Unauthorized'));
+      res.redirect('/');
     }
     knex('users')
       .where('id', decoded.userId)
