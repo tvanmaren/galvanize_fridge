@@ -38,8 +38,7 @@ router.get('/users', (req, res, next) => {
         console.error(err);
         next(err);
       });
-  }
-  else {
+  } else {
     knex('users')
       .orderBy('id')
       .then((result) => {
