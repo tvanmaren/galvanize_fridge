@@ -1,7 +1,5 @@
 'use strict';
 var userID;
-var title;
-var content;
 // var userName;
 
 
@@ -11,8 +9,6 @@ $(function() {
   var $announceDiv = $('#announcementsDiv');
   $announceDiv.css({'height': 'auto'});
   $.getJSON('/announce').done((data) => {
-    console.log('announce data-', data);
-    // var sortedData = sortByKey(data, 'id');
     generateAnnnouncements(data);
     // });
   });
@@ -46,7 +42,7 @@ $('#submitNewAnnounce').click(function(){
   requests.push($.ajax({
     type: "GET",
     url: `/emails/${email}`,
-    success: function(result) {
+    success: function() {
       console.log("get user by email successful");
     },
     error: function(err) {
@@ -105,7 +101,7 @@ function generateAnnnouncements(data) {
     $.ajax({
       type: "GET",
       url: `/users/${userID}`,
-      success: function(result) {
+      success: function() {
         console.log("get user by userID successful");
       },
       error: function(err) {
@@ -113,16 +109,15 @@ function generateAnnnouncements(data) {
       }
     }));
   }
-  // var userName;
 
   Promise.all(promises).then(function(result){
     console.log('promiseAll result- ', result);
     console.log('appendObj- ', appendObj);
-    for(var i=0; i<3; i++){
-      var key = i+1;
-      appendObj[key].name = result[i].firstName;
+    var key = 0;
+    for(var i=dataBottom; i<data.length; i++){
+      appendObj[i].name = result[key].firstName;
+      key++;
     }
-    console.log('appendObj after loop- ', appendObj);
     // result = array of user data objects
     appendAnnounce(appendObj);
   });
@@ -140,16 +135,12 @@ function appendAnnounce(obj){
     <p class="announcementP">${title}:</p>
     <p class="announcementP">${content}</p>
     <p class="announcementP">From: ${name}</p>
-    <a class="btn-floating btn-small waves-effect waves-light orange" id="deleteAnnounce"><i class="material-icons">delete</i></a>
+    <a class="btn-floating btn-small waves-effect waves-light orange" id="${title}"><i class="material-icons">delete</i></a>
     </div>
     <br>
     `;
-
     $announceDiv.prepend(newAnnounce);
-
   }
-
-
 }
 
 function sortByKey(array, key) {
