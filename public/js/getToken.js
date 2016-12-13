@@ -22,7 +22,7 @@ $(
           }
         },
         (error) => {
-          Materialize.toast('Login failed');
+          Materialize.toast('Login failed', 1000);
           $('#password').val('');
           console.error("ERROR", error);
         });

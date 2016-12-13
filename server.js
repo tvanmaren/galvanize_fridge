@@ -25,41 +25,42 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use(cookieParser());
 
-app.use(function (req, res, next) {
-  const token = req.cookies.token;
 
-  if (token) {
-    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-      if (err) {
-        return next(boom.create(401, 'Unauthorized'));
-      }
-      req.user = decoded;
-      console.log(req.user);
+function authorize (req, res, next) {
+    const token = req.cookies.token;
+
+    if (token) {
+      jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+        if (err) {
+          res.redirect('/')
+        }
+        req.user = decoded;
+        console.log(req.user);
+        next();
+      });
+    } else {
       next();
-    });
-  } else {
-    next();
-  }
+    }
 
-})
+  };
 
-app.use('/fridge.html', function (req,res,next) {
-  if (!req.user) {
-    res.redirect('/')
-  } else {
-    next();
-  }
-});
+  app.use('/fridge.html', authorize, function (req,res,next) {
+    if (!req.user) {
+      res.redirect('/')
+    } else {
+      next();
+    }
+  });
 
-app.use('/new-entry.html', function (req,res,next) {
-  if (!req.user) {
-    res.redirect('/')
-  } else {
-    next();
-  }
-});
+  app.use('/new-entry.html', authorize, function (req,res,next) {
+    if (!req.user) {
+      res.redirect('/')
+    } else {
+      next();
+    }
+  });
 
-app.use(express.static('./public'));
+  app.use(express.static('./public'));
 
 // app.use('/secure', express.static('./public/secure'));
 
