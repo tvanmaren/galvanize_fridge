@@ -2,9 +2,23 @@
 
 $(function () {
 
-  // Click on Admin Icon
+  let admin;
+  //check if I'm an admin, and assign that to a global
+  $.getJSON('/users/self')
+    .done((user) => {
+      admin = user.isAdmin;
+    })
+    .fail((err) => {
+      console.error(err);
+    });
+
+  // Click on Settings Icon
   $('#settings').click(function () {
-    checkFridgeStats();
+    if (admin) {
+      checkFridgeStats();
+    } else {
+      checkUserInfo();
+    }
   });
 
   var $foodDiv = $('#foodCards');
@@ -13,11 +27,7 @@ $(function () {
     'height': '800px'
   });
 
-  //Click on User Icon
-  // $('#checkUser').click(function() {
-  //   checkUserInfo()
-  // })
-
+  //generate cards on page load
   $.getJSON('/foods')
     .done((data) => {
       data.map((item) => {
@@ -30,7 +40,7 @@ $(function () {
 
   //Radio Button Listeners
   $('#allCat').click(function () {
-    $('foodCards').empty();
+    $('#foodCards').empty();
     $.getJSON('/foods')
       .done((data) => {
         data.map((item) => {
@@ -40,20 +50,6 @@ $(function () {
       .fail((err) => {
         console.error(err);
       });
-
-    //Radio Button Listeners
-    $('#allCat').click(function () {
-      Window.refresh();
-      $.getJSON('/foods')
-        .done((data) => {
-          data.map((item) => {
-            generateCards(item.id, item.user_id, item.image_url, item.comments, item.category);
-          });
-        })
-        .fail((err) => {
-          console.error(err);
-        });
-    });
 
     $('#personalCat').click(function () {
       $('#foodCards').empty();
@@ -101,22 +97,6 @@ $(function () {
     });
   });
 });
-
-// function checkUserInfo() {
-//   var $xhr = $.ajax({
-//     type: "GET",
-//     url: "/users",
-//     success: function (result) {
-//       $('#nameGoesHere').text(result[0].firstName);
-//       $('#contentHere').text(result[0].email);
-//       console.log("GET successful ", result);
-//     }
-//   });
-//
-//   $xhr.fail((err) => {
-//     console.error(err);
-//   });
-// }
 
 function generateCards(id, user_id, image_url, comments, category) {
   var $foodDiv = $('#foodCards');
@@ -174,8 +154,6 @@ function deleteItem(id) {
   });
 }
 
-//
-
 function checkFridgeStats() {
   $.getJSON("/users")
     .then((userList) => {
@@ -198,7 +176,22 @@ function checkFridgeStats() {
     }, (err) => {
       console.error(err);
     });
+}
 
+function checkUserInfo() {
+  var $xhr = $.ajax({
+    type: "GET",
+    url: "/users",
+    success: function (result) {
+      $('#nameGoesHere').text(result[0].firstName);
+      $('#contentHere').text(result[0].email);
+      console.log("GET successful ", result);
+    }
+  });
+
+  $xhr.fail((err) => {
+    console.error(err);
+  });
 }
 
 function logout() {
