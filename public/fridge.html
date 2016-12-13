@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="styles/materialize-overwrite.css">
     <!-- <link rel="stylesheet" href="styles/monster.css"> -->
     <link rel="stylesheet" href="styles/newStyles.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
     <!-- Custom JS Functionality -->
     <script type="text/javascript" src="js/fridge.js" defer></script>
@@ -35,12 +36,12 @@
     </script>
 </head>
 
-<body style="background-color:#F2E9E1">
+<body>
 
     <!-- NAVIGATION BAR -->
     <nav>
-      <div class="nav-wrapper" style="background-color:#CBE86B">
-        <a href="fridge.html" class="brand-logo">Fridge Face</a>
+      <div class="nav-wrapper" style="background-color:#F2F2F2">
+        <a href="fridge.html" style="color:#4E4E4E" class="brand-logo">Fridge Face</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li><a href="new-entry.html"><i class="large material-icons" id="checkUser">add</i></a></li>
@@ -59,10 +60,9 @@
 
     </nav>
 
-    <div id="svg_container" class="fridge-face center-align">
+    <div id="svg_container" class="fridge-face center-align" style="background-color:#74CFAE">
 
     </div>
-
     <!-- <nav>
         <div class="nav-wrapper orange darken-1">
             <a href="index.html" class="brand-logo">Fridge Monster</a>
@@ -111,66 +111,83 @@
   <!-- </div> -->
     <!-- END MONSTER -->
 
-    <!-- SETTING/ADD BAR -->
-    <div class="container">
-      <form class="">
-        <div class="row center-align">
-          <div class="input-field col s4 offset-s2">
-            <input id="filterName" type="text" class="autocomplete">
-            <label for="filterName">Name</label>
-          </div>
-          <div class="col s4">
-            <a class="dropdown-button btn orange" data-activates="categorySelect">Categories</a>
-
-              <ul id="categorySelect" class="dropdown-content">
-                <li><a class="dropdown-item" id="allCat">All Food</a></li>
-                <li><a class="dropdown-item" id="personalCat">Personal Food</a></li>
-                <li><a class="dropdown-item" id="communityCat">Community Food</a></li>
-                <li><a class="dropdown-item" id="eventCat">Event Food</a></li>
-              </ul>
-          </div>
-        </div>
-      </form>
+    <!-- ANNOUNCEMENTS GO HERE -->
+    <div style="background-color:#4E4E4E" class="center-align">
+        <h4 class="section-header">ANNOUNCEMENTS</h4>
     </div>
+
+    <div class="full-width top-padding" style="background-color:#B4EDD8">
+      <div class="container" id="announcementsDiv" style="background-color:#B4EDD8">
+          <h4>Announcements</h4>
+          <!-- append here -->
+          <a class="btn-floating btn-small waves-effect waves-light orange" id="addAnnounce"><i class="material-icons">add</i></a>
+      </div>
+
+      <div id="modal1" class="modal modal-fixed-footer">
+        <div class="modal-content">
+          <h4>Add Announcement</h4>
+          <!-- ADD FORM HERE -->
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s6">
+                <textarea id="newAnnounceTitle" class="materialize-textarea"></textarea>
+                <label for="newAnnounceTitle">Title</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <textarea id="newAnnounceContent" class="materialize-textarea"></textarea>
+                <label for="newAnnounceContent">Content</label>
+              </div>
+            </div>
+          </form>
+
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" id="submitNewAnnounce">Submit</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- END ANNOUNCEMENTS -->
+
+    <div style="background-color:#4E4E4E" class="center-align">
+        <h4 class="section-header">FILTER</h4>
+    </div>
+
+    <!-- SETTING/ADD BAR -->
+    <div class="full-width top-padding" style="background-color:#B4EDD8">
+      <br>
+      <div class="container" style="background-color:#B4EDD8">
+        <form class="">
+          <div class="row center-align">
+            <div class="input-field col s4 offset-s2">
+              <input id="filterName" type="text" class="autocomplete">
+              <label for="filterName">Name</label>
+            </div>
+            <div class="col s4">
+              <a class="dropdown-button btn" style="background-color:#F2F2F2" data-activates="categorySelect">Categories</a>
+
+                <ul id="categorySelect" class="dropdown-content">
+                  <li><a class="dropdown-item" id="allCat">All Food</a></li>
+                  <li><a class="dropdown-item" id="personalCat">Personal Food</a></li>
+                  <li><a class="dropdown-item" id="communityCat">Community Food</a></li>
+                  <li><a class="dropdown-item" id="eventCat">Event Food</a></li>
+                </ul>
+            </div>
+          </div>
+        </form>
+      </div>
+      <br>
+    </div>
+
     <!-- END SETTING/ADD BAR -->
 
-<!-- ANNOUNCEMENTS GO HERE -->
-  <div class="container" id="announcementsDiv">
-      <h4>Announcements</h4>
-      <!-- append here -->
-      <a class="btn-floating btn-small waves-effect waves-light orange" id="addAnnounce"><i class="material-icons">add</i></a>
-  </div>
-
-  <div id="modal1" class="modal modal-fixed-footer">
-    <div class="modal-content">
-      <h4>Add Announcement</h4>
-      <!-- ADD FORM HERE -->
-      <form class="col s12">
-        <div class="row">
-          <div class="input-field col s6">
-            <textarea id="newAnnounceTitle" class="materialize-textarea"></textarea>
-            <label for="newAnnounceTitle">Title</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s6">
-            <textarea id="newAnnounceContent" class="materialize-textarea"></textarea>
-            <label for="newAnnounceContent">Content</label>
-          </div>
-        </div>
-      </form>
-
+<div style="background-color:#4E4E4E" class="center-align">
+    <h4 class="section-header">FRIDGE CONTENTS</h4>
+</div>
+    <div class="full-width top-padding" style="background-color:#B4EDD8">
+      <div id="foodCards" class="row" style="background-color:#B4EDD8"></div>
     </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" id="submitNewAnnounce">Submit</a>
-    </div>
-  </div>
-<!-- END ANNOUNCEMENTS -->
-
-    <!-- FILTER BY -->
-
-    <!-- END FILTER BY -->
-    <div id="foodCards" class="row"></div>
-
   </body>
 </html>

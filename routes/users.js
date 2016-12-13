@@ -57,6 +57,7 @@ router.get('/users/self/', (req, res, next) => {
       .first()
       .then((result) => {
         const user = camelizeKeys(result);
+        console.log('user is',user);
         res.send(user);
       })
       .catch((err) => {
