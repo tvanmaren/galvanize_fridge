@@ -1,71 +1,62 @@
 'use strict';
 
 $(function() {
-
-  // Click on Admin Icon
-  $('#settings').click(function() {
-      checkFridgeStats();
-  });
-
-  var $foodDiv = $('#foodCards');
-
-  $foodDiv.css({
-      'height': '800px'
-  });
-});
-
-
-
-  //Click on User Icon
-// $('#checkUser').click(function() {
-//   checkUserInfo()
-// })
-//Radio Button Listeners
-$('#allCat').click(function () {
-  $('foodCards').empty();
-    $.getJSON('/foods').done((data) => {
-        data.map((item) => {
-            generateCards(item.id, item.user_id, item.image_url, item.comments, item.category);
+    let admin;
+    //check if I'm an admin, and assign that to a global
+    $.getJSON('/users/self')
+        .done((user) => {
+            admin = user.isAdmin;
+        })
+        .fail((err) => {
+            console.error(err);
         });
+
+    // Click on Settings Icon
+    $('#settings').click(function() {
+        if (admin) {
+            checkFridgeStats();
+        } else {
+            checkUserInfo();
+        }
     });
 
-    //Radio Button Listeners
-    $('#allCat').click(function() {
-        Window.refresh();
-        $.getJSON('/foods').done((data) => {
-            data.map((item) => {
-                generateCards(item.id, item.user_id, item.image_url, item.comments, item.category);
-            });
+    var foodsJSON;
+    //generate cards on page load
+    $.getJSON('/foods')
+        .done((data) => {
+            foodsJSON = data;
+            generateCards(data);
+        })
+        .fail((err) => {
+            console.error(err);
         });
+
+    //Radio Button Listeners (Sorting fridge cards);
+    $('#allCat').click(function() {
+        $('#foodCards').empty();
+        generateCards(foodsJSON);
     });
 
     $('#personalCat').click(function() {
         $('#foodCards').empty();
-        $.getJSON('/foods/personal').done((data) => {
-            data.map((item) => {
-                generateCards(item.id, item.user_id, item.image_url, item.comments, item.category);
-            });
-        });
+        generateCards(foodsJSON.filter((obj) => {
+            return obj.category === 1;
+        }));
     });
 
     $('#communityCat').click(function() {
         $('#foodCards').empty();
-        $.getJSON('/foods/community').done((data) => {
-            data.map((item) => {
-                generateCards(item.id, item.user_id, item.image_url, item.comments, item.category);
-            });
-        });
+        generateCards(foodsJSON.filter((obj) => {
+            return obj.category === 2;
+        }));
     });
 
     $('#eventCat').click(function() {
         $('#foodCards').empty();
-        $.getJSON('/foods/event').done((data) => {
-            data.map((item) => {
-                return generateCards(item.id, item.user_id, item.image_url, item.comments, item.category);
-            });
-        });
+        generateCards(foodsJSON.filter((obj) => {
+            return obj.category === 3;
+        }));
     });
-    //End Radio Button Listeners
 
     // LOGOUT
     $('.logout').click(function() {
@@ -73,51 +64,38 @@ $('#allCat').click(function () {
     });
 });
 
-// function checkUserInfo() {
-//   var $xhr = $.ajax({
-//     type: "GET",
-//     url: "/users",
-//     success: function (result) {
-//       $('#nameGoesHere').text(result[0].firstName);
-//       $('#contentHere').text(result[0].email);
-//       console.log("GET successful ", result);
-//     }
-//   });
-//
-//   $xhr.fail((err) => {
-//     console.error(err);
-//   });
-// }
-
-function generateCards(id, user_id, image_url, comments, category) {
+function generateCards(jsonObject) {
     var $foodDiv = $('#foodCards');
-    var categoryName = setCategory(category);
 
-    var newCard = `
-        <div class="col s4">
-          <div class="card">
-            <div class="card-image">
-              <img src="${image_url}">
-            </div>
-            <div class="card-content">
-              <p>${comments}</p>
-            </div>
-            <div class="card-action">
-              <a><i class="delete-food material-icons food-action" id="${id}">delete</i></a>
-              <a><i class="material-icons food-action" value="${id}">create</i></a>
-              <span class="new badge orange">${categoryName}</span>
-            </div>
-          </div>
-        </div>
-`;
+    jsonObject.map((obj) => {
+        var categoryName = setCategory(obj.category);
 
-    $foodDiv.append(newCard);
+        var newCard = `
+      <div class="col s4">
+      <div class="card">
+      <div class="card-image">
+      <img src="${obj.image_url}">
+      </div>
+      <div class="card-content">
+      <p>${obj.comments}</p>
+      </div>
+      <div class="card-action">
+      <a><i class="delete-food material-icons food-action" id="${obj.id}">delete</i></a>
+      <a><i class="material-icons food-action" value="${obj.id}">create</i></a>
+      <span class="new badge orange">${categoryName}</span>
+      </div>
+      </div>
+      </div>
+      `;
 
-    var Id = `#${id}`;
+        $foodDiv.append(newCard);
 
-    $(Id).click(function() {
-        console.log($(this).attr('id'));
-        deleteItem($(this).attr('id'));
+        var Id = `#${obj.id}`;
+
+        $(Id).click(function() {
+            console.log($(this).attr('id'));
+            deleteItem($(this).attr('id'));
+        });
     });
 }
 
@@ -125,16 +103,12 @@ function setCategory(catID) {
     switch (catID) {
         case 1:
             return 'Personal';
-            break;
         case 2:
             return 'Community';
-            break;
         case 3:
             return 'Event';
-            break;
         default:
             return 'Personal';
-            break;
     }
 }
 
@@ -149,13 +123,11 @@ function deleteItem(id) {
     });
 }
 
-//
-
 function checkFridgeStats() {
     $.getJSON("/users")
         .then((userList) => {
             userList.forEach((user) => {
-                $.getJSON(`/foods/${user.id}`)
+                $.getJSON(`/foods/${user.id}/`)
                     .then((result) => {
                             $('#content').html(`${$('#content').html()} <p> ${user.firstName} ${user.lastName} has ${result.length} items in the fridge.`);
                         },
@@ -173,7 +145,22 @@ function checkFridgeStats() {
         }, (err) => {
             console.error(err);
         });
+}
 
+function checkUserInfo() {
+    var $xhr = $.ajax({
+        type: "GET",
+        url: "/users",
+        success: function(result) {
+            $('#nameGoesHere').text(result[0].firstName);
+            $('#contentHere').text(result[0].email);
+            console.log("GET successful ", result);
+        }
+    });
+
+    $xhr.fail((err) => {
+        console.error(err);
+    });
 }
 
 function logout() {

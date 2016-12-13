@@ -13,7 +13,7 @@ const {
 const boom = require('boom');
 const jwt = require('jsonwebtoken');
 
-const authorize = require('./modules/authorize');
+const authorize=require('./modules/authorize');
 
 router.get('/foods', (req, res, next) => {
   //TODO order by date expired
@@ -27,39 +27,28 @@ router.get('/foods', (req, res, next) => {
     });
 });
 
-router.get('/foods/personal', (req, res, next) => {
+router.get('/foods?catId=:catId', (req, res, next) => {
+  const catId = req.params.catId;
   knex('foods')
     .where('active', true)
-    .andWhere('category', 1)
+    .andWhere('category', catId)
     .then((items) => {
       res.send(items);
+    })
+    .catch((err)=>{
+      next(err);
     });
 });
 
-router.get('/foods/community', (req, res, next) => {
+router.get('/foods/:userId/', (req, res, next) => {
   knex('foods')
     .where('active', true)
-    .andWhere('category', 2)
+    .andWhere('user_id', req.params.userId)
     .then((items) => {
       res.send(items);
-    });
-});
-
-router.get('/foods/event', (req, res, next) => {
-  knex('foods')
-    .where('active', true)
-    .andWhere('category', 3)
-    .then((items) => {
-      res.send(items);
-    });
-});
-
-router.get('/foods/:id', (req, res, _next) => {
-  knex('foods')
-    .where('active', true)
-    .andWhere('user_id', req.params.id)
-    .then((items) => {
-      res.send(items);
+    })
+    .catch((err)=>{
+      next(err);
     });
 });
 
@@ -88,6 +77,9 @@ router.delete('/foods/:id', (req, res, next) => {
     .update('active', false)
     .then((item) => {
       res.send(item.active);
+    })
+    .catch((err)=>{
+      next(err);
     });
 });
 
