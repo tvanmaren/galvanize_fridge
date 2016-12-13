@@ -12,7 +12,17 @@ $(function() {
     $foodDiv.css({
         'height': '800px'
     });
+  });
+});
 
+
+  //Click on User Icon
+// $('#checkUser').click(function() {
+//   checkUserInfo()
+// })
+//Radio Button Listeners
+$('#allCat').click(function () {
+  $('foodCards').empty();
     $.getJSON('/foods').done((data) => {
         data.map((item) => {
             generateCards(item.id, item.user_id, item.image_url, item.comments, item.category);

@@ -11,7 +11,7 @@ function submitLogin() {
     var newUser = {
         firstName: $("#give-first-name").val(),
         lastName: $("#give-last-name").val(),
-        email: $("#give-email").val(),
+        email: $("#give-email").val().toLowerCase(),
         password: $("#set-password").val()
     };
 
