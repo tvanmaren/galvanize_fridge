@@ -27,6 +27,7 @@
     <!-- Custom JS Functionality -->
     <script type="text/javascript" src="js/fridge.js" defer></script>
     <script type="text/javascript" src="js/announceJS.js" defer></script>
+    <script type="text/javascript" src="js/navbar.js" defer></script>
 
     <!-- Animation Scripts -->
     <script src="./SnapSVGAnimator/js/vendor/snap.svg/snap.svg-min.js" defer></script>
@@ -39,7 +40,7 @@
 <body>
 
     <!-- NAVIGATION BAR -->
-    <nav>
+    <nav id="navBar">
       <div class="nav-wrapper" style="background-color:#F2F2F2">
         <a href="fridge.html" style="color:#4E4E4E" class="brand-logo">Fridge Face</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -56,6 +57,9 @@
           <li><a href="index.html" class="logout">Logout</a></li>
           <li><a href="#adminPanel"><i class="large material-icons" id="settings">settings</i></a></li>
         </ul>
+      </div>
+      <div id="dropNav" class="nav-wrapper" style="background-color:#4E4E4E; display:none">
+
       </div>
 
     </nav>
@@ -151,12 +155,12 @@
 
     <!-- END ANNOUNCEMENTS -->
 
-    <div style="background-color:#4E4E4E" class="center-align">
+    <!-- <div style="background-color:#4E4E4E" class="center-align">
         <h4 class="section-header">FILTER</h4>
-    </div>
+    </div> -->
 
     <!-- SETTING/ADD BAR -->
-    <div class="full-width top-padding" style="background-color:#B4EDD8">
+    <!-- <div class="full-width top-padding" style="background-color:#B4EDD8">
       <br>
       <div class="container" style="background-color:#B4EDD8">
         <form class="">
@@ -179,7 +183,7 @@
         </form>
       </div>
       <br>
-    </div>
+    </div> -->
 
     <!-- END SETTING/ADD BAR -->
 
