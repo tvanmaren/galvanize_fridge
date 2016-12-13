@@ -30,7 +30,7 @@ $(window).scroll(function() {
             'top': '0px'
         });
         $('body').css({
-          'padding-top': 0,
+          'padding-top': '0',
         });
     }
 
