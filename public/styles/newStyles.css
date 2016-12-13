@@ -17,6 +17,12 @@ body {
   overflow: hidden;
 };
 
+.fridge-face {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}
 
 #foodCards {
   width: 80%;

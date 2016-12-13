@@ -20,15 +20,22 @@
 
     <!-- Custom Stylesheets -->
     <link rel="stylesheet" href="styles/materialize-overwrite.css">
-    <link rel="stylesheet" href="styles/monster.css">
+    <!-- <link rel="stylesheet" href="styles/monster.css"> -->
     <link rel="stylesheet" href="styles/newStyles.css">
 
     <!-- Custom JS Functionality -->
     <script type="text/javascript" src="js/fridge.js" defer></script>
     <script type="text/javascript" src="js/announceJS.js" defer></script>
+
+    <!-- Animation Scripts -->
+    <script src="./SnapSVGAnimator/js/vendor/snap.svg/snap.svg-min.js" defer></script>
+    <script src="./SnapSVGAnimator/js/SnapSVGAnimator.min.js" defer></script>
+    <script src="js/monster.js" defer>
+
+    </script>
 </head>
 
-  <body>
+<body style="background-color:#FFE888">
 
     <!-- NAVIGATION BAR -->
     <nav>
@@ -51,6 +58,10 @@
       </div>
 
     </nav>
+
+    <div id="svg_container" class="fridge-face center-align">
+
+    </div>
 
     <!-- <nav>
         <div class="nav-wrapper orange darken-1">
@@ -82,22 +93,22 @@
         <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Dismiss</a>
       </div>
     </div>
-
     <!-- END MODAL -->
 
     <!-- MONSTER -->
-    <div class="container centerMonster">
+    <!-- <div class="container centerMonster">
 
       <div class="click-anim">
         <figure class="hungry" style="background-color:#ffb74d">
-          <div class="eye"></div>
-          <div class="eye"></div>
-          <div class="mouth"></div>
-          <!-- <div class="mouth teeth"></div> -->
-        </figure>
-      </div>
-      <!-- <div class="shadow"></div> -->
-    </div>
+
+            <div class="eye"></div>
+            <div class="eye"></div>
+            <div class="mouth"></div> -->
+            <!-- <div class="mouth teeth"></div> -->
+        <!-- </figure>
+    </div> -->
+    <!-- <div class="shadow"></div> -->
+  <!-- </div> -->
     <!-- END MONSTER -->
 
     <!-- SETTING/ADD BAR -->
@@ -162,5 +173,4 @@
     <div id="foodCards" class="row"></div>
 
   </body>
-
 </html>
