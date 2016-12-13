@@ -178,7 +178,7 @@ function deleteItem(id) {
   });
 }
 
-//
+///////////////////////////////////////////////////////////////////////
 
 function checkFridgeStats() {
   $.getJSON("/users")
@@ -186,7 +186,9 @@ function checkFridgeStats() {
       userList.forEach((user) => {
         $.getJSON(`/foods/${user.id}/`)
           .then((result) => {
-              $('#content').html(`${$('#content').html()} <p> ${user.firstName} ${user.lastName} has ${result.length} items in the fridge.`);
+            if (result.length>0) {
+              $('#content').html(`${$('#content').html()} <p> <u>${user.firstName} ${user.lastName}</u>: ${result.length} item(s) in the fridge.`);
+            }
             },
             (err) => {
               console.error(err);

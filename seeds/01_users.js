@@ -8,7 +8,7 @@ exports.seed = function(knex, Promise) {
         // Inserts seed entries
         knex('users').insert({
           id: 1,
-          first_name: 'Fridge',
+          first_name: 'Community',
           last_name: 'Fridge',
           email: 'fridge@galvanize.com',
           hashed_password: '$2a$12$HgcZ3mkA8hSL7laPNTyO5OJvi75VoVuVrb1LbMAwN3LBi.Y/LmAlq',
