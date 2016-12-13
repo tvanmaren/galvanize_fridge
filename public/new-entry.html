@@ -33,7 +33,7 @@
 
     <!-- START NAV -->
     <nav>
-        <div class="nav-wrapper orange darken-1">
+        <div class="nav-wrapper custom-nav">
             <a href="fridge.html" class="brand-logo">Fridge Face</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li>
@@ -45,92 +45,101 @@
     <!-- END NAV -->
 
     <!-- START FORM -->
-    <h4 class="center">Add New Item</h4>
-    <div class="container">
-        <form>
-            <!-- NAME SHOULD USE AUTO-COMPLETE, WITH INITIALIZATION-->
-            <div class="row">
-                <div class="input-field col l6 s10 offset-l3 offset-s1">
-                    <input id="emailAddress" type="text" class="autocomplete">
-                    <label for="emailAddress">Email Address</label>
-                </div>
-            </div>
-            <br>
-            <hr>
-            <br>
-            <!-- ADD PHOTO -->
-            <div class="row">
-                <div class="center-align">
-                    <div id="upload_widget_opener" class="btn orange darken-1">
-                        <span>Take Photo</span>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="center-align">
-                    <img src="http://placehold.it/200x200" alt="photo preview" class="photoPreview" id="photoPreview">
-                    <h6 class="center-align">Image Preview</h6>
-                </div>
-            </div>
-            <br>
-            <hr>
-            <br>
-            <!-- CATEGORY -->
-            <div class="row">
-                <h5 class="center-align">Select Category</h5>
-                <p class="center equal-margins">
-                    <input name="group1" type="radio" id="personalCat" checked/>
-                    <label for="personalCat">Personal</label>
-                    <input name="group1" type="radio" id="communityCat" />
-                    <label for="communityCat">Community</label>
-                    <input name="group1" type="radio" id="eventCat" />
-                    <label for="eventCat">Event</label>
-                </p>
-            </div>
-            <br>
-            <hr>
-            <br>
-            <!-- DAYS UNTIL EXPERATION -->
-            <div class="row center-align">
-                <label for="datePicker">Number of Days Until Expiration</label>
-            </div>
-            <div class="row">
-                <div class="datepicker col l4 s6 offset-l4 offset-s3 xs12">
+    <div style="background-color:#4E4E4E" class="center-align">
+        <h4 class="section-header">ENTER EMAIL</h4>
+    </div>
 
-                    <!-- <p class="range-field">
-                        <input type="range" id="datePicker" class="active" min="1" max="5" />
-                    </p> -->
-                    <!-- <label>Number of Days Until Expiration</label> -->
-                    <select class="browser-default">
-                      <option value="1">1 day</option>
-                      <option value="2">2 days</option>
-                      <option value="3" selected>3 days</option>
-                      <option value="4">4 days</option>
-                      <option value="5">5 days</option>
-                    </select>
-                </div>
+    <div class="full-width">
+      <div class="container">
+          <div class="input-field col l6 s10 offset-l3 offset-s1">
+              <input id="emailAddress" type="text" class="autocomplete">
+              <label for="emailAddress">Email Address</label>
+          </div>
+      </div>
+    </div>
 
-            </div>
-            <hr>
+    <div style="background-color:#4E4E4E" class="center-align">
+        <h4 class="section-header">TAKE PHOTO</h4>
+    </div>
 
-            <!-- COMMENTS -->
-            <div class="row">
-                <div class="input-field col s10 offset-s1">
-                    <textarea id="textarea1" class="materialize-textarea"></textarea>
-                    <label for="textarea1">Food Notes</label>
+    <div class="full-width">
+      <div class="container">
+        <div class="row">
+            <div class="center-align">
+                <div id="upload_widget_opener" class="btn">
+                    <span>Open Camera</span>
                 </div>
             </div>
+        </div>
+        <div class="row">
+            <div class="center-align">
+                <img src="images/photo_preview.png" alt="photo preview" class="photoPreview" id="photoPreview">
+            </div>
+        </div>
+      </div>
+    </div>
 
-            <div class="row center">
-                <div class="center-align">
-                    <div id="submitButton" class="btn orange darken-1">
-                        <span>Submit</span>
-                    </div>
+    <div style="background-color:#4E4E4E" class="center-align">
+        <h4 class="section-header">SELECT CATEGORY</h4>
+    </div>
+
+    <div class="full-width">
+      <div class="container">
+        <div class="row">
+            <p class="center equal-margins">
+                <input name="group1" type="radio" id="personalCat" checked/>
+                <label for="personalCat">Personal</label>
+                <input name="group1" type="radio" id="communityCat" />
+                <label for="communityCat">Community</label>
+                <input name="group1" type="radio" id="eventCat" />
+                <label for="eventCat">Event</label>
+            </p>
+        </div>
+      </div>
+    </div>
+
+    <div style="background-color:#4E4E4E" class="center-align">
+        <h4 class="section-header">SET EXPIRATION</h4>
+    </div>
+
+    <div class="full-width">
+      <div class="container">
+        <div class="row">
+            <div class="datepicker col l4 s6 offset-l4 offset-s3 xs12">
+                <select class="browser-default">
+                  <option value="1">1 day</option>
+                  <option value="2">2 days</option>
+                  <option value="3" selected>3 days</option>
+                  <option value="4">4 days</option>
+                  <option value="5">5 days</option>
+                </select>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background-color:#4E4E4E" class="center-align">
+        <h4 class="section-header">ADD NOTES & SUBMIT</h4>
+    </div>
+
+    <div class="full-width">
+      <div class="container">
+        <div class="row">
+            <div class="input-field col s10 offset-s1">
+                <textarea id="textarea1" class="materialize-textarea"></textarea>
+                <label for="textarea1">Food Notes</label>
+            </div>
+        </div>
+        <div class="row center">
+            <div class="center-align">
+                <div id="submitButton" class="btn">
+                    <span>Submit</span>
                 </div>
             </div>
-        </form>
+        </div>
+      </div>
     </div>
     <!-- END FORM -->
-</body>
+  </body>
 
 </html>
