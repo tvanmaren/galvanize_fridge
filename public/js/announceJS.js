@@ -36,7 +36,7 @@ $('#submitNewAnnounce').click(function(){
 
   var newAnnounce = {
     title: $('#newAnnounceTitle').val(),
-    content: $('#newAnnounceContent').val()
+    content: $('#newAnnounceContent').val(),
   };
   console.log(newAnnounce.title);
   console.log(newAnnounce.content);
@@ -68,6 +68,7 @@ function generateAnnnouncements(title, content) {
     <div class="row announcementRow">
       <p class="announcementP">${title}:</p>
       <p class="announcementP">${content}</p>
+      <p class="announcementP">From: </p>
       <a class="btn-floating btn-small waves-effect waves-light orange" id="deleteAnnounce"><i class="material-icons">delete</i></a>
     </div>
     <br>
