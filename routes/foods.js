@@ -27,15 +27,6 @@ router.get('/foods', (req, res, next) => {
     });
 });
 
-router.get('/foods/:id', (req, res, _next) => {
-  knex('foods')
-    .where('active', true)
-    .andWhere('user_id', req.params.id)
-    .then((items) => {
-      res.send(items);
-    });
-});
-
 router.get('/foods/personal', (req, res, next) => {
   knex('foods')
     .where('active', true)
@@ -58,6 +49,15 @@ router.get('/foods/event', (req, res, next) => {
   knex('foods')
     .where('active', true)
     .andWhere('category', 3)
+    .then((items) => {
+      res.send(items);
+    });
+});
+
+router.get('/foods/:id', (req, res, _next) => {
+  knex('foods')
+    .where('active', true)
+    .andWhere('user_id', req.params.id)
     .then((items) => {
       res.send(items);
     });

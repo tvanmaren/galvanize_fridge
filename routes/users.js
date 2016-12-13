@@ -60,8 +60,8 @@ router.get('/useremails', (req, res, next) => {
     })
     .catch((err) => {
       next(err);
-    })
-})
+    });
+});
 
 router.post('/users', (req, res, next) => {
     const {
