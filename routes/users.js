@@ -39,23 +39,27 @@ router.get('/users', (req, res, next) => {
     });
 });
 
-router.get('/users?:id', (req, res, next) => {
+router.get('/users?email=:email&id=:id', (req, res, next) => {
+  let id = req.params.id || '*';
+  let email = req.params.email || '*';
   knex('users')
-    .where('id', req.params.id)
+    .where({'id': id, 'email': email})
     .first()
     .then((result) => {
+      console.log('RESULT:',result);
       delete result.hashed_password;
       const user = camelizeKeys(result);
       res.send(user);
     })
     .catch((err) => {
+      console.error(err);
       next(err);
     });
 });
 
 router.get('/users/self/', authorize, (req, res, next) => {
   knex('users')
-    .where('id', decoded.userId)
+    .where('id', req.token.userId)
     .first()
     .then((result) => {
       delete result.hashed_password;

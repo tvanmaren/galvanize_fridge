@@ -47,37 +47,44 @@ function submitForm() {
 
   var category = "";
   if ($("#personalCat").prop("checked")) {
-    category = "personalCat";
+    category = 1;
   } else if ($("#communityCat").prop("checked")) {
-    category = "communityCat";
+    category = 2;
   } else if ($("#eventCat").prop("checked")){
-    category = "eventCat";
+    category = 3;
   }
-
+  let email=$("#emailAddress").val();
+  
   var newFood = {
-    email: $("#emailAddress").val(),
-    image_url: photoURL,
+    imageUrl: photoURL,
     category: category,
     expiration: expirationVal,
     comments: $("#textarea1").val()
   };
 
-  if (!newFood.email) {
+  if (!email) {
     Materialize.toast('Please enter email', 3000);
-  } else if (!newFood.image_url) {
-    Materialize.toast('Please take a photo of your food', 3000)
+  } else if (!newFood.imageUrl) {
+    Materialize.toast('Please take a photo of your food', 3000);
   } else {
-    var $xhr = $.ajax({
-      type: "POST",
-      url: "/foods",
-      data: newFood,
-      success: function(result) {
-        console.log("post successful ", result);
-        window.location.href = '../fridge.html';
-      }
-    });
-
-    $xhr.fail((err) => {
+    $.getJSON(`/users?email=${email}`)
+    .done((userData) =>{
+      newFood['userId']=userData.id;
+      console.log('New Food Item',newFood);
+      var $xhr = $.ajax({
+        type: "POST",
+        url: "/foods",
+        data: newFood,
+        success: function(result) {
+          console.log("post successful ", result);
+          window.location.href = '../fridge.html';
+        }
+      });
+      $xhr.fail((err) => {
+        console.error(err);
+      });
+    })
+    .fail((err)=>{
       console.error(err);
     });
   }
