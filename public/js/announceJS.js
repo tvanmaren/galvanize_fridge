@@ -1,6 +1,6 @@
 'use strict';
 var userID;
-var userName;
+// var userName;
 
 
 $(function() {
@@ -9,7 +9,7 @@ $(function() {
   $announceDiv.css({'height': 'auto'});
   $.getJSON('/announce').done((data) => {
     data.map((announce) => {
-      generateAnnnouncements(announce.title, announce.content, announce.userId);
+      generateAnnnouncements(announce.title, announce.content, announce.firstName);
     });
   });
 
@@ -37,65 +37,62 @@ $('#addAnnounce').click(function(){
 
 $('#submitNewAnnounce').click(function(){
 
-  //TODO GET req. w/ email passed into url, returns user name to add to
-  
+  var requests = [];
   var email = $('#emailAddressAnnouncement').val();
-  var $xhr = $.ajax({
+  requests.push($.ajax({
     type: "GET",
     url: `/users/${email}`,
-    data: newAnnounce,
     success: function(result) {
       console.log("get user by email successful");
-      userName = result.firstName;
-      userID = result.id;
-      console.log(userName, 'id: ', userID);
-
-      // window.location.href = '../fridge.html';
+    },
+    error: function(err) {
+      console.error(err);
     }
-  });
-
+  }));
   //TODO wrap POST in promise, only POST once GET '/users/email' returns
 
-  $xhr.fail((err) => {
-    console.error(err);
-  });
+  // console.log('newAnnounce obj- ', newAnnounce);
+  // if (!newAnnounce.title) {
+  //   Materialize.toast('Label your announcement!', 3000);
+  // } else if (!newAnnounce.content) {
+  //   Materialize.toast('Actually include an announcement!', 3000);
+  // }
+  // else
+  // {
+  Promise.all(requests).then(function(results){
+    userID = parseInt(results[0].id);
+    // userName = results[0].firstName;
+    var newAnnounce = {
+      title: $('#newAnnounceTitle').val(),
+      content: $('#newAnnounceContent').val(),
+      userId: userID
+    };
 
-
-  var newAnnounce = {
-    title: $('#newAnnounceTitle').val(),
-    content: $('#newAnnounceContent').val(),
-    userId: userID
-  };
-  console.log('newAnnounce obj- ', newAnnounce);
-  if (!newAnnounce.title) {
-    Materialize.toast('Label your announcement!', 3000);
-  } else if (!newAnnounce.content) {
-    Materialize.toast('Actually include an announcement!', 3000);
-  } else {
-    var $xhr = $.ajax({
-      type: "POST",
-      url: "/announce",
-      data: newAnnounce,
-      success: function(result) {
-        console.log("post successful ", result);
-        window.location.href = '../fridge.html';
-      }
-    });
-
-    $xhr.fail((err) => {
+    $.ajax({
+    type: "POST",
+    url: "/announce",
+    data: newAnnounce,
+    success: function(result) {
+      console.log("post successful ", result);
+      window.location.href = '../fridge.html';
+    },
+    error: function(err){
       console.error(err);
-    });
-  }
+    }
+  });
+  });
+    // }
+
 });
 
-function generateAnnnouncements(title, content, userId) {
+function generateAnnnouncements(title, content, name) {
   var $announceDiv = $('#announcementsDiv');
 
   var newAnnounce = `
     <div class="row announcementRow">
       <p class="announcementP">${title}:</p>
       <p class="announcementP">${content}</p>
-      <p class="announcementP">From: ${userId}</p>
+      <p class="announcementP">From: ${name}</p>
       <a class="btn-floating btn-small waves-effect waves-light orange" id="deleteAnnounce"><i class="material-icons">delete</i></a>
     </div>
     <br>
