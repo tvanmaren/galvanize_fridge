@@ -14,7 +14,7 @@ $(
           console.log('response:', response);
           console.log('status:', xhr.status);
           if (xhr.status === 200) {
-            Materialize.toast('Login successful', 1000);
+            // Materialize.toast('Login successful', 1000);
             setTimeout(()=>{window.location.replace('/fridge.html');}, 1500);
           } else {
             $('#email').val('');
@@ -22,7 +22,7 @@ $(
           }
         },
         (error) => {
-          Materialize.toast('Login failed');
+          Materialize.toast('Login failed', 1000);
           $('#password').val('');
           console.error("ERROR", error);
         });
