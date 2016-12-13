@@ -27,7 +27,7 @@ router.get('/foods', (req, res, next) => {
     });
 });
 
-router.get('/foods/personal', (req, res, next) => {
+router.get('/foods/personal', (req, res, _next) => {
   knex('foods')
     .where('active', true)
     .andWhere('category', 1)
@@ -36,7 +36,7 @@ router.get('/foods/personal', (req, res, next) => {
     });
 });
 
-router.get('/foods/community', (req, res, next) => {
+router.get('/foods/community', (req, res, _next) => {
   knex('foods')
     .where('active', true)
     .andWhere('category', 2)
@@ -45,7 +45,7 @@ router.get('/foods/community', (req, res, next) => {
     });
 });
 
-router.get('/foods/event', (req, res, next) => {
+router.get('/foods/event', (req, res, _next) => {
   knex('foods')
     .where('active', true)
     .andWhere('category', 3)
@@ -54,12 +54,16 @@ router.get('/foods/event', (req, res, next) => {
     });
 });
 
-router.get('/foods/:id', (req, res, _next) => {
+router.get('/foods?userId=:id', (req, res, _next) => {
+  console.log('ID:',req.params.id);
   knex('foods')
-    .where('active', true)
-    .andWhere('user_id', req.params.id)
+    .where({'active': true, 'user_id': req.params.id})
     .then((items) => {
+      console.log(req.params.id,items);
       res.send(items);
+    })
+    .catch((err)=>{
+      console.error(err);
     });
 });
 
