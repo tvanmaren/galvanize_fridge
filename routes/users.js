@@ -26,6 +26,9 @@ router.get('/users', (req, res, next) => {
   knex('users')
     .orderBy('id')
     .then((result) => {
+      result.forEach((user) => {
+        delete user.hashed_password;
+      });
       const users = camelizeKeys(result);
       res.send(users);
     })
@@ -39,6 +42,7 @@ router.get('/users?:id', (req, res, next) => {
     .where('id', req.params.id)
     .first()
     .then((result) => {
+      delete result.hashed_password;
       const user = camelizeKeys(result);
       res.send(user);
     })
@@ -56,6 +60,7 @@ router.get('/users/self/', (req, res, next) => {
       .where('id', decoded.userId)
       .first()
       .then((result) => {
+        delete result.hashed_password;
         const user = camelizeKeys(result);
         res.send(user);
       })
