@@ -27,13 +27,8 @@ router.get('/foods', (req, res, next) => {
     });
 });
 
-router.get('/foods?catId=:catId&catName=:catName', (req, res, next) => {
-  const categories = {
-    'personal': 1,
-    'community': 2,
-    'event': 3
-  };
-  const catId = req.params.catId || categories[req.params.catName];
+router.get('/foods?catId=:catId', (req, res, next) => {
+  const catId = req.params.catId;
   knex('foods')
     .where('active', true)
     .andWhere('category', catId)

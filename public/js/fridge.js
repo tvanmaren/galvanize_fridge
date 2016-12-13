@@ -21,75 +21,42 @@ $(function() {
         }
     });
 
-    var $foodDiv = $('#foodCards');
-
-    $foodDiv.css({
-        'height': '800px'
-    });
-
+    var foodsJSON;
     //generate cards on page load
     $.getJSON('/foods')
         .done((data) => {
-            data.map((item) => {
-                generateCards(item.id, item.user_id, item.image_url, item.comments, item.category);
-            });
+            foodsJSON = data;
+            generateCards(data);
         })
         .fail((err) => {
             console.error(err);
         });
 
-    //Radio Button Listeners
+    //Radio Button Listeners (Sorting fridge cards);
     $('#allCat').click(function() {
         $('#foodCards').empty();
-        $.getJSON('/foods')
-            .done((data) => {
-                data.map((item) => {
-                    generateCards(item.id, item.user_id, item.image_url, item.comments, item.category);
-                });
-            })
-            .fail((err) => {
-                console.error(err);
-            });
+        generateCards(foodsJSON);
     });
 
     $('#personalCat').click(function() {
         $('#foodCards').empty();
-        $.getJSON('/foods?catId=1')
-            .done((data) => {
-                data.map((item) => {
-                    generateCards(item.id, item.user_id, item.image_url, item.comments, item.category);
-                });
-            })
-            .fail((err) => {
-                console.error(err);
-            });
+        generateCards(foodsJSON.filter((obj) => {
+          return obj.category === 1;
+        }));
     });
 
     $('#communityCat').click(function() {
         $('#foodCards').empty();
-        $.getJSON('/foods?catId=2')
-            .done((data) => {
-                data.map((item) => {
-                    generateCards(item.id, item.user_id, item.image_url, item.comments, item.category);
-                });
-            })
-            .fail((err) => {
-                console.error(err);
-            });
+        generateCards(foodsJSON.filter((obj) => {
+          return obj.category === 2;
+        }));
     });
-
 
     $('#eventCat').click(function() {
         $('#foodCards').empty();
-        $.getJSON('/foods?catId=3')
-            .done((data) => {
-                data.map((item) => {
-                    return generateCards(item.id, item.user_id, item.image_url, item.comments, item.category);
-                });
-            })
-            .fail((err) => {
-                console.error(err);
-            });
+        generateCards(foodsJSON.filter((obj) => {
+          return obj.category === 3;
+        }));
     });
 
     // LOGOUT
@@ -98,35 +65,38 @@ $(function() {
     });
 });
 
-function generateCards(id, user_id, image_url, comments, category) {
+function generateCards(jsonObject) {
     var $foodDiv = $('#foodCards');
-    var categoryName = setCategory(category);
 
-    var newCard = `
-        <div class="col s4">
-          <div class="card">
-            <div class="card-image">
-              <img src="${image_url}">
-            </div>
-            <div class="card-content">
-              <p>${comments}</p>
-            </div>
-            <div class="card-action">
-              <a><i class="delete-food material-icons food-action" id="${id}">delete</i></a>
-              <a><i class="material-icons food-action" value="${id}">create</i></a>
-              <span class="new badge orange">${categoryName}</span>
-            </div>
-          </div>
-        </div>
-`;
+    jsonObject.map((obj) => {
+      var categoryName = setCategory(obj.category);
 
-    $foodDiv.append(newCard);
+      var newCard = `
+      <div class="col s4">
+      <div class="card">
+      <div class="card-image">
+      <img src="${obj.image_url}">
+      </div>
+      <div class="card-content">
+      <p>${obj.comments}</p>
+      </div>
+      <div class="card-action">
+      <a><i class="delete-food material-icons food-action" id="${obj.id}">delete</i></a>
+      <a><i class="material-icons food-action" value="${obj.id}">create</i></a>
+      <span class="new badge orange">${categoryName}</span>
+      </div>
+      </div>
+      </div>
+      `;
 
-    var Id = `#${id}`;
+      $foodDiv.append(newCard);
 
-    $(Id).click(function() {
+      var Id = `#${obj.id}`;
+
+      $(Id).click(function() {
         console.log($(this).attr('id'));
         deleteItem($(this).attr('id'));
+      });
     });
 }
 
