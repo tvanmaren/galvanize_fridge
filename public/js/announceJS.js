@@ -9,6 +9,17 @@ $(function() {
   $announceDiv.css({'height': 'auto'});
   $.getJSON('/announce').done((data) => {
     data.map((announce) => {
+      $.ajax({
+        type: "GET",
+        url: `/users/${announce.userId}`,
+        success: function(result) {
+          console.log("get user by email successful");
+
+        },
+        error: function(err) {
+          console.error(err);
+        }
+      })
       generateAnnnouncements(announce.title, announce.content, announce.firstName);
     });
   });

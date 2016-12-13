@@ -65,3 +65,7 @@ label{
   color:orange;
   transform: scale(1.5);
 }
+
+.btn {
+  color: white !important;
+}
