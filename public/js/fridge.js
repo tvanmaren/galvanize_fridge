@@ -154,16 +154,12 @@ function setCategory(catID) {
   switch (catID) {
   case 1:
     return 'Personal';
-    break;
   case 2:
     return 'Community';
-    break;
   case 3:
     return 'Event';
-    break;
   default:
     return 'Personal';
-    break;
   }
 }
 
