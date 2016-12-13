@@ -132,7 +132,7 @@ function deleteItem(id) {
 
 function checkFridgeStats() {
   $('#name').text(`Fridge History`);
-  $.getJSON("/users")
+  $.getJSON("/users/")
     .then((userList) => {
       $('#content').empty();
       userList.forEach((user) => {
