@@ -1,7 +1,6 @@
 'use strict';
 
 $(function() {
-
     let admin;
     //check if I'm an admin, and assign that to a global
     $.getJSON('/users/self')
@@ -41,21 +40,21 @@ $(function() {
     $('#personalCat').click(function() {
         $('#foodCards').empty();
         generateCards(foodsJSON.filter((obj) => {
-          return obj.category === 1;
+            return obj.category === 1;
         }));
     });
 
     $('#communityCat').click(function() {
         $('#foodCards').empty();
         generateCards(foodsJSON.filter((obj) => {
-          return obj.category === 2;
+            return obj.category === 2;
         }));
     });
 
     $('#eventCat').click(function() {
         $('#foodCards').empty();
         generateCards(foodsJSON.filter((obj) => {
-          return obj.category === 3;
+            return obj.category === 3;
         }));
     });
 
@@ -69,9 +68,9 @@ function generateCards(jsonObject) {
     var $foodDiv = $('#foodCards');
 
     jsonObject.map((obj) => {
-      var categoryName = setCategory(obj.category);
+        var categoryName = setCategory(obj.category);
 
-      var newCard = `
+        var newCard = `
       <div class="col s4">
       <div class="card">
       <div class="card-image">
@@ -89,14 +88,14 @@ function generateCards(jsonObject) {
       </div>
       `;
 
-      $foodDiv.append(newCard);
+        $foodDiv.append(newCard);
 
-      var Id = `#${obj.id}`;
+        var Id = `#${obj.id}`;
 
-      $(Id).click(function() {
-        console.log($(this).attr('id'));
-        deleteItem($(this).attr('id'));
-      });
+        $(Id).click(function() {
+            console.log($(this).attr('id'));
+            deleteItem($(this).attr('id'));
+        });
     });
 }
 
