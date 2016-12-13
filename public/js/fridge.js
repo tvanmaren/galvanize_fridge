@@ -20,6 +20,11 @@ $(function () {
   });
 });
 
+
+  //Click on User Icon
+// $('#checkUser').click(function() {
+//   checkUserInfo()
+// })
 //Radio Button Listeners
 $('#allCat').click(function () {
   $('foodCards').empty();

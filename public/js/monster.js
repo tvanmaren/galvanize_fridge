@@ -33,3 +33,6 @@ function AJAX_JSON_Req( url )
     AJAX_req.onreadystatechange = handle_AJAX_Complete;
     AJAX_req.send();
 }
+
+// On click, load differen Json files when an animation completes?
+// Keep the animations small enough that it wont look like a huge delay

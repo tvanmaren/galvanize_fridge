@@ -8,10 +8,11 @@ exports.seed = function(knex, Promise) {
         // Inserts seed entries
         knex('users').insert({
           id: 1,
-          first_name: 'Master Mason',
-          last_name: 'Admin',
-          email: 'mason@galvanize.com',
-          hashed_password: '$2a$12$awS7JbhTyfgDlw2Q06CqNOdhvALQRRG0uScHhO6XPSs3UbzdlfjZS',
+          first_name: 'Fridge',
+          last_name: 'Fridge',
+          email: 'fridge@galvanize.com',
+          hashed_password: '$2a$12$HgcZ3mkA8hSL7laPNTyO5OJvi75VoVuVrb1LbMAwN3LBi.Y/LmAlq',
+          //Password: iamthefridge
           is_admin: true
         }),
         knex('users').insert({
