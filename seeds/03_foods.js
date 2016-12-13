@@ -11,7 +11,7 @@ exports.seed = function(knex, Promise) {
           user_id: 3,
           image_url: 'https://res.cloudinary.com/dgt2xab7d/image/upload/v1481581975/beufn9spj6t6yksjgfp1.jpg',
           comments: 'My lunch for Monday',
-          expiration: 1481665951054,
+          expiration: 1481765951054,
           category: 1,
         }),
         knex('foods').insert({
@@ -19,7 +19,7 @@ exports.seed = function(knex, Promise) {
           user_id: 1,
           image_url: 'https://res.cloudinary.com/dgt2xab7d/image/upload/v1481582367/cc7ooxvxjyb5cpi4w6rj.jpg',
           comments: 'Milk for everyone',
-          expiration: 1481841502011,
+          expiration: 1000000,
           category: 2,
         }),
         knex('foods').insert({
@@ -27,7 +27,7 @@ exports.seed = function(knex, Promise) {
           user_id: 4,
           image_url: 'https://res.cloudinary.com/dgt2xab7d/image/upload/v1481582289/tv3mhn3p0ukyoiz73fjj.jpg',
           comments: 'Water for the Galvanize Holiday Party',
-          expiration: 1482014379766,
+          expiration: Date.now(),
           category: 3,
         }),
       ]);
