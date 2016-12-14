@@ -65,8 +65,12 @@
         <div id="dropNav" class="nav-wrapper" style="background-color:#4E4E4E; display:none">
             <div class="row" style="background-color: #74CFAE;">
                 <div class="right-align">
+                  <a class="dropdown-button btn" style="background-color:#F2F2F2; margin-right:20px;" data-activates="userSelect">Users</a>
 
-                    <a class="dropdown-button btn" style="background-color:#F2F2F2; margin-right:20px;" data-activates="categorySelect">Users</a>
+                  <ul id="userSelect" class="dropdown-content">
+                  </ul>
+                  
+                    <a class="dropdown-button btn" style="background-color:#F2F2F2; margin-right:20px;" data-activates="categorySelect">Categories</a>
 
                     <ul id="categorySelect" class="dropdown-content">
                         <li><a class="dropdown-item" id="allCat">All Food</a></li>
@@ -75,11 +79,7 @@
                         <li><a class="dropdown-item" id="eventCat">Event Food</a></li>
                     </ul>
 
-                    <a class="dropdown-button btn" style="background-color:#F2F2F2; margin-right:20px;" data-activates="categorySelect">Categories</a>
 
-                    <ul id="userSelect" class="dropdown-content">
-                        <li><a class="dropdown-item" id="all">All Food</a></li>
-                    </ul>
                 </div>
             </div>
         </div>
