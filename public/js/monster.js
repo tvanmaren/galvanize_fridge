@@ -21,7 +21,7 @@ $(function() {
 });
 
 
-
+// var jsonfile = "fridge_monster/fridge_monster_large.json",
 var jsonfile = "fridge_monster/fridge_monster_large.json",
 fps = 24,
 width = 800,
