@@ -28,7 +28,6 @@
 
     <!-- Custom JS Functionality -->
     <script type="text/javascript" src="js/fridge.js" defer></script>
-    <script type="text/javascript" src="js/announceJS.js" defer></script>
     <script type="text/javascript" src="js/navbar.js" defer></script>
 
     <!-- Animation Scripts -->
@@ -51,12 +50,14 @@
             <a href="fridge.html" class="brand-logo">Fridge Face</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
+                <li><a href="announce.html"><i class="large material-icons" id="settings">announcement</i></a></li>
                 <li><a href="new-entry.html"><i class="large material-icons" id="checkUser">add</i></a></li>
                 <li><a href="index.html" class="logout" style="color:#4E4E4E">Logout</a></li>
                 <li><a><i class="large material-icons" id="settings">settings</i></a></li>
             </ul>
 
             <ul class="side-nav" id="mobile-demo">
+                <li><a href="announce.html">Announcements</a></li>
                 <li><a href="new-entry.html">Add Food</a></li>
                 <li><a href="index.html" class="logout">Logout</a></li>
                 <li><a href="#adminPanel">Settings</a></li>
@@ -134,8 +135,8 @@
     <!-- <div id="modal1" class="modal modal-fixed-footer">
         <div class="modal-content">
             <h4>Add Announcement</h4> -->
-            <!-- ADD FORM HERE -->
-            <!-- <form class="row">
+    <!-- ADD FORM HERE -->
+    <!-- <form class="row">
                 <div class="input-field col s6">
                     <input id="emailAddressAnnouncement" type="text" class="autocomplete">
                     <label for="emailAddressAnnouncement">Email Address</label>
@@ -193,12 +194,12 @@
 
     <!-- END SETTING/ADD BAR -->
 
-  <div class="center-align">
-      <h4 class="section-header">FRIDGE CONTENTS</h4>
-  </div>
-  <div class="full-width top-padding bottom-padding">
-    <div id="foodCards" class="row custom-row"></div>
-  </div>
+    <div class="center-align">
+        <h4 class="section-header">FRIDGE CONTENTS</h4>
+    </div>
+    <div class="full-width top-padding bottom-padding">
+        <div id="foodCards" class="row custom-row"></div>
+    </div>
 </body>
 
 </html>
