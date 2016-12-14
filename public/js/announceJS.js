@@ -76,6 +76,8 @@ $('#submitNewAnnounce').click(function(){
       Materialize.toast('Label your announcement!', 3000);
     } else if (!newAnnounce.content) {
       Materialize.toast('Actually include an announcement!', 3000);
+    } else if(newAnnounce.content.length > 50) {
+      Materialize.toast('Content must be under 50 characters', 3000);
     }
     else{
       $.ajax({
@@ -143,6 +145,8 @@ $('#submitEditAnnounce').click(function(){
     Materialize.toast('Label your announcement!', 3000);
   } else if (!editAnnounce.content) {
     Materialize.toast('Actually include an announcement!', 3000);
+  } else if(editAnnounce.content.length > 50) {
+    Materialize.toast('Content must be under 50 characters', 3000);
   }
   else{
     $.ajax({
