@@ -31,6 +31,7 @@ h4 {
   width: 100%;
 }
 
+
 .top-padding{
   padding-top: 20px
 }
@@ -55,6 +56,7 @@ h4 {
 
 .section-header {
   /*font-weight: ;*/
+  background-color:#4E4E4E;
   color: #F2F2F2;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -68,4 +70,12 @@ h4 {
   display: flex;
   flex-flow: column;
   justify-content: center;
+}
+
+.fridge-face {
+  background-color:#74CFAE;
+}
+
+.nav-options {
+  color: #4E4E4E !important;
 }
