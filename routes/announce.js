@@ -50,8 +50,6 @@ router.get('/announce/:id', (req, res, next) => {
 
 
 router.post('/announce', (req,res,next) =>{
-  //TODO include email in header, use token to get user_id
-  //TODO fill out js/html to grab/set header
   const {
       title,
       content,
@@ -93,8 +91,50 @@ router.post('/announce', (req,res,next) =>{
     });
 });
 
+
+router.patch('/announce/:id', (req, res, next) => {
+  var announceId = Number.parseInt(req.params.id);
+
+  if (Number.isNaN(announceId)) {
+    return next(boom.create(400, 'Announcement id isNaN'));
+  }
+
+  knex('announcements')
+    .where('id', announceId)
+    .first()
+    .then((announce) => {
+      if (!announce) {
+        throw boom.create(404, 'Not Found');
+      }
+
+      const { title, content } = req.body;
+      const updateAnnouncement = {};
+
+      if (title) {
+        updateAnnouncement.title = title;
+      }
+
+      if (content) {
+        updateAnnouncement.content = content;
+      }
+
+      return knex('announcements')
+        .update(decamelizeKeys(updateAnnouncement), '*')
+        .where('id', announceId);
+    })
+    .then((rows) => {
+      const announcement = camelizeKeys(rows[0]);
+
+      res.send(announcement);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
+
 router.delete('/announce/:id', (req, res, next) =>{
-  const announceId = Number.parseInt(req.params.id);
+  var announceId = Number.parseInt(req.params.id);
 
   let toDelete;
 
