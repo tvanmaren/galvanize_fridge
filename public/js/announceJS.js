@@ -40,7 +40,7 @@ $('#submitNewAnnounce').click(function(){
   var email = $('#emailAddressAnnouncement').val();
   requests.push($.ajax({
     type: "GET",
-    url: `/emails/${email}`,
+    url: `/users?email=${email}`,
     success: function() {
       console.log("get user by email successful");
     },
