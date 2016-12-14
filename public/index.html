@@ -1,79 +1,72 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
+<head>
     <meta charset="utf-8">
-    <title>Fridge Face Login</title>
-    <!-- Main login/landing page. If the user has a token they will be redirected to fridge.html -->
+    <title>Fridge</title>
+    <!-- Main fridge view page for both users and the fridge account -->
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js" defer></script>
 
     <!-- materialize CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Materialize JS -->
+    <script src="js/materialize-movement.js" charset="utf-8" defer></script>
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 
     <!-- Custom Stylesheets -->
     <link rel="stylesheet" href="styles/materialize-overwrite.css">
+    <!-- <link rel="stylesheet" href="styles/monster.css"> -->
     <link rel="stylesheet" href="styles/newStyles.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
+    <!-- Custom JS Functionality -->
+    <script type="text/javascript" src="js/fridge.js" defer></script>
+    <script type="text/javascript" src="js/navbar.js" defer></script>
 
-  </head>
+    <!-- Animation Scripts -->
+    <script src="./SnapSVGAnimator/js/vendor/snap.svg/snap.svg-min.js" defer></script>
+    <script src="./SnapSVGAnimator/js/SnapSVGAnimator.min.js" defer></script>
+    <script src="js/monster.js" defer>
+    </script>
 
-  <body style="background-color:#B4EDD8">
+    <!-- Ticker Scripts -->
+    <!-- <script src="http://code.jquery.com/jquery-1.10.1.min.js" defer></script> -->
+    <script src="./js/jquery.newsTicker.js" charset="utf-8" defer></script>
+    <script src="./js/announcementTicker.js" defer></script>
+</head>
+
+<body style="background-color:#74CFAE">
+
+    <!-- NAVIGATION BAR -->
     <nav class="z-depth-0">
         <div class="nav-wrapper custom-nav">
 
             <a href="index.html" class="brand-logo">Fridge Face</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li class="active"><a href="index.html" style="color:#4E4E4E">Login</a></li>
+                <li class="active"><a href="login.html" style="color:#4E4E4E">Login</a></li>
                 <li><a href="register.html" style="color:#4E4E4E">Register</a></li>
             </ul>
             <ul class="side-nav" id="mobile-demo">
-                <li class="active"><a href="index.html">Login</a></li>
+                <li class="active"><a href="login.html">Login</a></li>
                 <li><a href="register.html">Register</a></li>
             </ul>
         </div>
     </nav>
+    <!-- END NAVIGATION BAR -->
+
+    <div id="svg_container" class="fridge-face center-align" style="background-color:#74CFAE"></div>
 
 
 
-    <h2 class="center">Log In</h2>
 
-    <div class="row">
-      <form class="login col s12">
-        <div class="row">
-          <div class="input-field col l6 s12 offset-l3">
-            <input id="email" type="email" class="validate">
-            <label for="email">Email</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col l6 s12 offset-l3">
-            <input id="password" type="password" class="validate">
-            <label for="password">Password</label>
-          </div>
-        </div>
-        <div class="row">
+</body>
 
-          <div class="input-field col l6 s12 offset-l3 center-align">
-            <button class="btn waves-effect waves-light" type="submit" name="action" method="post">Login
-        </button>
-          </div>
-        </div>
-      </form>
-    </div>
-
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="./js/materialize-movement.js" charset="utf-8" defer></script>
-
-
-    <!-- script to submit form data and store token in sessionStorage -->
-    <script type="text/javascript" src="/js/getToken.js"></script>
-
-  </body>
 </html>
