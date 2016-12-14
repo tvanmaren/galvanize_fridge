@@ -4,10 +4,10 @@ $(document).ready(function () {
 })
 
 $('.newsticker').newsTicker({
-    row_height: 20,
-    max_rows: 1,
+    row_height: 27,
+    max_rows: 2,
     speed: 600,
-    direction: 'up',
+    direction: 'down',
     duration: 4000,
     autostart: 1,
     pauseOnHover: 0
