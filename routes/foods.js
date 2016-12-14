@@ -83,4 +83,13 @@ router.delete('/foods/:id', (req, res, next) => {
     });
 });
 
+//get all user with food currently in the fridge
+router.get('/foods/users', (req, res, next) => {
+  knex('foods')
+  .where('active', true)
+  .then((items) => {
+
+  });
+});
+
 module.exports = router;

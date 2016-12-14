@@ -19,11 +19,13 @@ $(function() {
   $('body').css({
     'padding-top': $('#navBar').height(),
   });
+
+  
 });
 
 $(window).scroll(function() {
     // console.log($(this).scrollTop());
-    var secondPhase = $('.second-phase').offset().top - $('.second-phase').height();
+    var secondPhase = $('.second-phase').offset().top - $('.second-phase').height() - 20;
 
     if($(this).scrollTop() > secondPhase) {
       $('#mainNav').css({"box-shadow": '0 0 10px 0 rgba(0,0,0,0.3)'});

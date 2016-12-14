@@ -35,6 +35,7 @@ console.log('getting to fridge.js');
       console.error(err);
     });
 
+
   //Radio Button Listeners (Sorting fridge cards);
   $('#allCat').click(function () {
     $('#foodCards').empty();
@@ -230,4 +231,13 @@ function populateAnnouncements() {
             });
       });
     });
+}
+
+function getActiveUsers (data) {
+  var activeUsers = data.map((item) => {
+    return item.user_id;
+  });
+  return activeUsers.filter((elem, index, self) => {
+    return index === self.indexOf(elem);
+  });
 }
