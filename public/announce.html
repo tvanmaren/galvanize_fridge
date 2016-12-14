@@ -28,7 +28,7 @@
     <script type="text/javascript" src="js/announceJS.js" defer></script>
     <script src="./js/fridge.js" charset="utf-8" defer></script>
 
-    
+
 </head>
 
 <body>
@@ -42,7 +42,7 @@
                 <li><a href="fridge.html"><i class="large material-icons" id="settings">face</i></a></li>
                 <li class="active"><a href="announce.html"><i class="large material-icons" id="settings">announcement</i></a></li>
                 <li><a href="new-entry.html"><i class="large material-icons" id="checkUser">add</i></a></li>
-                <li><a href="index.html" class="logout" style="color:#4E4E4E">Logout</a></li>
+                <li><a href="login.html" class="logout" style="color:#4E4E4E">Logout</a></li>
                 <li><a href="#settingsPanel" class="settings"><i class="large material-icons" id="settings">settings</i></a></li>
             </ul>
 
@@ -50,7 +50,7 @@
               <li><a href="fridge.html">Fridge Face</a></li>
                 <li class="active"><a href="announce.html">Announcements</a></li>
                 <li><a href="new-entry.html">Add Food</a></li>
-                <li><a href="index.html" class="logout">Logout</a></li>
+                <li><a href="login.html" class="logout">Logout</a></li>
                 <li><a href="#settingsPanel" class="settings">Settings</a></li>
             </ul>
         </div>
@@ -86,8 +86,10 @@
     <div class="full-width top-padding" style="background-color:#B4EDD8">
         <div class="container" style="background-color:#B4EDD8">
             <a class="btn-floating btn-small waves-effect waves-light" id="addAnnounce"><i class="material-icons">add</i></a>
-            <!-- prepend here -->
-            <div id="announcementsDiv"></div>
+            <div class="row">
+              <!-- prepend here -->
+              <div id="announcementsDiv"></div>
+            </div>
         </div>
     </div>
 

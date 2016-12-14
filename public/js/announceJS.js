@@ -78,6 +78,8 @@ $('#submitNewAnnounce').click(function(){
       Materialize.toast('Actually include an announcement!', 3000);
     } else if(newAnnounce.content.length > 50) {
       Materialize.toast('Content must be under 50 characters', 3000);
+    } else if(newAnnounce.title.length > 35) {
+      Materialize.toast('Title must be under 35 characters', 3000);
     }
     else{
       $.ajax({
@@ -147,6 +149,8 @@ $('#submitEditAnnounce').click(function(){
     Materialize.toast('Actually include an announcement!', 3000);
   } else if(editAnnounce.content.length > 50) {
     Materialize.toast('Content must be under 50 characters', 3000);
+  } else if(editAnnounce.title.length > 35) {
+    Materialize.toast('Title must be under 35 characters', 3000);
   }
   else{
     $.ajax({
@@ -168,12 +172,12 @@ function generateAnnnouncements(data) {
   // data = GET result off all announcements
   var appendObj = {};
   var promises = [];
-  var dataBottom = data.length - 3;
-  if(data.length < 3){
-    dataBottom = 0;
-  }
+  // var dataBottom = data.length - 3;
+  // if(data.length < 3){
+  //   dataBottom = 0;
+  // }
   var sortedData = sortByKey(data, 'id');
-  for(var i=dataBottom; i<data.length; i++){
+  for(var i=0; i<data.length; i++){
     userID = sortedData[i].userId;
     appendObj[i] = {
       title: sortedData[i].title,
@@ -198,7 +202,7 @@ function generateAnnnouncements(data) {
     console.log('promiseAll result- ', result);
     console.log('appendObj- ', appendObj);
     var key = 0;
-    for(var i=dataBottom; i<data.length; i++){
+    for(var i=0; i<data.length; i++){
       appendObj[i].name = result[key].firstName;
       key++;
     }
@@ -224,7 +228,7 @@ function appendAnnounce(obj){
     // <br>
     // `;
 
-    var newAnnounceCard = `<div class="row">
+    var newAnnounceCard = `
         <div class="col s12 m6">
           <div class="card">
             <div class="card-content white-text">
@@ -237,8 +241,7 @@ function appendAnnounce(obj){
             <a class="edit" id="${idTag}" href="#"><i class="material-icons">edit</i></a>
             </div>
           </div>
-        </div>
-      </div>`;
+        </div>`;
 
     $announceDiv.prepend(newAnnounceCard);
   }
