@@ -20,19 +20,19 @@ $(function() {
     'padding-top': $('#navBar').height(),
   });
 
-  
+
 });
 
 $(window).scroll(function() {
     // console.log($(this).scrollTop());
-    var secondPhase = $('.second-phase').offset().top - $('.second-phase').height() - 20;
+    var initialize = $('navBar').height() + 10;
 
-    if($(this).scrollTop() > secondPhase) {
-      $('#mainNav').css({"box-shadow": '0 0 10px 0 rgba(0,0,0,0.3)'});
+    if($(this).scrollTop() > initialize) {
+      $('#mainNav').slideUp(200);
       $('#dropNav').slideDown(200);
     }
-    if($(this).scrollTop() < secondPhase) {
-      $('#mainNav').css({"box-shadow": '0 0 10px 0 rgba(0,0,0,0)'});
+    if($(this).scrollTop() < initialize) {
+      $('#mainNav').slideDown(200);
       $('#dropNav').slideUp(200);
     }
 });
