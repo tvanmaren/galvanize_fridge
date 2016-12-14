@@ -77,8 +77,8 @@ function generateCards(jsonObject) {
   jsonObject.map((obj) => {
     var categoryName = setCategory(obj.category);
 
+    var badgeColor = setStatus(obj.expiration);
     var exp = new Date(parseInt(obj.expiration));
-    var badgeColor = setStatus(exp);
 
     var newCard = `
       <div class="col s12 m6 l4">
@@ -198,12 +198,15 @@ function logout() {
 
 //checks for expired food
 function setStatus(expiration) {
-  expiration = parseInt((expiration/(1000*60*60*24)));
-  var now = parseInt((Date.now()/(1000*60*60*24)));
+  let dayInterval=(1000*60*60*24);
+  let dayExpires = Math.round(expiration/dayInterval);
+  var now = Math.round(Date.now()/dayInterval);
 
-  if((expiration - now) > 0){
+  console.log('now:',now,'dayExpires',dayExpires,'expiration',expiration,'dayInterval',dayInterval);
+
+  if((dayExpires - now) > 0){
     return "green lighten-1";
-  }else if((expiration - now) < 0){
+  }else if((dayExpires - now) < 0){
     return "red lighten-1";
   }else{
     return "amber lighten-1";
