@@ -41,9 +41,11 @@ h4 {
   height: 500px;
 };
 
-#announcementRow {
+#announcementsDiv {
   float:left;
   display:inline-block;
+  background-color: white;
+  border-radius: 5%;
 }
 
 

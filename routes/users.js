@@ -54,6 +54,7 @@ router.get('/users', (req, res, next) => {
   }
 });
 
+
 router.get('/users/self/', authorize, (req, res, next) => {
   knex('users')
     .where('id', req.token.userId)

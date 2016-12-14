@@ -40,7 +40,8 @@ router.post('/announce', (req,res,next) =>{
   //TODO fill out js/html to grab/set header
   const {
       title,
-      content
+      content,
+      userId
   } = req.body;
 
   if (!content) {
@@ -60,7 +61,8 @@ router.post('/announce', (req,res,next) =>{
   knex('announcements')
     .insert({
       "title": title,
-      "content": content
+      "content": content,
+      "user_id": userId
     })
     .then(() =>{
       return knex('announcements')

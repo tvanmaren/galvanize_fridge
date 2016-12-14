@@ -116,18 +116,25 @@
         <h4 class="section-header">ANNOUNCEMENTS</h4>
     </div>
 
+    <!-- ANNOUNCEMENTS GO HERE -->
 
     <div class="full-width top-padding" style="background-color:#B4EDD8">
-      <div class="container" id="announcementsDiv" style="background-color:#B4EDD8">
-          <!-- append here -->
+      <div class="container" style="background-color:#B4EDD8">
           <a class="btn-floating btn-small waves-effect waves-light orange" id="addAnnounce"><i class="material-icons">add</i></a>
+          <!-- prepend here -->
+          <div id="announcementsDiv"></div>
       </div>
+    </div>
 
       <div id="modal1" class="modal modal-fixed-footer">
         <div class="modal-content">
           <h4>Add Announcement</h4>
           <!-- ADD FORM HERE -->
-          <form class="col s12">
+          <form class="row">
+            <div class="input-field col s6">
+                <input id="emailAddressAnnouncement" type="text" class="autocomplete">
+                <label for="emailAddressAnnouncement">Email Address</label>
+            </div>
             <div class="row">
               <div class="input-field col s6">
                 <textarea id="newAnnounceTitle" class="materialize-textarea"></textarea>
@@ -141,13 +148,11 @@
               </div>
             </div>
           </form>
-
         </div>
         <div class="modal-footer">
           <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" id="submitNewAnnounce">Submit</a>
         </div>
       </div>
-    </div>
 
     <!-- END ANNOUNCEMENTS -->
 
