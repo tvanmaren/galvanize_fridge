@@ -14,7 +14,7 @@ $(window).scroll(function() {
     // console.log($(this).scrollTop());
     var $nav = $('#navBar');
     var firstPhase = 1;
-    var secondPhase = 450;
+    var secondPhase = $('.second-phase').offset().top - $('.second-phase').height();
 
     var isPositionFixed = ($nav.css('position') === 'fixed');
     if ($(this).scrollTop() > firstPhase && !isPositionFixed) {
