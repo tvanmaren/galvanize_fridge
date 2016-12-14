@@ -92,10 +92,26 @@ label{
   box-shadow: 0 0 0 rgba(255, 255, 255, 0) !important; // This isn't working
 }
 
-.row {
+/*.row {
   background-color:#B4EDD8;
-}
+}*/
 
 .container {
   background-color:#B4EDD8;
+}
+
+.brand-logo{
+  color:#4E4E4E !important;
+}
+
+.nav-wrapper{
+  background-color:#F2F2F2 !important;
+}
+
+.right li a {
+  color:#4E4E4E !important;
+}
+
+.material-icons{
+  color:#4E4E4E !important;
 }

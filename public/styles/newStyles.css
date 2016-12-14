@@ -36,6 +36,10 @@ h4 {
   padding-top: 20px
 }
 
+.bottom-padding{
+  padding-bottom: 20px;
+}
+
 #foodCards {
   width: 80%;
   margin: 0 auto;
@@ -70,6 +74,33 @@ h4 {
   display: flex;
   flex-flow: column;
   justify-content: center;
+}
+
+.newsticker{
+  font-weight: bold;
+  font-size: 18px;
+}
+/*
+.text-black{
+  color:#4E4E4E !important;
+}*/
+
+/*#foodCards {
+  background-color:#B4EDD8;
+  min-height: 300px;
+}*/
+
+/*.mint-green{
+  background-color:#B4EDD8;
+  /*min-height: 100px;
+}*/
+/*
+.white-gap{
+  min-height: 30px;
+}*/
+
+.margin-none{
+  margin-bottom: 0;
 }
 
 .fridge-face {
