@@ -102,3 +102,11 @@ label{
 .brand-logo{
   color:#4E4E4E !important;
 }
+
+.nav-wrapper{
+  background-color:#F2F2F2 !important;
+}
+
+.right li a {
+  color:#4E4E4E !important;
+}
