@@ -82,7 +82,7 @@ function generateCards(jsonObject) {
 
     var newCard = `
       <div class="col s12 m6 l4">
-      <div class="card">
+      <div class="card margin-none">
       <div class="card-image">
       <img src="${obj.image_url}">
       </div>

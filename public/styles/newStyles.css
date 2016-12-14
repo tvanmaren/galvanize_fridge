@@ -96,3 +96,7 @@ h4 {
 .white-gap{
   min-height: 30px;
 }
+
+.margin-none{
+  margin-bottom: 0;
+}

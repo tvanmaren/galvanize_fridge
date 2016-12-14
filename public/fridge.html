@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
+<head>
     <meta charset="utf-8">
     <title>Fridge</title>
     <!-- Main fridge view page for both users and the fridge account -->
@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Materialize JS -->
+    <!-- Materialize JS -->
     <script src="js/materialize-movement.js" charset="utf-8" defer></script>
 
     <!-- Favicon -->
@@ -35,51 +35,50 @@
     <script src="./SnapSVGAnimator/js/vendor/snap.svg/snap.svg-min.js" defer></script>
     <script src="./SnapSVGAnimator/js/SnapSVGAnimator.min.js" defer></script>
     <script src="js/monster.js" defer>
-
     </script>
 
     <!-- Ticker Scripts -->
     <!-- <script src="http://code.jquery.com/jquery-1.10.1.min.js" defer></script> -->
     <script src="./js/jquery.newsTicker.js" charset="utf-8" defer></script>
-<script src="./js/announcementTicker.js" defer></script>
+    <script src="./js/announcementTicker.js" defer></script>
 </head>
 
 <body>
 
     <!-- NAVIGATION BAR -->
     <nav id="navBar">
-      <div class="nav-wrapper">
-        <a href="fridge.html" class="brand-logo">Fridge Face</a>
-        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="new-entry.html"><i class="large material-icons" id="checkUser">add</i></a></li>
-          <li><a href="index.html" class="logout" style="color:#4E4E4E">Logout</a></li>
-          <li><a><i class="large material-icons" id="settings">settings</i></a></li>
-        </ul>
+        <div class="nav-wrapper">
+            <a href="fridge.html" class="brand-logo">Fridge Face</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="new-entry.html"><i class="large material-icons" id="checkUser">add</i></a></li>
+                <li><a href="index.html" class="logout" style="color:#4E4E4E">Logout</a></li>
+                <li><a><i class="large material-icons" id="settings">settings</i></a></li>
+            </ul>
 
-        <!-- <li><a href="new-entry.html" class="btn light-blue darken-2">Add New Item</a></li> -->
-        <!-- <li><a href="#modal1"><i class="material-icons" id="checkUser">perm_identity</i></a></li> -->
-        <ul class="side-nav" id="mobile-demo">
-          <li><a href="new-entry.html">Add Food</a></li>
-          <li><a href="index.html" class="logout">Logout</a></li>
-          <li><a href="#adminPanel">Settings</a></li>
-        </ul>
-      </div>
-
-      <div id="dropNav" class="nav-wrapper" style="background-color:#4E4E4E; display:none">
-        <div class="row" style="background-color: #74CFAE;">
-          <div class="col s2 offset-s10">
-            <a class="dropdown-button btn" style="background-color:#F2F2F2" data-activates="categorySelect">Categories</a>
-
-              <ul id="categorySelect" class="dropdown-content">
-                <li><a class="dropdown-item" id="allCat">All Food</a></li>
-                <li><a class="dropdown-item" id="personalCat">Personal Food</a></li>
-                <li><a class="dropdown-item" id="communityCat">Community Food</a></li>
-                <li><a class="dropdown-item" id="eventCat">Event Food</a></li>
-              </ul>
-          </div>
+            <!-- <li><a href="new-entry.html" class="btn light-blue darken-2">Add New Item</a></li> -->
+            <!-- <li><a href="#modal1"><i class="material-icons" id="checkUser">perm_identity</i></a></li> -->
+            <ul class="side-nav" id="mobile-demo">
+                <li><a href="new-entry.html">Add Food</a></li>
+                <li><a href="index.html" class="logout">Logout</a></li>
+                <li><a href="#adminPanel">Settings</a></li>
+            </ul>
         </div>
-      </div>
+
+        <div id="dropNav" class="nav-wrapper" style="background-color:#4E4E4E; display:none">
+            <div class="row" style="background-color: #74CFAE;">
+                <div class="col s2 offset-s10">
+                    <a class="dropdown-button btn" style="background-color:#F2F2F2" data-activates="categorySelect">Categories</a>
+
+                    <ul id="categorySelect" class="dropdown-content">
+                        <li><a class="dropdown-item" id="allCat">All Food</a></li>
+                        <li><a class="dropdown-item" id="personalCat">Personal Food</a></li>
+                        <li><a class="dropdown-item" id="communityCat">Community Food</a></li>
+                        <li><a class="dropdown-item" id="eventCat">Event Food</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
     </nav>
 
@@ -108,13 +107,13 @@
     <!-- MODAL -->
 
     <div id="adminPanel" class="modal bottom-sheet">
-      <div class="modal-content">
-        <h4 id="name"></h4>
-        <p id="content"></p>
-      </div>
-      <div class="modal-footer">
-        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Dismiss</a>
-      </div>
+        <div class="modal-content">
+            <h4 id="name"></h4>
+            <p id="content"></p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Dismiss</a>
+        </div>
     </div>
     <!-- END MODAL -->
 
@@ -127,11 +126,11 @@
             <div class="eye"></div>
             <div class="eye"></div>
             <div class="mouth"></div> -->
-            <!-- <div class="mouth teeth"></div> -->
-        <!-- </figure>
+    <!-- <div class="mouth teeth"></div> -->
+    <!-- </figure>
     </div> -->
     <!-- <div class="shadow"></div> -->
-  <!-- </div> -->
+    <!-- </div> -->
     <!-- END MONSTER -->
 
     <!-- ANNOUNCEMENTS GO HERE -->
@@ -140,52 +139,52 @@
     </div>
 
     <div class="full-width top-padding bottom-padding" style="background-color:#B4EDD8">
-      <div class="container" style="background-color:#B4EDD8">
+        <div class="container" style="background-color:#B4EDD8">
 
-        <!-- TICKER -->
+            <!-- TICKER -->
 
-        <ul class="newsticker center" id="announcement-ticker">
-            <li>Etiam imperdiet volutpat libero eu tristique.</li>
-            <li>Curabitur porttitor ante eget hendrerit adipiscing.</li>
-            <li>Praesent ornare nisl lorem, ut condimentum lectus gravida ut.</li>
-            <li>Nunc ultrices tortor eu massa placerat posuere. Nunc ultrices tortor eu massa placerat posuere.Nunc ultrices tortor eu massa placerat posuere.Nunc ultrices tortor eu massa placerat posuere.</li>
-        </ul>
+            <ul class="newsticker center" id="announcement-ticker">
+                <li>Etiam imperdiet volutpat libero eu tristique.</li>
+                <li>Curabitur porttitor ante eget hendrerit adipiscing.</li>
+                <li>Praesent ornare nisl lorem, ut condimentum lectus gravida ut.</li>
+                <li>Nunc ultrices tortor eu massa placerat posuere. Nunc ultrices tortor eu massa placerat posuere.Nunc ultrices tortor eu massa placerat posuere.Nunc ultrices tortor eu massa placerat posuere.</li>
+            </ul>
 
-        <!-- TICKER END -->
+            <!-- TICKER END -->
 
-          <!-- <a class="btn-floating btn-small waves-effect waves-light orange" id="addAnnounce"><i class="material-icons">add</i></a>
+            <!-- <a class="btn-floating btn-small waves-effect waves-light orange" id="addAnnounce"><i class="material-icons">add</i></a>
           prepend here
           <div id="announcementsDiv"></div> -->
-      </div>
+        </div>
     </div>
 
-      <div id="modal1" class="modal modal-fixed-footer">
+    <div id="modal1" class="modal modal-fixed-footer">
         <div class="modal-content">
-          <h4>Add Announcement</h4>
-          <!-- ADD FORM HERE -->
-          <form class="row">
-            <div class="input-field col s6">
-                <input id="emailAddressAnnouncement" type="text" class="autocomplete">
-                <label for="emailAddressAnnouncement">Email Address</label>
-            </div>
-            <div class="row">
-              <div class="input-field col s6">
-                <textarea id="newAnnounceTitle" class="materialize-textarea"></textarea>
-                <label for="newAnnounceTitle">Title</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s6">
-                <textarea id="newAnnounceContent" class="materialize-textarea"></textarea>
-                <label for="newAnnounceContent">Content</label>
-              </div>
-            </div>
-          </form>
+            <h4>Add Announcement</h4>
+            <!-- ADD FORM HERE -->
+            <form class="row">
+                <div class="input-field col s6">
+                    <input id="emailAddressAnnouncement" type="text" class="autocomplete">
+                    <label for="emailAddressAnnouncement">Email Address</label>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <textarea id="newAnnounceTitle" class="materialize-textarea"></textarea>
+                        <label for="newAnnounceTitle">Title</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <textarea id="newAnnounceContent" class="materialize-textarea"></textarea>
+                        <label for="newAnnounceContent">Content</label>
+                    </div>
+                </div>
+            </form>
         </div>
         <div class="modal-footer">
-          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" id="submitNewAnnounce">Submit</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" id="submitNewAnnounce">Submit</a>
         </div>
-      </div>
+    </div>
 
     <!-- END ANNOUNCEMENTS -->
 
@@ -221,11 +220,14 @@
 
     <!-- END SETTING/ADD BAR -->
 
-<div style="background-color:#4E4E4E" class="center-align">
-    <h4 class="section-header">FRIDGE CONTENTS</h4>
-</div>
-    <div class="full-width top-padding" style="background-color:#B4EDD8">
-      <div id="foodCards" class="row mint-green" style="background-color:#B4EDD8"></div>
+    <div style="background-color:#4E4E4E" class="center-align">
+        <h4 class="section-header">FRIDGE CONTENTS</h4>
     </div>
-  </body>
+    <div class="mint-green">
+        <div class="full-width top-padding bottom-padding mint-green">
+            <div id="foodCards" class="row"></div>
+        </div>
+    </div>
+</body>
+
 </html>
