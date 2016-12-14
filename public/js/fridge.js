@@ -16,7 +16,7 @@ console.log('getting to fridge.js');
     });
 
   // Click on Settings Icon
-  $('#settings').click(function () {
+  $('a.settings').click(function () {
     if (admin) {
       checkFridgeStats();
     } else {
@@ -30,10 +30,12 @@ console.log('getting to fridge.js');
     .done((data) => {
       foodsJSON = data;
       generateCards(data);
+      getActiveUsers(foodsJSON);
     })
     .fail((err) => {
       console.error(err);
     });
+
 
   //Radio Button Listeners (Sorting fridge cards);
   $('#allCat').click(function () {
@@ -77,8 +79,8 @@ function generateCards(jsonObject) {
   jsonObject.map((obj) => {
     var categoryName = setCategory(obj.category);
 
+    var badgeColor = setStatus(obj.expiration);
     var exp = new Date(parseInt(obj.expiration));
-    var badgeColor = setStatus(exp);
 
     var newCard = `
       <div class="col s12 m6 l4">
@@ -136,7 +138,7 @@ function deleteItem(id) {
 
 function checkFridgeStats() {
   $('#name').text(`Fridge History`);
-  $.getJSON("/users/")
+  $.getJSON("/users")
     .then((userList) => {
       $('#content').empty();
       userList.forEach((user) => {
@@ -198,12 +200,15 @@ function logout() {
 
 //checks for expired food
 function setStatus(expiration) {
-  expiration = parseInt((expiration/(1000*60*60*24)));
-  var now = parseInt((Date.now()/(1000*60*60*24)));
+  let dayInterval=(1000*60*60*24);
+  let dayExpires = Math.round(expiration/dayInterval);
+  var now = Math.round(Date.now()/dayInterval);
 
-  if((expiration - now) > 0){
+  console.log('now:',now,'dayExpires',dayExpires,'expiration',expiration,'dayInterval',dayInterval);
+
+  if((dayExpires - now) > 0){
     return "green lighten-1";
-  }else if((expiration - now) < 0){
+  }else if((dayExpires - now) < 0){
     return "red lighten-1";
   }else{
     return "amber lighten-1";
@@ -230,4 +235,31 @@ function populateAnnouncements() {
             });
       });
     });
+}
+
+function getActiveUsers (data) {
+  var activeUsers = data.map((item) => {
+    return item.user_id;
+  }).filter((elem, index, self) => {
+    return index === self.indexOf(elem);
+  });
+
+  activeUsers.map((userId) => {
+    $.getJSON(`/users/${userId}`)
+    .done((user) => {
+      var dropDownItem = `<li><a class="dropdown-item" id="${user.id}">${user.email}</a></li>`;
+      $('#userSelect').append(dropDownItem);
+
+      var idSelector = `#${userId}`;
+
+      $(idSelector).click(function() {
+
+        $('#foodCards').empty();
+        generateCards(data.filter((item) => {
+          return item.user_id === userId;
+        }));
+      });
+    });
+
+  });
 }

@@ -87,9 +87,24 @@ label{
   background-color: rgba(242,242,242, .5)
 }
 
+.btn-floating {
+  color: #4E4E4E !important;
+  box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+  background-color: rgba(255, 255, 255, 0);
+  border-style: solid;
+  border-color: #4E4E4E;
+  border-width: thin;;
+  box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+}
+
+.btn-floating:hover {
+  box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+  background-color: rgba(242,242,242, .5)
+}
+
 .custom-nav {
   background-color:#F2F2F2 !important;
-  box-shadow: 0 0 0 rgba(255, 255, 255, 0) !important;
+  /*box-shadow: 0 0 0 rgba(255, 255, 255, 0) !important;*/
 }
 
 .custom-row {

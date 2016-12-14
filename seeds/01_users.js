@@ -13,7 +13,7 @@ exports.seed = function(knex, Promise) {
           email: 'fridge@galvanize.com',
           hashed_password: '$2a$12$HgcZ3mkA8hSL7laPNTyO5OJvi75VoVuVrb1LbMAwN3LBi.Y/LmAlq',
           //Password: iamthefridge
-          is_admin: true
+          is_admin: false
         }),
         knex('users').insert({
           id: 2,
@@ -54,6 +54,54 @@ exports.seed = function(knex, Promise) {
           email: 'evanbusse@gmail.com',
           hashed_password: '$2a$12$bhR.d3cbb5jehk2ConAo6.Nb/fK9Y27EkRVG1CVFAq9fnxl.YXyca',
           is_admin: true
+        }),
+        knex('users').insert({
+          id: 7,
+          first_name: 'Tara',
+          last_name: 'McLauchlan',
+          email: 'tara.mclauchlan@galvanize.com',
+          hashed_password: '$2a$12$bhR.d3cbb5jehk2ConAo6.Nb/fK9Y27EkRVG1CVFAq9fnxl.YXyca',
+          is_admin: false
+        }),
+        knex('users').insert({
+          id: 8,
+          first_name: 'Katie',
+          last_name: 'Jenkins',
+          email: 'kind2karma@gmail.com',
+          hashed_password: '$2a$12$bhR.d3cbb5jehk2ConAo6.Nb/fK9Y27EkRVG1CVFAq9fnxl.YXyca',
+          is_admin: false
+        }),
+        knex('users').insert({
+          id: 9,
+          first_name: 'Teddi',
+          last_name: 'Maull',
+          email: 'teddi.maull@galvanize.com',
+          hashed_password: '$2a$12$bhR.d3cbb5jehk2ConAo6.Nb/fK9Y27EkRVG1CVFAq9fnxl.YXyca',
+          is_admin: true
+        }),
+        knex('users').insert({
+          id: 10,
+          first_name: 'Matthew',
+          last_name: 'Gordon',
+          email: 'laxredemption5525@gmail.com',
+          hashed_password: '$2a$12$bhR.d3cbb5jehk2ConAo6.Nb/fK9Y27EkRVG1CVFAq9fnxl.YXyca',
+          is_admin: false
+        }),
+        knex('users').insert({
+          id: 11,
+          first_name: 'Malila',
+          last_name: 'Clearwater',
+          email: 'malilaclearwater@gmail.com',
+          hashed_password: '$2a$12$bhR.d3cbb5jehk2ConAo6.Nb/fK9Y27EkRVG1CVFAq9fnxl.YXyca',
+          is_admin: false
+        }),
+        knex('users').insert({
+          id: 12,
+          first_name: 'Ali',
+          last_name: 'Hobbs',
+          email: 'alisuehobbs@gmail.com',
+          hashed_password: '$2a$12$bhR.d3cbb5jehk2ConAo6.Nb/fK9Y27EkRVG1CVFAq9fnxl.YXyca',
+          is_admin: false
         })
       ]);
     })

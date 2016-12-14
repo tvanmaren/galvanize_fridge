@@ -60,6 +60,14 @@ app.use('/new-entry.html', authorize, function(req, res, next) {
     }
 });
 
+app.use('/announce.html', authorize, function(req, res, next) {
+    if (!req.user) {
+        res.redirect('/');
+    } else {
+        next();
+    }
+});
+
 app.use(express.static('./public'));
 
 // app.use('/secure', express.static('./public/secure'));
