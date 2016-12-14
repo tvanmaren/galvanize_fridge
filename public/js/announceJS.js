@@ -167,8 +167,7 @@ function appendAnnounce(obj){
             </div>
             <div class="card-action">
             <a class="delete" id="${idTag}" href="#"><i class="material-icons">delete</i></a>
-              <a href="#">This is a link</a>
-              <a href="#">This is a link</a>
+            <a href="#"><i class="material-icons">edit</i></a>
             </div>
           </div>
         </div>
