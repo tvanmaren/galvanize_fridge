@@ -102,6 +102,9 @@ function generateAnnnouncements(data) {
   var appendObj = {};
   var promises = [];
   var dataBottom = data.length - 3;
+  if(data.length < 3){
+    dataBottom = 0;
+  }
   var sortedData = sortByKey(data, 'id');
   for(var i=dataBottom; i<data.length; i++){
     userID = sortedData[i].userId;
