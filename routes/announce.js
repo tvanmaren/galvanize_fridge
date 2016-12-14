@@ -35,6 +35,20 @@ router.get('/announce', (req, res, next) => {
         });
 });
 
+router.get('/announce/:id', (req, res, next) => {
+    knex('announcements')
+        .where('id', req.params.id)
+        .first()
+        .then((result) => {
+            const user = camelizeKeys(result);
+            res.send(user);
+        })
+        .catch((err) => {
+            next(err);
+        });
+});
+
+
 router.post('/announce', (req,res,next) =>{
   //TODO include email in header, use token to get user_id
   //TODO fill out js/html to grab/set header

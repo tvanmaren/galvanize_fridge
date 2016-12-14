@@ -1,8 +1,10 @@
 'use strict';
 
 $(function () {
-
+console.log('getting to fridge.js');
   let admin;
+
+  populateAnnouncements();
 
   //check if I'm an admin, and assign that to a global
   $.getJSON('/users/self/')
@@ -58,6 +60,7 @@ $(function () {
     generateCards(foodsJSON.filter((obj) => {
       return obj.category === 3;
     }));
+
   });
 
   // LOGOUT
@@ -65,6 +68,8 @@ $(function () {
     logout();
   });
 });
+
+// END DOCUMENT LOAD // START CREATING FUNCTIONS
 
 function generateCards(jsonObject) {
   var $foodDiv = $('#foodCards');
@@ -99,11 +104,11 @@ function generateCards(jsonObject) {
     var Id = `#${obj.id}`;
 
     $(Id).click(function () {
-      console.log($(this).attr('id'));
+      // console.log($(this).attr('id'));
       deleteItem($(this).attr('id'));
     });
   });
-  console.log($('#foodCards').children());
+  // console.log($('#foodCards').children());
 }
 
 function setCategory(catID) {
@@ -152,7 +157,7 @@ function checkFridgeStats() {
   $.getJSON("/foods")
     .then((result) => {
         //TODO add user data (items per user) & expiration data
-        console.log(result);
+        // console.log(result);
         $('#content').append(`<p> Fridge items to date: ${result.length}`);
       },
       (err) => {
@@ -204,4 +209,26 @@ function setStatus(expiration) {
   }else{
     return "amber lighten-1";
   }
+}
+
+
+////////////////////////////////////////////////////////////////////////
+
+function populateAnnouncements() {
+  $.getJSON("/announce")
+    .then((announcementList) => {
+      $('#announcement-ticker').empty();
+      announcementList.forEach((announcement) => {
+        $.getJSON(`/announce/${announcement.id}`)
+          .then((result) => {
+            console.log('>>>>>>>>>>>>');
+            console.log(result);
+            console.log('>>>>>>>>>>>>');
+                $('#announcement-ticker').append(`<li> ${result.content}</li>`);
+            },
+            (err) => {
+              return next(err);
+            });
+      });
+    });
 }
