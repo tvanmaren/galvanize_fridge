@@ -2,6 +2,9 @@ body {
   background-color: #F2F2F2;
 }
 
+h4 {
+  font-size: 24px;
+}
 .center{
   text-align: center;
 }
@@ -13,7 +16,7 @@ body {
 .photoPreview {
   width: 200px;
   height: 200px;
-  border-radius: 20px;
+  border-radius: 3px;
   overflow: hidden;
 };
 
@@ -38,18 +41,31 @@ body {
   height: 500px;
 };
 
-#announcementRow {
+#announcementsDiv {
   float:left;
   display:inline-block;
+  background-color: white;
+  border-radius: 5%;
 }
+
 
 .dropdown-item {
   color: #E10D49 !important;
 }
 
 .section-header {
-  font-weight: bold;
+  /*font-weight: ;*/
   color: #F2F2F2;
   padding-top: 10px;
   padding-bottom: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.full-width {
+  background-color:#B4EDD8;
+  padding-top: 20px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
 }

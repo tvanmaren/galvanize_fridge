@@ -20,12 +20,12 @@ html {
 
 [type="radio"].with-gap:checked + label:before {
 border-radius: 50%;
-border: 2px solid #fb8c00 !important; }
+border: 2px solid #4E4E4E !important; }
 
 [type="radio"] + label:after {
 border-radius: 50%;
-border: 2px solid #fb8c00 !important;
-background-color: #fb8c00 !important;
+border: 2px solid #4E4E4E !important;
+background-color: #4E4E4E !important;
 z-index: 0;
 -webkit-transform: scale(.5);
 -moz-transform: scale(.5);
@@ -38,27 +38,27 @@ transform: scale(.5); }
 
 /* label underline focus color */
    .input-field input[type=text]:focus {
-     border-bottom: 1px solid #fb8c00 !important;
-     box-shadow: 0 1px 0 0 #fb8c00 !important;
+     border-bottom: 1px solid #4E4E4E !important;
+     box-shadow: 0 1px 0 0 #4E4E4E !important;
    }
    /* label focus color */
 label{
-  color: #fb8c00 !important;
+  color: #4E4E4E !important;
 }
 
    .input-field textarea[class=materialize-textarea]:focus {
-   border-bottom: 1px solid #fb8c00 !important;
-   box-shadow: 0 1px 0 0 #fb8c00 !important;
+   border-bottom: 1px solid #4E4E4E !important;
+   box-shadow: 0 1px 0 0 #4E4E4E !important;
    }
 
    .input-field input[type=email]:focus {
-   border-bottom: 1px solid #fb8c00 !important;
-   box-shadow: 0 1px 0 0 #fb8c00 !important;
+   border-bottom: 1px solid #4E4E4E !important;
+   box-shadow: 0 1px 0 0 #4E4E4E !important;
    }
 
    .input-field input[type=password]:focus {
-   border-bottom: 1px solid #fb8c00 !important;
-   box-shadow: 0 1px 0 0 #fb8c00 !important;
+   border-bottom: 1px solid #4E4E4E !important;
+   box-shadow: 0 1px 0 0 #4E4E4E !important;
    }
 
 .food-action {
@@ -71,5 +71,30 @@ label{
 }
 
 .btn {
-  color: white !important;
+  color: #4E4E4E !important;
+  box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+  background-color: rgba(255, 255, 255, 0);
+  border-style: solid;
+  border-color: #4E4E4E;
+  border-width: medium;
+  border-radius: 3px;
+  height: 40px;
+}
+
+.btn:hover {
+  box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+  background-color: rgba(242,242,242, .5)
+}
+
+.custom-nav {
+  background-color:#F2F2F2 !important;
+  box-shadow: 0 0 0 rgba(255, 255, 255, 0) !important; // This isn't working
+}
+
+.row {
+  background-color:#B4EDD8;
+}
+
+.container {
+  background-color:#B4EDD8;
 }

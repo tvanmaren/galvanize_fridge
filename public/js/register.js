@@ -23,7 +23,7 @@ function submitLogin() {
     // The server will need to get the userID according to the name that was entered
     var $xhr = $.ajax({
         type: "POST",
-        url: "/users",
+        url: "/users/",
         data: newUser,
         success: function(result) {
             Materialize.toast(`SUCCESS: User ${result.email} registered`, 1000);

@@ -52,16 +52,16 @@ router.get('/foods/:userId/', (req, res, next) => {
     });
 });
 
-router.post('/foods', authorize, (req, res, next) => {
-  //TODO get user ID from header, add userID to insert
-  console.log(req.token.userId);
+router.post('/foods', (req, res, next) => {
+  let insertion={
+    'user_id': req.body.userId,
+    'image_url': req.body.imageUrl,
+    'category': req.body.category,
+    'comments': req.body.comments,
+    'expiration': req.body.expiration
+  };
   knex('foods')
-    .insert({
-      user_id: req.token.userId,
-      image_url: req.body.image_url,
-      comments: req.body.comments,
-      expiration: req.body.expiration
-    }, '*')
+    .insert(insertion, '*')
     .then((foods) => {
       res.send(foods[0]);
     })
