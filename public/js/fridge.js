@@ -30,10 +30,12 @@ console.log('getting to fridge.js');
     .done((data) => {
       foodsJSON = data;
       generateCards(data);
+      getActiveUsers(foodsJSON);
     })
     .fail((err) => {
       console.error(err);
     });
+
 
   //Radio Button Listeners (Sorting fridge cards);
   $('#allCat').click(function () {
@@ -233,4 +235,31 @@ function populateAnnouncements() {
             });
       });
     });
+}
+
+function getActiveUsers (data) {
+  var activeUsers = data.map((item) => {
+    return item.user_id;
+  }).filter((elem, index, self) => {
+    return index === self.indexOf(elem);
+  });
+
+  activeUsers.map((userId) => {
+    $.getJSON(`/users/${userId}`)
+    .done((user) => {
+      var dropDownItem = `<li><a class="dropdown-item" id="${user.id}">${user.email}</a></li>`;
+      $('#userSelect').append(dropDownItem);
+
+      var idSelector = `#${userId}`;
+
+      $(idSelector).click(function() {
+
+        $('#foodCards').empty();
+        generateCards(data.filter((item) => {
+          return item.user_id === userId;
+        }));
+      });
+    });
+
+  });
 }
