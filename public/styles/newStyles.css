@@ -82,3 +82,13 @@ h4 {
 .text-black{
   color:#4E4E4E !important;
 }
+
+/*#foodCards {
+  background-color:#B4EDD8;
+  min-height: 300px;
+}*/
+
+.mint-green{
+  background-color:#B4EDD8;
+  min-height: 100px;
+}

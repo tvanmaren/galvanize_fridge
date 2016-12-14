@@ -221,9 +221,9 @@ function populateAnnouncements() {
       announcementList.forEach((announcement) => {
         $.getJSON(`/announce/${announcement.id}`)
           .then((result) => {
-            console.log('>>>>>>>>>>>>');
-            console.log(result);
-            console.log('>>>>>>>>>>>>');
+            // console.log('>>>>>>>>>>>>');
+            // console.log(result);
+            // console.log('>>>>>>>>>>>>');
                 $('#announcement-ticker').append(`<li> ${result.content}</li>`);
             },
             (err) => {

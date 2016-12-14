@@ -5,7 +5,7 @@ $(document).ready(function () {
 
 $('.newsticker').newsTicker({
     row_height: 27,
-    max_rows: 2,
+    max_rows: 1,
     speed: 600,
     direction: 'down',
     duration: 4000,
