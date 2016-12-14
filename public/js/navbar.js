@@ -5,6 +5,9 @@ $(function() {
     'position': 'static',
     'z-index': '10',
   });
+  $('#dropNav').css({
+    "background-color": '#74CFAE !important',
+  });
 });
 
 $(window).scroll(function() {
