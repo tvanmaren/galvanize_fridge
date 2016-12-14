@@ -41,7 +41,7 @@
     <!-- NAVIGATION BAR -->
     <nav>
       <div class="nav-wrapper custom-nav">
-        <a href="fridge.html" style="color:#4E4E4E" class="brand-logo">Fridge Face</a>
+        <a href="fridge.html" class="brand-logo">Fridge Face</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li><a href="new-entry.html"><i class="large material-icons" id="checkUser" style="color:#4E4E4E">add</i></a></li>
@@ -130,7 +130,11 @@
         <div class="modal-content">
           <h4>Add Announcement</h4>
           <!-- ADD FORM HERE -->
-          <form class="col s12">
+          <form class="row">
+            <div class="input-field col s6">
+                <input id="emailAddressAnnouncement" type="text" class="autocomplete">
+                <label for="emailAddressAnnouncement">Email Address</label>
+            </div>
             <div class="row">
               <div class="input-field col s6">
                 <textarea id="newAnnounceTitle" class="materialize-textarea"></textarea>

@@ -54,17 +54,18 @@ router.get('/users', (req, res, next) => {
   }
 });
 
-router.get('/emails/:email', (req, res, next) => {
-    knex('users')
-        .where('email', req.params.email)
-        .first()
-        .then((result) => {
-            const user = camelizeKeys(result);
-            res.send(user);
-        })
-        .catch((err) => {
-            next(err);
-        });
+router.get('/users/self/', authorize, (req, res, next) => {
+  knex('users')
+    .where('id', req.token.userId)
+    .first()
+    .then((result) => {
+      delete result.hashed_password;
+      const user = camelizeKeys(result);
+      res.send(user);
+    })
+    .catch((err) => {
+      next(err);
+    });
 });
 
 router.get('/users/:id', (req, res, next) => {
@@ -78,20 +79,6 @@ router.get('/users/:id', (req, res, next) => {
         .catch((err) => {
             next(err);
         });
-});
-
-router.get('/users/self/', authorize, (req, res, next) => {
-  knex('users')
-    .where('id', req.token.userId)
-    .first()
-    .then((result) => {
-      delete result.hashed_password;
-      const user = camelizeKeys(result);
-      res.send(user);
-    })
-    .catch((err) => {
-      next(err);
-    });
 });
 
 router.get('/useremails/', (req, res, next) => {
