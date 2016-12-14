@@ -90,5 +90,9 @@ h4 {
 
 .mint-green{
   background-color:#B4EDD8;
-  min-height: 100px;
+  /*min-height: 100px;*/
+}
+
+.white-gap{
+  min-height: 30px;
 }
