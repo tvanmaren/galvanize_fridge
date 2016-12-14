@@ -121,4 +121,5 @@ label{
 .card {
   box-shadow: 0 0 0 rgba(255, 255, 255, 0);
   padding-bottom: 10px;
+  margin-bottom: 20px !important;
 }
