@@ -27,6 +27,7 @@
     <!-- Custom JS Functionality -->
     <script type="text/javascript" src="js/fridge.js" defer></script>
     <script type="text/javascript" src="js/announceJS.js" defer></script>
+    <script type="text/javascript" src="js/navbar.js" defer></script>
 
     <!-- Animation Scripts -->
     <script src="./SnapSVGAnimator/js/vendor/snap.svg/snap.svg-min.js" defer></script>
@@ -39,9 +40,15 @@
 <body>
 
     <!-- NAVIGATION BAR -->
+<<<<<<< HEAD
+    <nav id="navBar">
+      <div class="nav-wrapper" style="background-color:#F2F2F2">
+        <a href="fridge.html" style="color:#4E4E4E" class="brand-logo">Fridge Face</a>
+=======
     <nav>
       <div class="nav-wrapper custom-nav">
         <a href="fridge.html" class="brand-logo">Fridge Face</a>
+>>>>>>> aa37628383977aef4b9d18a5dc4e7314ac5c18ec
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li><a href="new-entry.html"><i class="large material-icons" id="checkUser" style="color:#4E4E4E">add</i></a></li>
@@ -56,6 +63,20 @@
           <li><a href="index.html" class="logout">Logout</a></li>
           <li><a href="#adminPanel"><i class="large material-icons" id="settings">settings</i></a></li>
         </ul>
+      </div>
+      <div id="dropNav" class="nav-wrapper" style="background-color:#4E4E4E; display:none">
+        <div class="row">
+          <div class="col s2 offset-s10">
+            <a class="dropdown-button btn" style="background-color:#F2F2F2" data-activates="categorySelect">Categories</a>
+
+              <ul id="categorySelect" class="dropdown-content">
+                <li><a class="dropdown-item" id="allCat">All Food</a></li>
+                <li><a class="dropdown-item" id="personalCat">Personal Food</a></li>
+                <li><a class="dropdown-item" id="communityCat">Community Food</a></li>
+                <li><a class="dropdown-item" id="eventCat">Event Food</a></li>
+              </ul>
+          </div>
+        </div>
       </div>
 
     </nav>
@@ -156,12 +177,12 @@
 
     <!-- END ANNOUNCEMENTS -->
 
-    <div style="background-color:#4E4E4E" class="center-align">
+    <!-- <div style="background-color:#4E4E4E" class="center-align">
         <h4 class="section-header">FILTER</h4>
-    </div>
+    </div> -->
 
     <!-- SETTING/ADD BAR -->
-    <div class="full-width top-padding" style="background-color:#B4EDD8">
+    <!-- <div class="full-width top-padding" style="background-color:#B4EDD8">
       <br>
       <div class="container" style="background-color:#B4EDD8">
         <form class="">
@@ -184,7 +205,7 @@
         </form>
       </div>
       <br>
-    </div>
+    </div> -->
 
     <!-- END SETTING/ADD BAR -->
 
