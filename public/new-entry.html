@@ -15,6 +15,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- MATERIALIZE FUNCTION JS -->
+    <script src="js/materialize-movement.js" charset="utf-8" defer></script>
+
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 
@@ -28,12 +31,63 @@
 
     <!-- Custom JS Functionality -->
     <script type="text/javascript" src="js/addFood.js" defer></script>
+    <script src="js/fridge.js" type="text/javascript" defer></script>
 </head>
 
 <body>
 
     <!-- START NAV -->
-    <nav class="z-depth-0">
+
+    <nav id="navBar" class="z-depth-0">
+        <div class="nav-wrapper custom-nav">
+            <a href="fridge.html" class="brand-logo">Fridge Face</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="fridge.html"><i class="large material-icons" id="settings">face</i></a></li>
+                <li><a href="announce.html"><i class="large material-icons" id="settings">announcement</i></a></li>
+                <li class="active"><a href="new-entry.html"><i class="large material-icons" id="checkUser">add</i></a></li>
+                <li><a href="index.html" class="logout" style="color:#4E4E4E">Logout</a></li>
+                <li><a href="#settingsPanel" class="settings"><i class="large material-icons" id="settings">settings</i></a></li>
+            </ul>
+
+            <ul class="side-nav" id="mobile-demo">
+                <li><a href="fridge.html">Fridge Face</a></li>
+                <li><a href="announce.html">Announcements</a></li>
+                <li class="active"><a href="new-entry.html">Add Food</a></li>
+                <li><a href="index.html" class="logout">Logout</a></li>
+                <li><a href="#settingsPanel" class="settings">Settings</a></li>
+            </ul>
+        </div>
+
+        <div id="dropNav" class="nav-wrapper" style="background-color:#4E4E4E; display:none">
+            <div class="row" style="background-color: #74CFAE;">
+                <div class="col s2 offset-s10">
+                    <a class="dropdown-button btn" style="background-color:#F2F2F2" data-activates="categorySelect">Categories</a>
+
+                    <ul id="categorySelect" class="dropdown-content">
+                        <li><a class="dropdown-item" id="allCat">All Food</a></li>
+                        <li><a class="dropdown-item" id="personalCat">Personal Food</a></li>
+                        <li><a class="dropdown-item" id="communityCat">Community Food</a></li>
+                        <li><a class="dropdown-item" id="eventCat">Event Food</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MODAL -->
+    <div id="settingsPanel" class="modal bottom-sheet">
+        <div class="modal-content">
+            <h4 id="name"></h4>
+            <p id="content"></p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Dismiss</a>
+        </div>
+    </div>
+    <!-- END MODAL -->
+
+    <!-- <nav class="z-depth-0">
         <div class="nav-wrapper custom-nav">
             <a href="fridge.html" class="brand-logo">Fridge Face</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -42,7 +96,7 @@
                 </li>
             </ul>
         </div>
-    </nav>
+    </nav> -->
     <!-- END NAV -->
 
     <!-- START FORM -->
