@@ -17,6 +17,7 @@ $(function() {
 
 $('#addAnnounce').click(function(){
   $('#modal1').modal('open');
+
   // This populates the email field to provide autocomplete
   var $xhr = $.ajax({
     type: "GET",
@@ -30,6 +31,19 @@ $('#addAnnounce').click(function(){
       $('#emailAddressAnnouncement').autocomplete({
         data: emailObj
       });
+    }
+  });
+
+  $.ajax({
+    type: "GET",
+    url: `/users/self`,
+    success: function(result) {
+      console.log("get users/self successful ", result);
+      $('#emailAddressAnnouncement').val(result.email);
+      Materialize.updateTextFields();
+    },
+    error: function(err){
+      console.error(err);
     }
   });
 
@@ -100,25 +114,26 @@ $('#announcementsDiv').on('click', '.edit', function(){
   $('#modal2').modal('open');
   // This populates the email field to provide autocomplete
   editIdTag = this.id;
-  // var $xhr = $.ajax({
-  //   type: "GET",
-  //   url: "/useremails",
-  //   success: function(result) {
-  //     //for each email, create a key with a null value
-  //     var emailObj = {};
-  //     for (var i = 0; i < result.length; i++) {
-  //       emailObj[result[i]] = null;
-  //     }
-  //     $('#editEmailAddressAnnouncement').autocomplete({
-  //       data: emailObj
-  //     });
-  //   }
-  // });
+
+  $.ajax({
+    type: "GET",
+    url: `/announce/${editIdTag}`,
+    success: function(result) {
+      console.log("get announcement by id successful ", result);
+      $('#editAnnounceTitle').val(result.title);
+      $('#editAnnounceContent').val(result.content);
+      Materialize.updateTextFields();
+    },
+    error: function(err){
+      console.error(err);
+    }
+  });
+
+
 });
 
 $('#submitEditAnnounce').click(function(){
-  var requests = [];
-  var email = $('#editEmailAddressAnnouncement').val();
+
   var editAnnounce = {
     title: $('#editAnnounceTitle').val(),
     content: $('#editAnnounceContent').val(),
