@@ -1,5 +1,6 @@
 'use strict';
 var userID;
+var editIdTag;
 // var userName;
 
 
@@ -92,9 +93,56 @@ $('#announcementsDiv').on('click', '.delete', function(){
     error: function(err) {
       console.error(err);
     }
-  })
+  });
+});
 
-  // this.attr('id')
+$('#announcementsDiv').on('click', '.edit', function(){
+  $('#modal2').modal('open');
+  // This populates the email field to provide autocomplete
+  editIdTag = this.id;
+  // var $xhr = $.ajax({
+  //   type: "GET",
+  //   url: "/useremails",
+  //   success: function(result) {
+  //     //for each email, create a key with a null value
+  //     var emailObj = {};
+  //     for (var i = 0; i < result.length; i++) {
+  //       emailObj[result[i]] = null;
+  //     }
+  //     $('#editEmailAddressAnnouncement').autocomplete({
+  //       data: emailObj
+  //     });
+  //   }
+  // });
+});
+
+$('#submitEditAnnounce').click(function(){
+  var requests = [];
+  var email = $('#editEmailAddressAnnouncement').val();
+  var editAnnounce = {
+    title: $('#editAnnounceTitle').val(),
+    content: $('#editAnnounceContent').val(),
+    id: editIdTag
+  };
+  if (!editAnnounce.title) {
+    Materialize.toast('Label your announcement!', 3000);
+  } else if (!editAnnounce.content) {
+    Materialize.toast('Actually include an announcement!', 3000);
+  }
+  else{
+    $.ajax({
+      type: "PATCH",
+      url: `/announce/${editIdTag}`,
+      data: editAnnounce,
+      success: function(result) {
+        console.log("patch successful ", result);
+        window.location.href = '../announce.html';
+      },
+      error: function(err){
+        console.error(err);
+      }
+    });
+  }
 });
 
 function generateAnnnouncements(data) {
@@ -167,7 +215,7 @@ function appendAnnounce(obj){
             </div>
             <div class="card-action">
             <a class="delete" id="${idTag}" href="#"><i class="material-icons">delete</i></a>
-            <a href="#"><i class="material-icons">edit</i></a>
+            <a class="edit" id="${idTag}" href="#"><i class="material-icons">edit</i></a>
             </div>
           </div>
         </div>
