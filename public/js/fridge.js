@@ -16,7 +16,7 @@ console.log('getting to fridge.js');
     });
 
   // Click on Settings Icon
-  $('#settings').click(function () {
+  $('a.settings').click(function () {
     if (admin) {
       checkFridgeStats();
     } else {
@@ -136,7 +136,7 @@ function deleteItem(id) {
 
 function checkFridgeStats() {
   $('#name').text(`Fridge History`);
-  $.getJSON("/users/")
+  $.getJSON("/users")
     .then((userList) => {
       $('#content').empty();
       userList.forEach((user) => {

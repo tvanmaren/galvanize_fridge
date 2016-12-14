@@ -67,19 +67,6 @@ router.get('/emails/:email', (req, res, next) => {
         });
 });
 
-router.get('/users/:id', (req, res, next) => {
-    knex('users')
-        .where('id', req.params.id)
-        .first()
-        .then((result) => {
-            const user = camelizeKeys(result);
-            res.send(user);
-        })
-        .catch((err) => {
-            next(err);
-        });
-});
-
 router.get('/users/self/', authorize, (req, res, next) => {
   knex('users')
     .where('id', req.token.userId)
