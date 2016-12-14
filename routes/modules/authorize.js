@@ -10,7 +10,6 @@ function authorize (req, res, next) {
     if (err) {
       return next(boom.create(401, 'Unauthorized'));
     }
-    console.log('decoded: ', decoded);
     req.token = decoded;
 
     next();

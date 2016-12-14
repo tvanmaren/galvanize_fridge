@@ -87,7 +87,7 @@ function generateCards(jsonObject) {
       <div class="card-action">
       <a><i class="delete-food material-icons food-action" id="${obj.id}">delete</i></a>
       <a><i class="material-icons food-action" value="${obj.id}">create</i></a>
-      <span class="new badge orange" data-badge-caption="">${categoryName}</span>
+      <span class="new badge" style="background-color:#4E4E4E" data-badge-caption="">${categoryName}</span>
       <span class="new badge ${badgeColor}" data-badge-caption="">EXP ${exp.getMonth()}/${exp.getDate()}/${exp.getFullYear()}</span>
       </div>
       </div>
@@ -132,7 +132,7 @@ function deleteItem(id) {
 
 function checkFridgeStats() {
   $('#name').text(`Fridge History`);
-  $.getJSON("/users")
+  $.getJSON("/users/")
     .then((userList) => {
       $('#content').empty();
       userList.forEach((user) => {
