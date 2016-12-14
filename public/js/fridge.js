@@ -91,7 +91,6 @@ function generateCards(jsonObject) {
       </div>
       <div class="card-action">
       <a><i class="delete-food material-icons food-action" id="${obj.id}">delete</i></a>
-      <a><i class="material-icons food-action" value="${obj.id}">create</i></a>
       <span class="new badge" style="background-color:#4E4E4E" data-badge-caption="">${categoryName}</span>
       <span class="new badge ${badgeColor}" data-badge-caption="">EXP ${exp.getMonth()}/${exp.getDate()}/${exp.getFullYear()}</span>
       </div>

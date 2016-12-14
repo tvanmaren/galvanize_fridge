@@ -15,7 +15,7 @@ $(
           console.log('status:', xhr.status);
           if (xhr.status === 200) {
             // Materialize.toast('Login successful', 1000);
-            setTimeout(()=>{window.location.replace('/fridge.html');}, 1500);
+            setTimeout(()=>{window.location.replace('/fridge.html');});
           } else {
             $('#email').val('');
             $('#password').val('');
