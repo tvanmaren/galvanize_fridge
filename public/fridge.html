@@ -47,7 +47,7 @@
 
     <!-- NAVIGATION BAR -->
     <nav id="navBar">
-        <div class="nav-wrapper">
+        <div class="nav-wrapper custom-nav">
             <a href="fridge.html" class="brand-logo">Fridge Face</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
@@ -56,8 +56,6 @@
                 <li><a><i class="large material-icons" id="settings">settings</i></a></li>
             </ul>
 
-            <!-- <li><a href="new-entry.html" class="btn light-blue darken-2">Add New Item</a></li> -->
-            <!-- <li><a href="#modal1"><i class="material-icons" id="checkUser">perm_identity</i></a></li> -->
             <ul class="side-nav" id="mobile-demo">
                 <li><a href="new-entry.html">Add Food</a></li>
                 <li><a href="index.html" class="logout">Logout</a></li>
@@ -78,31 +76,17 @@
                     </ul>
                 </div>
             </div>
+
         </div>
 
     </nav>
 
-    <div id="svg_container" class="fridge-face center-align" style="background-color:#74CFAE">
+    <div id="svg_container" class="fridge-face center-align">
 
     </div>
-    <!-- <nav>
-        <div class="nav-wrapper orange darken-1">
-            <a href="index.html" class="brand-logo">Fridge Monster</a>
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-                <li class="active"><a href="index.html">Login</a></li>
-                <li><a href="register.html">Register</a></li>
-            </ul>
-            <ul class="side-nav" id="mobile-demo">
-                <li class="active"><a href="index.html">Login</a></li>
-                <li><a href="register.html">Register</a></li>
-            </ul>
-        </div>
-    </nav> -->
+
 
     <!-- END NAVIGATION BAR -->
-
-    <!-- <a class="waves-effect waves-light btn" href="#modal1">Modal</a> -->
 
     <!-- MODAL -->
 
@@ -117,7 +101,7 @@
     </div>
     <!-- END MODAL -->
 
-    <!-- MONSTER -->
+    <!-- CIRCLE MONSTER -->
     <!-- <div class="container centerMonster">
 
       <div class="click-anim">
@@ -131,10 +115,10 @@
     </div> -->
     <!-- <div class="shadow"></div> -->
     <!-- </div> -->
-    <!-- END MONSTER -->
+    <!-- END CIRCLE MONSTER -->
 
     <!-- ANNOUNCEMENTS GO HERE -->
-    <div style="background-color:#4E4E4E" class="center-align">
+    <div class="center-align">
         <h4 class="section-header">ANNOUNCEMENTS</h4>
     </div>
 
@@ -156,13 +140,14 @@
           prepend here
           <div id="announcementsDiv"></div> -->
         </div>
+
     </div>
 
-    <div id="modal1" class="modal modal-fixed-footer">
+    <!-- <div id="modal1" class="modal modal-fixed-footer">
         <div class="modal-content">
-            <h4>Add Announcement</h4>
+            <h4>Add Announcement</h4> -->
             <!-- ADD FORM HERE -->
-            <form class="row">
+            <!-- <form class="row">
                 <div class="input-field col s6">
                     <input id="emailAddressAnnouncement" type="text" class="autocomplete">
                     <label for="emailAddressAnnouncement">Email Address</label>
@@ -184,7 +169,7 @@
         <div class="modal-footer">
             <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" id="submitNewAnnounce">Submit</a>
         </div>
-    </div>
+    </div> -->
 
     <!-- END ANNOUNCEMENTS -->
 
@@ -220,13 +205,11 @@
 
     <!-- END SETTING/ADD BAR -->
 
-    <div style="background-color:#4E4E4E" class="center-align">
-        <h4 class="section-header">FRIDGE CONTENTS</h4>
-    </div>
-    <div class="mint-green">
-        <div class="full-width top-padding bottom-padding mint-green">
-            <div id="foodCards" class="row"></div>
-        </div>
+<div class="center-align">
+    <h4 class="section-header">FRIDGE CONTENTS</h4>
+</div>
+    <div class="full-width top-padding bottom-padding">
+      <div id="foodCards" class="row"></div>
     </div>
 </body>
 

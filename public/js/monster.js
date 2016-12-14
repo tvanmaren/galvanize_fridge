@@ -4,10 +4,25 @@ $(function() {
 
   $("#svg_container").click(function() {
     updateAnimation();
-  })
+  });
+
+  if ($(window).width() < 800) {
+    resizeAnim(400, 150, "small");
+  }
+
+  // check the current size of the window, load the smaller anim
+  $(window).resize(function() {
+    if ($(window).width() < 800) {
+      resizeAnim(400, 150, "small");
+    } else {
+      resizeAnim(800, 300, "large");
+    }
+  });
 });
 
-var jsonfile = "fridge_monster.json",
+
+
+var jsonfile = "fridge_monster/fridge_monster_large.json",
 fps = 24,
 width = 800,
 height = 300,
@@ -35,6 +50,19 @@ function AJAX_JSON_Req( url )
 
     AJAX_req.onreadystatechange = handle_AJAX_Complete;
     AJAX_req.send();
+}
+
+function resizeAnim(newWidth, newHeight, size) {
+  $("svg").remove();
+
+  // append new monster with new dimensions
+  jsonfile = "fridge_monster/fridge_monster_" + size + ".json",
+  fps = 24,
+  width = newWidth,
+  height = newHeight,
+  AJAX_req;
+
+  AJAX_JSON_Req(jsonfile);
 }
 
 function updateAnimation() {

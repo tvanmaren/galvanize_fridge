@@ -69,7 +69,7 @@ $('#submitNewAnnounce').click(function(){
         data: newAnnounce,
         success: function(result) {
           console.log("post successful ", result);
-          window.location.href = '../fridge.html';
+          window.location.href = '../announce.html';
         },
         error: function(err){
           console.error(err);
@@ -87,7 +87,7 @@ $('#announcementsDiv').on('click', '.delete', function(){
     url: `/announce/${idTag}`,
     success: function() {
       console.log("Delete announcement successful");
-      window.location.href = '../fridge.html';
+      window.location.href = '../announce.html';
     },
     error: function(err) {
       console.error(err);

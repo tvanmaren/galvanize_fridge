@@ -31,6 +31,7 @@ h4 {
   width: 100%;
 }
 
+
 .top-padding{
   padding-top: 20px
 }
@@ -59,6 +60,7 @@ h4 {
 
 .section-header {
   /*font-weight: ;*/
+  background-color:#4E4E4E;
   color: #F2F2F2;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -78,25 +80,33 @@ h4 {
   font-weight: bold;
   font-size: 18px;
 }
-
+/*
 .text-black{
   color:#4E4E4E !important;
-}
+}*/
 
 /*#foodCards {
   background-color:#B4EDD8;
   min-height: 300px;
 }*/
 
-.mint-green{
+/*.mint-green{
   background-color:#B4EDD8;
-  /*min-height: 100px;*/
-}
-
+  /*min-height: 100px;
+}*/
+/*
 .white-gap{
   min-height: 30px;
-}
+}*/
 
 .margin-none{
   margin-bottom: 0;
+}
+
+.fridge-face {
+  background-color:#74CFAE;
+}
+
+.nav-options {
+  color: #4E4E4E !important;
 }
