@@ -147,16 +147,33 @@ function appendAnnounce(obj){
     var name = obj[key].name;
     var idTag = obj[key].idid;
 
-    var newAnnounce = `
-    <div class="row announcementRow">
-    <p class="announcementP">${title}:</p>
-    <p class="announcementP">${content}</p>
-    <p class="announcementP">From: ${name}</p>
-    <a class="btn-floating btn-small waves-effect waves-light orange delete" id="${idTag}"><i class="material-icons">delete</i></a>
-    </div>
-    <br>
-    `;
-    $announceDiv.prepend(newAnnounce);
+    // var newAnnounce = `
+    // <div class="row announcementRow">
+    // <p class="announcementP">${title}:</p>
+    // <p class="announcementP">${content}</p>
+    // <p class="announcementP">From: ${name}</p>
+    // <a class="btn-floating btn-small waves-effect waves-light orange delete" id="${idTag}"><i class="material-icons">delete</i></a>
+    // </div>
+    // <br>
+    // `;
+
+    var newAnnounceCard = `<div class="row">
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="card-content white-text">
+              <span class="card-title text-black">${title}</span>
+              <p class="text-black">${content}</p>
+              <p class="text-black">From: ${name}</p>
+            </div>
+            <div class="card-action">
+            <a class="delete" id="${idTag}" href="#"><i class="material-icons">delete</i></a>
+            <a href="#"><i class="material-icons">edit</i></a>
+            </div>
+          </div>
+        </div>
+      </div>`;
+
+    $announceDiv.prepend(newAnnounceCard);
   }
 }
 
