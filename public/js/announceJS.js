@@ -211,7 +211,7 @@ function appendAnnounce(obj){
 
     var newAnnounceCard = `
         <div class="col s12 m6">
-          <div class="card">
+          <div class="card small">
             <div class="card-content white-text">
               <span class="card-title text-black">${title}</span>
               <p class="text-black">${content}</p>
