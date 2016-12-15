@@ -1,19 +1,27 @@
 'use strict';
 
 $(function () {
-console.log('getting to fridge.js');
-  let admin;
+  console.log('getting to fridge.js');
 
-  populateAnnouncements();
+  let admin;
 
   //check if I'm an admin, and assign that to a global
   $.getJSON('/users/self/')
     .done((user) => {
       admin = user.isAdmin;
+      // add announcements link if user is admin
+      if (!admin) {
+        $('ul.hide-on-med-and-down :nth-child(2)').hide();
+        console.log($('ul.hide-on-med-and-down :nth-child(2)').first());
+        $('#mobile-demo :nth-child(2)').hide();
+        console.log($('#mobile-demo:nth-child(2)'));
+      }
     })
     .fail((err) => {
       console.error(err);
     });
+
+  populateAnnouncements();
 
   // Click on Settings Icon
   $('a.settings').click(function () {
