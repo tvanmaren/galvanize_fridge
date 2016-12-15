@@ -107,3 +107,7 @@ h4 {
 .nav-options {
   color: #4E4E4E !important;
 }
+
+.about-text {
+  line-height: 40px;
+}
