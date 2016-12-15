@@ -169,15 +169,15 @@ router.post('/users', (req, res, next) => {
                 });
             })
             .catch((err) => {
-              next(err);
+              next(boom.create(400, 'Error storing user data. Reenter data and try again'));
             });
         })
         .catch((err) => {
-          next(err);
+          next(boom.create(400, 'Error storing password. Retype password and try again.'));
         });
     })
     .catch((err) => {
-      next(err);
+      next(boom.create(400, `User database error. Try again later.`));
     });
 });
 
