@@ -251,8 +251,10 @@ function populateAnnouncements() {
         for (var i = 0; i < result.length; i++) {
           var key = result[i].id;
           console.log('announceObj[key]- ', announceObj[key]);
-          $('#announcement-ticker').append(`<li> ${announceObj[key]['content']} -${result[i].firstName}</li>`);
-
+          $('#announcement-ticker').append(
+            `<li>${announceObj[key]['content']}</li>
+            <li>-${result[i].firstName}</li>`
+          );
         }
       });
     }); //closes 2.then
