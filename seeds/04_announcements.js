@@ -12,14 +12,14 @@ exports.seed = function(knex, Promise) {
           content: 'There is leftover food from a meet-up in the kitchen'
         }),
         knex('announcements').insert({
-          user_id: 2,
-          title: 'Missing Tupperware',
-          content: 'My favorite tupperware is missing! Let me know if you find it'
-        }),
-        knex('announcements').insert({
           user_id: 1,
           title: 'Missing Tupperware',
           content: 'My favorite tupperware is missing, too! Let\'s be friends!'
+        }),
+        knex('announcements').insert({
+          user_id: 2,
+          title: 'Missing Tupperware',
+          content: 'My favorite tupperware is missing! Let me know if you find it'
         }),
         knex('announcements').insert({
           user_id: 5,

@@ -74,7 +74,7 @@ exports.seed = function(knex, Promise) {
           id: 9,
           user_id: 10,
           image_url: 'https://res.cloudinary.com/dgt2xab7d/image/upload/v1481752658/s088kd8dqcf7mnjcitcf.jpg',
-          comments: 'Everyone can take a bite of this sandwich!',
+          comments: 'Everyone can eat this sandwich!',
           expiration: 1482011910823,
           category: 2,
         }),
