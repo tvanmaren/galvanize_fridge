@@ -60,7 +60,6 @@ h4 {
 }
 
 .section-header {
-  /*font-weight: ;*/
   background-color:#4E4E4E;
   color: #F2F2F2;
   padding-top: 10px;
@@ -86,20 +85,6 @@ h4 {
   color:#4E4E4E !important;
 }
 
-/*#foodCards {
-  background-color:#B4EDD8;
-  min-height: 300px;
-}*/
-
-/*.mint-green{
-  background-color:#B4EDD8;
-  /*min-height: 100px;
-}*/
-/*
-.white-gap{
-  min-height: 30px;
-}*/
-
 .margin-none {
   margin-bottom: 0;
 }
@@ -110,4 +95,11 @@ h4 {
 
 .about-text {
   line-height: 40px;
+}
+
+@media screen and (max-width:700px){
+    header section, section { width:1070px; }
+    header ul { width:760px; }
+        .newsticker li { font-size: 12px; }
+        .newsticker li { height: 27px; }
 }

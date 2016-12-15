@@ -2,6 +2,7 @@
 
 var photoURL;
 
+// DOCUMENT.READY
 $(function () {
   $("#upload_widget_opener").click(function () {
     selectPhoto();
@@ -10,8 +11,10 @@ $(function () {
   $("#submitButton").click(function () {
     submitForm();
   });
+// END DOCUMENT.READY
 
-  // This populates the email field to provide autocomplete
+
+  // Populate the email field to provide autocomplete
   var $xhr = $.ajax({
     type: "GET",
     url: "/useremails",

@@ -6,7 +6,6 @@ const express = require('express');
 
 const dotenv = require('dotenv').config();
 const ev = require('express-validation');
-// const validations = require('../validations/books');
 
 const router = express.Router();
 const jwt = require('jsonwebtoken');
@@ -20,6 +19,7 @@ const {
 
 const boom = require('boom');
 
+// AUTHORIZE BY GET ROUTE
 router.get('/token', (req, res, next) => {
   authorize(req, res, next);
 });
@@ -28,6 +28,7 @@ router.get('/token', (req, res, next) => {
   res.sendStatus(200);
 });                   // once the next of the authorize route triggers, go here
 
+// POST TOKEN ROUTE
 router.post('/token', function (req, res, next) {
   knex('users')
     .where('email', req.body.email)
@@ -44,7 +45,7 @@ router.post('/token', function (req, res, next) {
             userId: users.id,
             userEmail: users.email,
             isAdmin: users.isAdmin,
-            exp: Math.floor(Date.now() / 1000) + (60 * 480)  // token lasts 1 hr
+            exp: Math.floor(Date.now() / 1000) + (60 * 480)  // token lasts 8 hr
           }, process.env.JWT_SECRET);
 
           res.cookie('token', token, {
@@ -59,9 +60,10 @@ router.post('/token', function (req, res, next) {
     });
 });
 
+// DELETE TOKEN ROUTE
 router.delete('/token', function(req, res, next) {
     res.clearCookie('token');
     res.send(true);
-})
+});
 
 module.exports = router;
