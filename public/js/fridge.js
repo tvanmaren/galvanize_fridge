@@ -227,23 +227,50 @@ function setStatus(expiration) {
 ////////////////////////////////////////////////////////////////////////
 
 function populateAnnouncements() {
+  let announceObj = {};
+  let promiseArr = [];
   $.getJSON("/announce")
     .then((announcementList) => {
       $('#announcement-ticker').empty();
       announcementList.forEach((announcement) => {
-        $.getJSON(`/announce/${announcement.id}`)
-          .then((result) => {
-            // console.log('>>>>>>>>>>>>');
-            // console.log(result);
-            // console.log('>>>>>>>>>>>>');
-                $('#announcement-ticker').append(`<li> ${result.content}</li>`);
-            },
-            (err) => {
-              return next(err);
-            });
+        announceObj[announcement.userId] = {
+          id: announcement.id,
+          content: announcement.content
+        };
+      }); //closes forEach
+    }) //close 1st .then
+    .then(()=> {
+      for (var key in announceObj){
+        promiseArr.push($.getJSON(`/users/${key}`));
+      }
+      Promise.all(promiseArr).then((result) =>{
+        for (var i = 0; i < result.length; i++) {
+          var key = result[i].id;
+          $('#announcement-ticker').append(
+            `<li>${announceObj[key]['content']}</li>
+            <li>-${result[i].firstName}</li>`
+          );
+        }
       });
-    });
+    }); //closes 2.then
 }
+
+
+
+
+// $.getJSON(`/users/${announcement.userId}`)
+//   .then((result) => {
+//     announceObj[result.id] = {
+//       content: announcement.content,
+//     };
+//
+//         $('#announcement-ticker').append(`<li> ${result.content}</li>`);
+//     },
+//     (err) => {
+//       return next(err);
+//     });
+
+
 
 function getActiveUsers (data) {
   var activeUsers = data.map((item) => {
