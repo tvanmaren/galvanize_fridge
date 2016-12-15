@@ -84,7 +84,8 @@ label{
 
 .btn:hover {
   box-shadow: 0 0 0 rgba(255, 255, 255, 0);
-  background-color: rgba(242,242,242, .5)
+  background-color: rgba(242,242,242, .5);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .btn-floating {
