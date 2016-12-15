@@ -225,20 +225,34 @@ function setStatus(expiration) {
 
 // POPULATE TICKER ON FRIDGE PAGE
 function populateAnnouncements() {
+  let announceObj = {};
+  let promiseArr = [];
   $.getJSON("/announce")
     .then((announcementList) => {
       $('#announcement-ticker').empty();
       announcementList.forEach((announcement) => {
-        $.getJSON(`/announce/${announcement.id}`)
-          .then((result) => {
-                $('#announcement-ticker').append(`<li> ${result.content}</li>`);
-            },
-            (err) => {
-              return err;
-            });
+        announceObj[announcement.userId] = {
+          id: announcement.id,
+          content: announcement.content
+        };
+      }); //closes forEach
+    }) //close 1st .then
+    .then(()=> {
+      for (var key in announceObj){
+        promiseArr.push($.getJSON(`/users/${key}`));
+      }
+      Promise.all(promiseArr).then((result) =>{
+        for (var i = 0; i < result.length; i++) {
+          var key = result[i].id;
+          $('#announcement-ticker').append(
+            `<li>${announceObj[key]['content']}</li>
+            <li>-${result[i].firstName}</li>`
+          );
+        }
       });
-    });
+    }); //closes 2.then
 }
+
 
 function getActiveUsers (data) {
   var activeUsers = data.map((item) => {

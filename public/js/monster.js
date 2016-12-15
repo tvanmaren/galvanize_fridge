@@ -12,14 +12,23 @@ $(function() {
     resizeAnim(400, 150, "small");
   }
 
-  // check the current size of the window, load the smaller anim
   $(window).resize(function() {
-    if ($(window).width() < 800) {
-      resizeAnim(400, 150, "small");
-    } else {
-      resizeAnim(800, 300, "large");
-    }
+    clearTimeout(window.resizedFinished);
+    window.resizedFinished = setTimeout(function(){
+        console.log('Resized finished.');
+        if ($(window).width() < 800) {
+          resizeAnim(400, 150, "small");
+        } else {
+          resizeAnim(800, 300, "large");
+        }
+    }, 250);
   });
+
+  // // check the current size of the window, load the smaller anim
+  // $(window).resize(function() {
+  //   console.log("Resize");
+  //
+  // });
 });
 // END DOCUMENT.READY
 

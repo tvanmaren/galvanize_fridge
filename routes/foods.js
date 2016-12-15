@@ -19,6 +19,7 @@ const authorize=require('./modules/authorize');
 router.get('/foods', (req, res, next) => {
   knex('foods')
     .where('active', true)
+    .orderBy('expiration','asc')
     .then((foods) => {
       res.send(foods);
     })
