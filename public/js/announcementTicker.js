@@ -1,7 +1,7 @@
 $(document).ready(function () {
   console.log("getting to announcementTicker.js");
   $('.newsticker').newsTicker();
-})
+});
 
 $('.newsticker').newsTicker({
     row_height: 27,
