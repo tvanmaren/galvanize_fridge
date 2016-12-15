@@ -196,14 +196,15 @@
                                 var thisEl = this.$el;
                                 var element = this.$el.children('li:first');
                                 var element2 = this.$el.children('li:nth-child(2)');
-                                element.animate({marginTop: '-' + this.options.row_height + 'px'}, this.options.speed,
+                                element.animate({marginTop: '-' + (this.options.row_height*2) + 'px'}, this.options.speed,
                                         function(){
                                                 element.detach().css('marginTop', '0').appendTo(thisEl);
 
-                                                element2.animate({marginTop: '-' + this.options.row_height + 'px'}, this.options.speed,
-                                                        function(){
-                                                          element2.detach().css('marginTop', '0').appendTo(thisEl);
-                                                        })
+                                                // element2.animate({marginTop: '-' + this.options.row_height + 'px'}, this.options.speed,
+                                                //         function(){
+                                                element2.detach().appendTo(thisEl);
+                                                // element2.detach().css('marginTop', '0').appendTo(thisEl);
+                                                        // })
                                                 this.moving = 0;
                                                 this.options.hasMoved();
                                         }.bind(this));
