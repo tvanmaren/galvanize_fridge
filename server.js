@@ -61,7 +61,7 @@ app.use('/new-entry.html', authorize, function(req, res, next) {
 });
 
 app.use('/announce.html', authorize, function(req, res, next) {
-    if (!req.user.admin) {
+    if (!req.user.isAdmin) {
         res.redirect('/fridge.html');
     } else {
         next();
