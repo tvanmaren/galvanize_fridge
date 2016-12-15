@@ -33,7 +33,7 @@ function authorize(req, res, next) {
     if (token) {
         jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
             if (err) {
-                res.redirect('/');
+                res.redirect('/login.html');
             }
             req.user = decoded;
             console.log(req.user);
@@ -46,7 +46,7 @@ function authorize(req, res, next) {
 
 app.use('/fridge.html', authorize, function(req, res, next) {
     if (!req.user) {
-        res.redirect('/');
+        res.redirect('/login.html');
     } else {
         next();
     }
@@ -54,15 +54,15 @@ app.use('/fridge.html', authorize, function(req, res, next) {
 
 app.use('/new-entry.html', authorize, function(req, res, next) {
     if (!req.user) {
-        res.redirect('/');
+        res.redirect('/login.html');
     } else {
         next();
     }
 });
 
 app.use('/announce.html', authorize, function(req, res, next) {
-    if (!req.user) {
-        res.redirect('/');
+    if (!req.user.isAdmin) {
+        res.redirect('/fridge.html');
     } else {
         next();
     }
