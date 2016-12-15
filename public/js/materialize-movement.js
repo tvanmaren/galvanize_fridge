@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  console.log('getting into materialize-movement.js');
+  // console.log('getting into materialize-movement.js');
   $(".button-collapse").sideNav();
 
   $(document).ready(function(){

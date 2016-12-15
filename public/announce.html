@@ -6,6 +6,7 @@
     <title>Fridge</title>
     <!-- Main fridge view page for both users and the fridge account -->
 
+    <!-- JQUERY -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js" defer></script>
 
     <!-- materialize CDN -->
@@ -45,26 +46,24 @@
                 <li><a href="login.html" class="logout" style="color:#4E4E4E">Logout</a></li>
                 <li><a href="#settingsPanel" class="settings"><i class="large material-icons" id="settings">settings</i></a></li>
             </ul>
-
+            <!-- MOBILE NAV -->
             <ul class="side-nav" id="mobile-demo">
-              <li><a href="fridge.html">Fridge Face</a></li>
+                <li><a href="fridge.html">Fridge Face</a></li>
                 <li class="active"><a href="announce.html">Announcements</a></li>
                 <li><a href="new-entry.html">Add Food</a></li>
                 <li><a href="login.html" class="logout">Logout</a></li>
                 <li><a href="#settingsPanel" class="settings">Settings</a></li>
             </ul>
+            <!-- END MOBILE NAV -->
         </div>
     </nav>
-
-    <!-- FRIDGE FACE FACE  -->
-    <!-- <div id="svg_container" class="fridge-face center-align" style="background-color:#74CFAE">
-    </div> -->
-    <!-- END FRIDGE FACE FACE  -->
+    <!-- END NAVIGATION BAR -->
 
 
     <!-- ADMIN PANEL MODAL -->
     <div id="settingsPanel" class="modal bottom-sheet">
         <div class="modal-content">
+            <!-- POPULATE ADMIN PANEL -->
             <h4 id="name"></h4>
             <p id="content"></p>
         </div>
@@ -87,13 +86,15 @@
         <div class="container" style="background-color:#B4EDD8">
             <a class="btn-floating btn-small waves-effect waves-light" id="addAnnounce"><i class="material-icons">add</i></a>
             <div class="row">
-              <!-- prepend here -->
-              <div id="announcementsDiv"></div>
+                <!-- prepend here -->
+                <div id="announcementsDiv"></div>
             </div>
         </div>
     </div>
 
+    <!-- CREATE ANNOUNCEMENT FORM -->
     <div id="modal1" class="modal modal-fixed-footer">
+
         <div class="modal-content">
             <h4>Add Announcement</h4>
             <!-- ADD FORM HERE -->
@@ -103,16 +104,16 @@
                     <label for="emailAddressAnnouncement">Email Address</label>
                 </div>
                 <!-- <div class="row"> -->
-                    <div class="input-field col s9">
-                        <textarea id="newAnnounceTitle" class="materialize-textarea"></textarea>
-                        <label for="newAnnounceTitle">Title</label>
-                    </div>
+                <div class="input-field col s9">
+                    <textarea id="newAnnounceTitle" class="materialize-textarea"></textarea>
+                    <label for="newAnnounceTitle">Title</label>
+                </div>
                 <!-- </div> -->
                 <!-- <div class="row"> -->
-                    <div class="input-field col s9">
-                        <textarea id="newAnnounceContent" class="materialize-textarea"></textarea>
-                        <label for="newAnnounceContent">Content</label>
-                    </div>
+                <div class="input-field col s9">
+                    <textarea id="newAnnounceContent" class="materialize-textarea"></textarea>
+                    <label for="newAnnounceContent">Content</label>
+                </div>
                 <!-- </div> -->
                 <div class="row"></div>
             </form>
@@ -122,7 +123,10 @@
             <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" id="submitNewAnnounce">Submit</a>
         </div>
     </div>
+    <!-- END CREATE ANNOUNCEMENT -->
 
+
+    <!-- UPDATE ANNOUNCEMENT FORM -->
     <div id="modal2" class="modal modal-fixed-footer">
         <div class="modal-content">
             <h4>Edit Announcement</h4>
@@ -147,6 +151,7 @@
             <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" id="submitEditAnnounce">Submit</a>
         </div>
     </div>
+    <!-- END UPDATE ANNOUNCEMENT FORM -->
 
     <!-- END ANNOUNCEMENTS -->
 

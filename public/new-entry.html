@@ -37,7 +37,6 @@
 <body>
 
     <!-- START NAV -->
-
     <nav id="navBar" class="z-depth-0">
         <div class="nav-wrapper custom-nav">
             <a href="fridge.html" class="brand-logo">Fridge Face</a>
@@ -50,6 +49,7 @@
                 <li><a href="#settingsPanel" class="settings"><i class="large material-icons" id="settings">settings</i></a></li>
             </ul>
 
+            <!-- MOBILE NAV -->
             <ul class="side-nav" id="mobile-demo">
                 <li><a href="fridge.html">Fridge Face</a></li>
                 <li><a href="announce.html">Announcements</a></li>
@@ -57,10 +57,12 @@
                 <li><a href="login.html" class="logout">Logout</a></li>
                 <li><a href="#settingsPanel" class="settings">Settings</a></li>
             </ul>
+            <!-- END MOBILE NAV -->
         </div>
     </nav>
+    <!-- END NAV -->
 
-    <!-- MODAL -->
+    <!-- SETTINGS MODAL -->
     <div id="settingsPanel" class="modal bottom-sheet">
         <div class="modal-content">
             <h4 id="name"></h4>
@@ -70,25 +72,15 @@
             <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Dismiss</a>
         </div>
     </div>
-    <!-- END MODAL -->
+    <!-- END SETTINGS MODAL -->
 
-    <!-- <nav class="z-depth-0">
-        <div class="nav-wrapper custom-nav">
-            <a href="fridge.html" class="brand-logo">Fridge Face</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li>
-                    <a href="fridge.html" style="color:#4E4E4E">Fridge</a>
-                </li>
-            </ul>
-        </div>
-    </nav> -->
-    <!-- END NAV -->
 
     <!-- START FORM -->
     <div class="center-align">
         <h4 class="section-header">ENTER EMAIL</h4>
     </div>
 
+    <!-- ENTER EMAIL -->
     <div class="full-width bottom-padding">
       <div class="container">
           <div class="input-field col l6 s10 offset-l3 offset-s1">
@@ -98,88 +90,94 @@
       </div>
     </div>
 
+    <!-- TAKE PHOTO -->
     <div class="center-align">
         <h4 class="section-header">TAKE PHOTO</h4>
     </div>
 
     <div class="full-width">
-      <div class="container">
-        <div class="row">
-            <div class="center-align">
-                <div id="upload_widget_opener" class="btn">
-                    <span>Open Camera</span>
+        <div class="container">
+            <div class="row">
+                <div class="center-align">
+                    <div id="upload_widget_opener" class="btn">
+                        <span>Open Camera</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="center-align">
+                    <img src="images/photo_preview.png" alt="photo preview" class="photoPreview" id="photoPreview">
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="center-align">
-                <img src="images/photo_preview.png" alt="photo preview" class="photoPreview" id="photoPreview">
-            </div>
-        </div>
-      </div>
     </div>
 
+    <!-- SELECT CATEGORY -->
     <div class="center-align">
         <h4 class="section-header">SELECT CATEGORY</h4>
     </div>
 
     <div class="full-width">
-      <div class="container">
-        <div class="row">
-            <p class="center equal-margins">
-                <input name="group1" type="radio" id="personalCat" checked/>
-                <label for="personalCat">Personal</label>
-                <input name="group1" type="radio" id="communityCat" />
-                <label for="communityCat">Community</label>
-                <input name="group1" type="radio" id="eventCat" />
-                <label for="eventCat">Event</label>
-            </p>
+        <div class="container">
+            <div class="row">
+                <p class="center equal-margins">
+                    <input name="group1" type="radio" id="personalCat" checked/>
+                    <label for="personalCat">Personal</label>
+                    <input name="group1" type="radio" id="communityCat" />
+                    <label for="communityCat">Community</label>
+                    <input name="group1" type="radio" id="eventCat" />
+                    <label for="eventCat">Event</label>
+                </p>
+            </div>
         </div>
-      </div>
     </div>
 
+    <!-- SET EXPIRATION  -->
     <div class="center-align">
         <h4 class="section-header">SET EXPIRATION</h4>
     </div>
 
     <div class="full-width">
-      <div class="container">
-        <div class="row">
-            <div class="datepicker col l4 s6 offset-l4 offset-s3 xs12">
-                <select class="browser-default">
+        <div class="container">
+            <div class="row">
+                <div class="datepicker col l4 s6 offset-l4 offset-s3 xs12">
+                    <select class="browser-default">
                   <option value="1">1 day</option>
                   <option value="2">2 days</option>
                   <option value="3" selected>3 days</option>
                   <option value="4">4 days</option>
                   <option value="5">5 days</option>
                 </select>
+                </div>
             </div>
         </div>
-      </div>
     </div>
 
+    <!-- ADD A FOOD COMMENT -->
     <div class="center-align">
         <h4 class="section-header">ADD NOTES & SUBMIT</h4>
     </div>
 
     <div class="full-width">
-      <div class="container">
-        <div class="row">
-            <div class="input-field col s10 offset-s1">
-                <textarea id="textarea1" class="materialize-textarea" maxlength="50"></textarea>
-                <label for="textarea1">Food Notes (max 50 characters)</label>
+        <div class="container">
+            <div class="row">
+                <div class="input-field col s10 offset-s1">
+                    <textarea id="textarea1" class="materialize-textarea" maxlength="50"></textarea>
+                    <label for="textarea1">Food Notes (max 50 characters)</label>
+                </div>
             </div>
-        </div>
-        <div class="row center">
-            <div class="center-align">
-                <div id="submitButton" class="btn">
-                    <span>Submit</span>
+
+            <!-- SUBMIT BUTTON -->
+            <div class="row center">
+                <div class="center-align">
+                    <div id="submitButton" class="btn">
+                        <span>Submit</span>
+                    </div>
                 </div>
             </div>
         </div>
-      </div>
     </div>
     <!-- END FORM -->
-  </body>
+</body>
 
 </html>

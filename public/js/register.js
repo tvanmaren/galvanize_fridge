@@ -1,11 +1,14 @@
 'use strict';
+
+// DOCUMENT.READY
 $(function() {
-  console.log('Getting into login.js');
+  // console.log('Getting into login.js');
     $("#register-button").click(function (event) {
         event.preventDefault();
         submitLogin();
     });
 });
+// END DOCUMENT.READY
 
 function submitLogin() {
     var newUser = {
@@ -19,7 +22,6 @@ function submitLogin() {
         Materialize.toast('Passwords do not match', 3000);
     }
 
-    // TODO: Send newFood to server
     // The server will need to get the userID according to the name that was entered
     var $xhr = $.ajax({
         type: "POST",

@@ -15,8 +15,8 @@ const jwt = require('jsonwebtoken');
 
 const authorize=require('./modules/authorize');
 
+// GET ROUTE
 router.get('/foods', (req, res, next) => {
-  //TODO order by date expired
   knex('foods')
     .where('active', true)
     .orderBy('expiration','asc')
@@ -28,6 +28,7 @@ router.get('/foods', (req, res, next) => {
     });
 });
 
+// GET ROUTE W/ CATEGORY ID
 router.get('/foods?catId=:catId', (req, res, next) => {
   const catId = req.params.catId;
   knex('foods')
@@ -41,6 +42,7 @@ router.get('/foods?catId=:catId', (req, res, next) => {
     });
 });
 
+// GET ROUTE W/ USER ID
 router.get('/foods/:userId/', (req, res, next) => {
   knex('foods')
     .where('active', true)
@@ -53,6 +55,7 @@ router.get('/foods/:userId/', (req, res, next) => {
     });
 });
 
+// POST ROUTE
 router.post('/foods', (req, res, next) => {
   let insertion={
     'user_id': req.body.userId,
@@ -71,6 +74,7 @@ router.post('/foods', (req, res, next) => {
     });
 });
 
+// DELETE ROUTE
 router.delete('/foods/:id', (req, res, next) => {
   knex('foods')
     .where('id', req.params.id)

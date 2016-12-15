@@ -4,7 +4,6 @@
 
 const express = require('express');
 const ev = require('express-validation');
-// const validations = require('../validations/books');
 
 const bcrypt = require('bcrypt-as-promised');
 
@@ -22,7 +21,7 @@ const {
 
 const boom = require('boom');
 
-
+// GET ROUTE
 router.get('/announce', (req, res, next) => {
     knex('announcements')
         .orderBy('id')
@@ -35,6 +34,7 @@ router.get('/announce', (req, res, next) => {
         });
 });
 
+// GET ROUTE W/ID
 router.get('/announce/:id', (req, res, next) => {
     knex('announcements')
         .where('id', req.params.id)
@@ -48,7 +48,7 @@ router.get('/announce/:id', (req, res, next) => {
         });
 });
 
-
+// POST ROUTE
 router.post('/announce', (req,res,next) =>{
   const {
       title,
@@ -91,7 +91,7 @@ router.post('/announce', (req,res,next) =>{
     });
 });
 
-
+// UPDATE ROUTE
 router.patch('/announce/:id', (req, res, next) => {
   var announceId = Number.parseInt(req.params.id);
 
@@ -132,7 +132,7 @@ router.patch('/announce/:id', (req, res, next) => {
     });
 });
 
-
+// DELETE ROUTE
 router.delete('/announce/:id', (req, res, next) =>{
   var announceId = Number.parseInt(req.params.id);
 
@@ -159,7 +159,7 @@ router.delete('/announce/:id', (req, res, next) =>{
   .catch((err) =>{
     next(err);
   });
-
+  
 });
 
 module.exports = router;

@@ -1,20 +1,21 @@
 'use strict';
 
+// DOCUMENT.READY
 $(function () {
-  console.log('getting to fridge.js');
+  // console.log('getting to fridge.js');
 
   let admin;
 
-  //check if I'm an admin, and assign that to a global
+  //check if admin, and assign that to a global
   $.getJSON('/users/self/')
     .done((user) => {
       admin = user.isAdmin;
       // add announcements link if user is admin
       if (!admin) {
         $('ul.hide-on-med-and-down :nth-child(2)').hide();
-        console.log($('ul.hide-on-med-and-down :nth-child(2)').first());
+        // console.log($('ul.hide-on-med-and-down :nth-child(2)').first());
         $('#mobile-demo :nth-child(2)').hide();
-        console.log($('#mobile-demo:nth-child(2)'));
+        // console.log($('#mobile-demo:nth-child(2)'));
       }
     })
     .fail((err) => {
@@ -113,11 +114,9 @@ function generateCards(jsonObject) {
     var Id = `#${obj.id}`;
 
     $(Id).click(function () {
-      // console.log($(this).attr('id'));
       deleteItem($(this).attr('id'));
     });
   });
-  // console.log($('#foodCards').children());
 }
 
 function setCategory(catID) {
@@ -165,8 +164,6 @@ function checkFridgeStats() {
 
   $.getJSON("/foods")
     .then((result) => {
-        //TODO add user data (items per user) & expiration data
-        // console.log(result);
         $('#content').append(`<p> Fridge items to date: ${result.length}`);
       },
       (err) => {
@@ -212,7 +209,7 @@ function setStatus(expiration) {
   let dayExpires = Math.round(expiration/dayInterval);
   var now = Math.round(Date.now()/dayInterval);
 
-  console.log('now:',now,'dayExpires',dayExpires,'expiration',expiration,'dayInterval',dayInterval);
+  // console.log('now:',now,'dayExpires',dayExpires,'expiration',expiration,'dayInterval',dayInterval);
 
   if((dayExpires - now) > 0){
     return "green lighten-1";
@@ -226,6 +223,7 @@ function setStatus(expiration) {
 
 ////////////////////////////////////////////////////////////////////////
 
+// POPULATE TICKER ON FRIDGE PAGE
 function populateAnnouncements() {
   let announceObj = {};
   let promiseArr = [];
@@ -256,22 +254,6 @@ function populateAnnouncements() {
 }
 
 
-
-
-// $.getJSON(`/users/${announcement.userId}`)
-//   .then((result) => {
-//     announceObj[result.id] = {
-//       content: announcement.content,
-//     };
-//
-//         $('#announcement-ticker').append(`<li> ${result.content}</li>`);
-//     },
-//     (err) => {
-//       return next(err);
-//     });
-
-
-
 function getActiveUsers (data) {
   var activeUsers = data.map((item) => {
     return item.user_id;
@@ -295,6 +277,5 @@ function getActiveUsers (data) {
         }));
       });
     });
-
   });
 }

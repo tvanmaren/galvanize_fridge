@@ -70,8 +70,6 @@ app.use('/announce.html', authorize, function(req, res, next) {
 
 app.use(express.static('./public'));
 
-// app.use('/secure', express.static('./public/secure'));
-
 app.use(users);
 app.use(token);
 

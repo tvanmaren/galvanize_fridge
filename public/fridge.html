@@ -6,6 +6,7 @@
     <title>Fridge</title>
     <!-- Main fridge view page for both users and the fridge account -->
 
+    <!-- JQUERY -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js" defer></script>
 
     <!-- materialize CDN -->
@@ -14,7 +15,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Materialize JS -->
+    <!-- MATERIALIZE FUNCTIONS JS -->
     <script src="js/materialize-movement.js" charset="utf-8" defer></script>
 
     <!-- Favicon -->
@@ -37,7 +38,6 @@
     </script>
 
     <!-- Ticker Scripts -->
-    <!-- <script src="http://code.jquery.com/jquery-1.10.1.min.js" defer></script> -->
     <script src="./js/jquery.newsTicker.js" charset="utf-8" defer></script>
     <script src="./js/announcementTicker.js" defer></script>
 </head>
@@ -56,6 +56,7 @@
                 <li><a href="login.html" class="logout" style="color:#4E4E4E">Logout</a></li>
                 <li><a href="#settingsPanel" class="settings"><i class="large material-icons" id="settings">settings</i></a></li>
             </ul>
+            <!-- MOBILE NAV -->
             <ul class="side-nav" id="mobile-demo">
                 <li class="active"><a href="fridge.html">Fridge Face</a></li>
                 <li><a href="announce.html">Announcements</a></li>
@@ -63,17 +64,19 @@
                 <li><a href="login.html" class="logout">Logout</a></li>
                 <li><a href="#settingsPanel" class="settings">Settings</a></li>
             </ul>
+            <!-- END MOBILE NAV -->
         </div>
 
+        <!-- POP UP NAV -->
         <div id="dropNav" class="nav-wrapper" style="background-color:#4E4E4E; display:none">
             <div class="row" style="background-color: #74CFAE;">
                 <div class="right-align">
-                  <a class="btn" style="background-color:#F2F2F2; margin-right:20px;" href="new-entry.html">Add Item</a>
+                    <a class="btn" style="background-color:#F2F2F2; margin-right:20px;" href="new-entry.html">Add Item</a>
 
-                  <a class="dropdown-button btn" style="background-color:#F2F2F2; margin-right:20px;" data-activates="userSelect" data-constrainwidth="false">Users</a>
+                    <a class="dropdown-button btn" style="background-color:#F2F2F2; margin-right:20px;" data-activates="userSelect" data-constrainwidth="false">Users</a>
 
-                  <ul id="userSelect" class="dropdown-content">
-                  </ul>
+                    <ul id="userSelect" class="dropdown-content">
+                    </ul>
 
                     <a class="dropdown-button btn" style="background-color:#F2F2F2; margin-right:20px;" data-activates="categorySelect">Categories</a>
 
@@ -83,17 +86,20 @@
                         <li><a class="dropdown-item" id="communityCat">Community Food</a></li>
                         <li><a class="dropdown-item" id="eventCat">Event Food</a></li>
                     </ul>
-
-
                 </div>
             </div>
         </div>
+        <!-- END POP UP NAV -->
+
     </nav>
     <!-- END NAVIGATION BAR -->
 
+    <!-- FRIDGE FACE -->
     <div id="svg_container" class="fridge-face center-align" style="background-color:#74CFAE"></div>
+    <!-- END FRIDGE FACE -->
 
-    <!-- MODAL -->
+
+    <!-- MODAL FOR SETTINGS PANNEL -->
     <div id="settingsPanel" class="modal bottom-sheet">
         <div class="modal-content">
             <h4 id="name"></h4>
@@ -103,7 +109,7 @@
             <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Dismiss</a>
         </div>
     </div>
-    <!-- END MODAL -->
+    <!-- END MODAL FOR SETTINGS PANNEL -->
 
     <!-- CIRCLE MONSTER -->
     <!-- <div class="container centerMonster">
@@ -131,86 +137,24 @@
 
             <!-- TICKER -->
             <ul class="newsticker center" id="announcement-ticker">
-
+                <!-- ANNOUNCEMENT ITEMS POPULATE HERE -->
             </ul>
-
             <!-- TICKER END -->
 
-            <!-- <a class="btn-floating btn-small waves-effect waves-light orange" id="addAnnounce"><i class="material-icons">add</i></a>
-          prepend here
-          <div id="announcementsDiv"></div> -->
         </div>
     </div>
 
-    <!-- <div id="modal1" class="modal modal-fixed-footer">
-        <div class="modal-content">
-            <h4>Add Announcement</h4> -->
-    <!-- ADD FORM HERE -->
-    <!-- <form class="row">
-                <div class="input-field col s6">
-                    <input id="emailAddressAnnouncement" type="text" class="autocomplete">
-                    <label for="emailAddressAnnouncement">Email Address</label>
-                </div>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <textarea id="newAnnounceTitle" class="materialize-textarea"></textarea>
-                        <label for="newAnnounceTitle">Title</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <textarea id="newAnnounceContent" class="materialize-textarea"></textarea>
-                        <label for="newAnnounceContent">Content</label>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" id="submitNewAnnounce">Submit</a>
-        </div>
-    </div> -->
-
     <!-- END ANNOUNCEMENTS -->
 
-    <!-- <div style="background-color:#4E4E4E" class="center-align">
-        <h4 class="section-header">FILTER</h4>
-    </div> -->
-
-    <!-- SETTING/ADD BAR -->
-    <!-- <div class="full-width top-padding" style="background-color:#B4EDD8">
-      <br>
-      <div class="container" style="background-color:#B4EDD8">
-        <form class="">
-          <div class="row center-align">
-            <div class="input-field col s4 offset-s2">
-              <input id="filterName" type="text" class="autocomplete">
-              <label for="filterName">Name</label>
-            </div>
-            <div class="col s4">
-              <a class="dropdown-button btn" data-activates="categorySelect">Categories</a>
-
-                <ul id="categorySelect" class="dropdown-content">
-                  <li><a class="dropdown-item" id="allCat">All Food</a></li>
-                  <li><a class="dropdown-item" id="personalCat">Personal Food</a></li>
-                  <li><a class="dropdown-item" id="communityCat">Community Food</a></li>
-                  <li><a class="dropdown-item" id="eventCat">Event Food</a></li>
-                </ul>
-            </div>
-          </div>
-        </form>
-      </div>
-      <br>
-    </div> -->
-
-    <!-- END SETTING/ADD BAR -->
-
-
-  <div class="center-align">
-      <h4 class="section-header">FRIDGE CONTENTS</h4>
-  </div>
-  <div class="full-width top-padding bottom-padding">
-    <div id="foodCards" class="row custom-row"></div>
-  </div>
+    <!-- FRIDGE CONTENTS HERE -->
+    <div class="center-align">
+        <h4 class="section-header">FRIDGE CONTENTS</h4>
+    </div>
+    <div class="full-width top-padding bottom-padding">
+        <div id="foodCards" class="row custom-row"></div>
+        <!-- POPULATE WITH FOOD CARDS HERE -->
+    </div>
+    <!-- END FRIDGE CONTENTS -->
 </body>
 
 </html>
