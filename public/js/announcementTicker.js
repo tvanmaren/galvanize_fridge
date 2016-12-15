@@ -1,8 +1,10 @@
+// DOCUMENT.READY
 $(document).ready(function () {
-  console.log("getting to announcementTicker.js");
+  // console.log("getting to announcementTicker.js");
   $('.newsticker').newsTicker();
-})
+});
 
+// EDIT TICKER SETTINGS
 $('.newsticker').newsTicker({
     row_height: 27,
     max_rows: 1,

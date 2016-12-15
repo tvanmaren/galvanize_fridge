@@ -1,4 +1,6 @@
 'use strict';
+
+// DOCUMENT.READY
 $(function() {
   AJAX_JSON_Req(jsonfile);
 
@@ -19,6 +21,7 @@ $(function() {
     }
   });
 });
+// END DOCUMENT.READY
 
 
 // var jsonfile = "fridge_monster/fridge_monster_large.json",
@@ -27,8 +30,6 @@ fps = 24,
 width = 800,
 height = 300,
 AJAX_req;
-
-// TODO: This should be called on a delay
 
 
 function handle_AJAX_Complete() {

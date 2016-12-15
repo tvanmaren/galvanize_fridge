@@ -1,140 +1,151 @@
 a {
-  color: blue;
+    color: blue;
 }
 
+
 /*moves the text in the left side of the header over a little*/
+
 .brand-logo {
-  margin-left: 10px;
-  margin-right: 10px;
-  color: #4E4E4E !important;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #4E4E4E !important;
 }
 
 html {
     font-family: 'Raleway', sans-serif;
-  }
-
-.right {
-  margin-right: 10px;
 }
 
-/*changes radio button fill to be orange on new-entry.html*/
+.right {
+    margin-right: 10px;
+}
 
-[type="radio"].with-gap:checked + label:before {
-border-radius: 50%;
-border: 2px solid #4E4E4E !important; }
 
-[type="radio"] + label:after {
-border-radius: 50%;
-border: 2px solid #4E4E4E !important;
-background-color: #4E4E4E !important;
-z-index: 0;
--webkit-transform: scale(.5);
--moz-transform: scale(.5);
--ms-transform: scale(.5);
--o-transform: scale(.5);
-transform: scale(.5); }
+/*changes radio button on new-entry.html*/
+
+[type="radio"].with-gap:checked+label:before {
+    border-radius: 50%;
+    border: 2px solid #4E4E4E !important;
+}
+
+[type="radio"]+label:after {
+    border-radius: 50%;
+    border: 2px solid #4E4E4E !important;
+    background-color: #4E4E4E !important;
+    z-index: 0;
+    -webkit-transform: scale(.5);
+    -moz-transform: scale(.5);
+    -ms-transform: scale(.5);
+    -o-transform: scale(.5);
+    transform: scale(.5);
+}
 
 
 /*change label and line color for the forms*/
 
+
 /* label underline focus color */
-   .input-field input[type=text]:focus {
-     border-bottom: 1px solid #4E4E4E !important;
-     box-shadow: 0 1px 0 0 #4E4E4E !important;
-   }
-   /* label focus color */
-label{
-  color: #4E4E4E !important;
+
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid #4E4E4E !important;
+    box-shadow: 0 1px 0 0 #4E4E4E !important;
 }
 
-   .input-field textarea[class=materialize-textarea]:focus {
-   border-bottom: 1px solid #4E4E4E !important;
-   box-shadow: 0 1px 0 0 #4E4E4E !important;
-   }
 
-   .input-field input[type=email]:focus {
-   border-bottom: 1px solid #4E4E4E !important;
-   box-shadow: 0 1px 0 0 #4E4E4E !important;
-   }
+/* label focus color */
 
-   .input-field input[type=password]:focus {
-   border-bottom: 1px solid #4E4E4E !important;
-   box-shadow: 0 1px 0 0 #4E4E4E !important;
-   }
+label {
+    color: #4E4E4E !important;
+}
+
+.input-field textarea[class=materialize-textarea]:focus {
+    border-bottom: 1px solid #4E4E4E !important;
+    box-shadow: 0 1px 0 0 #4E4E4E !important;
+}
+
+.input-field input[type=email]:focus {
+    border-bottom: 1px solid #4E4E4E !important;
+    box-shadow: 0 1px 0 0 #4E4E4E !important;
+}
+
+.input-field input[type=password]:focus {
+    border-bottom: 1px solid #4E4E4E !important;
+    box-shadow: 0 1px 0 0 #4E4E4E !important;
+}
 
 .food-action {
-  color: slategray;
-  transition: .35s;
+    color: slategray;
+    transition: .35s;
 }
+
 .food-action:hover {
-  color:orange;
-  transform: scale(1.5);
+    color: orange;
+    transform: scale(1.5);
 }
 
 .btn {
-  color: #4E4E4E !important;
-  box-shadow: 0 0 0 rgba(255, 255, 255, 0);
-  background-color: rgba(255, 255, 255, 0);
-  border-style: solid;
-  border-color: #4E4E4E;
-  border-width: medium;
-  border-radius: 3px;
-  height: 40px;
+    color: #4E4E4E !important;
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0);
+    border-style: solid;
+    border-color: #4E4E4E;
+    border-width: medium;
+    border-radius: 3px;
+    height: 40px;
 }
 
 .btn:hover {
-  box-shadow: 0 0 0 rgba(255, 255, 255, 0);
-  background-color: rgba(242,242,242, .5)
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+    background-color: rgba(242, 242, 242, .5)
 }
 
 .btn-floating {
-  color: #4E4E4E !important;
-  box-shadow: 0 0 0 rgba(255, 255, 255, 0);
-  background-color: rgba(255, 255, 255, 0);
-  border-style: solid;
-  border-color: #4E4E4E;
-  border-width: thin;;
-  box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+    color: #4E4E4E !important;
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0);
+    border-style: solid;
+    border-color: #4E4E4E;
+    border-width: thin;
+    ;
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
 }
 
 .btn-floating:hover {
-  box-shadow: 0 0 0 rgba(255, 255, 255, 0);
-  background-color: rgba(242,242,242, .5)
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+    background-color: rgba(242, 242, 242, .5)
 }
 
 .custom-nav {
-  background-color:#F2F2F2 !important;
-  /*box-shadow: 0 0 0 rgba(255, 255, 255, 0) !important;*/
+    background-color: #F2F2F2 !important;
+    /*box-shadow: 0 0 0 rgba(255, 255, 255, 0) !important;*/
 }
 
 .custom-row {
-  background-color:#B4EDD8;
-  height: auto !important;
-
+    background-color: #B4EDD8;
+    height: auto !important;
 }
 
 .container {
-  background-color:#B4EDD8;
+    background-color: #B4EDD8;
 }
 
-.brand-logo{
-  color:#4E4E4E !important;
+.brand-logo {
+    color: #4E4E4E !important;
 }
 
-.nav-wrapper{
-  background-color:#F2F2F2 !important;
+.nav-wrapper {
+    background-color: #F2F2F2 !important;
 }
 
 .right li a {
-  color:#4E4E4E !important;
+    color: #4E4E4E !important;
 }
 
-.material-icons{
-  color:#4E4E4E !important;
+.material-icons {
+    color: #4E4E4E !important;
 }
 
 .card {
-  box-shadow: 0 0 0 rgba(255, 255, 255, 0);
-  padding-bottom: 10px;
-  margin-bottom: 20px !important;
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+    padding-bottom: 10px;
+    margin-bottom: 20px !important;
 }

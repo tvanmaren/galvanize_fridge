@@ -1,11 +1,9 @@
 'use strict';
 var userID;
 var editIdTag;
-// var userName;
 
-
+// DOCUMENT.READY
 $(function() {
-
 
   var $announceDiv = $('#announcementsDiv');
   $announceDiv.css({'height': 'auto'});
@@ -14,6 +12,7 @@ $(function() {
   });
 
 });
+// END DOCUMENT.READY
 
 $('#addAnnounce').click(function(){
   $('#modal1').modal('open');
@@ -46,7 +45,6 @@ $('#addAnnounce').click(function(){
       console.error(err);
     }
   });
-
 });
 
 $('#submitNewAnnounce').click(function(){
@@ -66,7 +64,6 @@ $('#submitNewAnnounce').click(function(){
 
   Promise.all(requests).then(function(results){
     userID = parseInt(results[0].id);
-    // userName = results[0].firstName;
     var newAnnounce = {
       title: $('#newAnnounceTitle').val(),
       content: $('#newAnnounceContent').val(),
@@ -132,8 +129,6 @@ $('#announcementsDiv').on('click', '.edit', function(){
       console.error(err);
     }
   });
-
-
 });
 
 $('#submitEditAnnounce').click(function(){
@@ -172,10 +167,6 @@ function generateAnnnouncements(data) {
   // data = GET result off all announcements
   var appendObj = {};
   var promises = [];
-  // var dataBottom = data.length - 3;
-  // if(data.length < 3){
-  //   dataBottom = 0;
-  // }
   var sortedData = sortByKey(data, 'id');
   for(var i=0; i<data.length; i++){
     userID = sortedData[i].userId;
@@ -184,7 +175,7 @@ function generateAnnnouncements(data) {
       content: sortedData[i].content,
       idid: sortedData[i].id
     };
-    console.log('userID- ', userID);
+    // console.log('userID- ', userID);
     promises.push(
     $.ajax({
       type: "GET",
@@ -199,8 +190,8 @@ function generateAnnnouncements(data) {
   }
 
   Promise.all(promises).then(function(result){
-    console.log('promiseAll result- ', result);
-    console.log('appendObj- ', appendObj);
+    // console.log('promiseAll result- ', result);
+    // console.log('appendObj- ', appendObj);
     var key = 0;
     for(var i=0; i<data.length; i++){
       appendObj[i].name = result[key].firstName;
@@ -217,16 +208,6 @@ function appendAnnounce(obj){
     var content = obj[key].content;
     var name = obj[key].name;
     var idTag = obj[key].idid;
-
-    // var newAnnounce = `
-    // <div class="row announcementRow">
-    // <p class="announcementP">${title}:</p>
-    // <p class="announcementP">${content}</p>
-    // <p class="announcementP">From: ${name}</p>
-    // <a class="btn-floating btn-small waves-effect waves-light orange delete" id="${idTag}"><i class="material-icons">delete</i></a>
-    // </div>
-    // <br>
-    // `;
 
     var newAnnounceCard = `
         <div class="col s12 m6">

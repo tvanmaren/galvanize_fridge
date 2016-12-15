@@ -1,5 +1,6 @@
 'use strict';
 
+// DOCUMENT.READY
 $(function() {
   $('#navBar').css({
     'position': 'fixed',
@@ -19,12 +20,11 @@ $(function() {
   $('body').css({
     'padding-top': $('#navBar').height(),
   });
-
+// END DOCUMENT.READY
 
 });
 
 $(window).scroll(function() {
-    // console.log($(this).scrollTop());
     var initialize = $('navBar').height() + 10;
 
     if($(this).scrollTop() > initialize) {

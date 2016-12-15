@@ -4,7 +4,6 @@
 
 const express = require('express');
 const ev = require('express-validation');
-// const validations = require('../validations/books');
 
 const bcrypt = require('bcrypt-as-promised');
 
@@ -24,6 +23,7 @@ const boom = require('boom');
 
 const authorize = require('./modules/authorize');
 
+// GET ROUTE
 router.get('/users', (req, res, next) => {
   if (req.query.email) {
     knex('users')
@@ -54,6 +54,7 @@ router.get('/users', (req, res, next) => {
   }
 });
 
+// GET ROUTE W/ EMAIL
 router.get('/emails/:email', (req, res, next) => {
     knex('users')
         .where('email', req.params.email)
@@ -67,6 +68,7 @@ router.get('/emails/:email', (req, res, next) => {
         });
 });
 
+// GET ROUTE FOR SELF
 router.get('/users/self/', authorize, (req, res, next) => {
   knex('users')
     .where('id', req.token.userId)
@@ -81,6 +83,7 @@ router.get('/users/self/', authorize, (req, res, next) => {
     });
 });
 
+// GET ROUTE W/ ID
 router.get('/users/:id', (req, res, next) => {
     knex('users')
         .where('id', req.params.id)
@@ -94,6 +97,7 @@ router.get('/users/:id', (req, res, next) => {
         });
 });
 
+// GET ROUTE USEREMAILS
 router.get('/useremails/', (req, res, next) => {
   knex('users')
     .then((result) => {
@@ -108,6 +112,7 @@ router.get('/useremails/', (req, res, next) => {
     });
 });
 
+// POST ROUTE
 router.post('/users', (req, res, next) => {
   const {
     email,
@@ -134,9 +139,6 @@ router.post('/users', (req, res, next) => {
             firstName,
             lastName
           } = req.body;
-          console.log(req.body);
-          console.log(firstName);
-          console.log(lastName);
 
           knex('users')
             .insert({
@@ -156,7 +158,6 @@ router.post('/users', (req, res, next) => {
                     userId: resultCamel.id,
                     userEmail: resultCamel.email,
                     isAdmin: resultCamel.isAdmin,
-                    // exp: Math.floor(Date.now() / 1000) + (60 * 1)
                   }, process.env.JWT_SECRET);
 
                   res.cookie('token', token, {
@@ -180,6 +181,7 @@ router.post('/users', (req, res, next) => {
     });
 });
 
+// UPDATE ROUTE
 router.patch('/users?:id', (req, res, next) => {
   if (isNaN(req.params.id)) {
     return next(boom.create(404, 'Not Found'));
