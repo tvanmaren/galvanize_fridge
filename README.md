@@ -10,16 +10,14 @@ Live at: https://fridge-face.herokuapp.com/
 
 ### Overview
 
-First, you have to login.
-
-For an admin account, try
-
-#### USER: tm.vanmaren@gmail.com
-#### PWD: 1234
-
-For a non-admin account, use
+First, you'll have to login. For a non-admin account, use
 
 #### USER: kind2karma@gmail.com
+#### PWD: 1234
+
+For an admin account, use
+
+#### USER: tm.vanmaren@gmail.com
 #### PWD: 1234
 
 On the main page you see announcements looping. These announcements are created and maintained by administrators.
